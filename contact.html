@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Contact abcd — Tell us about your business, challenge or idea. Let's automate, engage and grow.">
+
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <title>Contact | abcd — Automate. Engage. Grow.</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #07111f;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        /* =========================
+           VARIABLES
+        ========================== */
+
+        :root {
+            --blue: #1261ff;
+            --blue-dark: #0845c7;
+            --orange: #ff7300;
+            --dark: #07111f;
+            --text: #475467;
+            --muted: #98a2b3;
+            --border: #e6eaf0;
+            --light: #f7f9fc;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            height: 78px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            background: rgba(255, 255, 255, 0.94);
+            border-bottom: 1px solid rgba(230, 234, 240, 0.8);
+
+            backdrop-filter: blur(14px);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            position: relative;
+
+            font-size: 14px;
+            font-weight: 600;
+            color: #344054;
+
+            transition: color 0.25s ease;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--orange);
+
+            transition: width 0.25s ease;
+        }
+
+        nav a:hover {
+            color: var(--blue);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-btn {
+            padding: 11px 20px;
+
+            color: white;
+            background: var(--blue);
+
+            border-radius: 8px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .header-btn:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(18, 97, 255, 0.2);
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .contact-hero {
+            position: relative;
+            overflow: hidden;
+
+            padding: 100px 6% 80px;
+
+            background:
+                radial-gradient(
+                    circle at 15% 30%,
+                    rgba(18, 97, 255, 0.09),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(255, 115, 0, 0.08),
+                    transparent 28%
+                ),
+                #ffffff;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 900px;
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 20px;
+
+            padding: 7px 13px;
+
+            border: 1px solid rgba(18, 97, 255, 0.14);
+            border-radius: 50px;
+
+            background: rgba(18, 97, 255, 0.05);
+
+            color: var(--blue);
+
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+            background: var(--orange);
+
+            box-shadow: 0 0 12px rgba(255, 115, 0, 0.5);
+        }
+
+        h1 {
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1.05;
+            letter-spacing: -4px;
+            font-weight: 900;
+
+            margin-bottom: 25px;
+        }
+
+        h1 .blue {
+            color: var(--blue);
+        }
+
+        h1 .orange {
+            color: var(--orange);
+        }
+
+        .hero-text {
+            max-width: 700px;
+            margin: auto;
+
+            color: var(--text);
+
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           DECORATIVE NODES
+        ========================== */
+
+        .floating-node {
+            position: absolute;
+
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: var(--blue);
+
+            box-shadow:
+                0 0 20px rgba(18, 97, 255, 0.35);
+
+            animation: floatNode 4s ease-in-out infinite;
+        }
+
+        .floating-node.orange {
+            background: var(--orange);
+
+            box-shadow:
+                0 0 20px rgba(255, 115, 0, 0.35);
+        }
+
+        .node-1 {
+            top: 25%;
+            left: 10%;
+        }
+
+        .node-2 {
+            top: 45%;
+            right: 12%;
+            animation-delay: 1s;
+        }
+
+        .node-3 {
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatNode {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* =========================
+           CONTACT SECTION
+        ========================== */
+
+        .contact-section {
+            padding: 40px 6% 110px;
+
+            background: #f8fafc;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+
+            gap: 70px;
+
+            align-items: start;
+        }
+
+        /* =========================
+           CONTACT INFO
+        ========================== */
+
+        .contact-info {
+            padding-top: 20px;
+        }
+
+        .contact-info h2 {
+            font-size: 34px;
+            line-height: 1.15;
+
+            margin-bottom: 18px;
+
+            letter-spacing: -1.5px;
+        }
+
+        .contact-info h2 span {
+            color: var(--blue);
+        }
+
+        .contact-info > p {
+            color: var(--text);
+
+            font-size: 15px;
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            padding: 17px;
+
+            background: #ffffff;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
+
+            border-color: rgba(18, 97, 255, 0.25);
+
+            box-shadow:
+                0 12px 30px rgba(16, 24, 40, 0.06);
+        }
+
+        .info-icon {
+            width: 44px;
+            height: 44px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: rgba(18, 97, 255, 0.08);
+
+            color: var(--blue);
+
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .info-item:nth-child(even) .info-icon {
+            background: rgba(255, 115, 0, 0.09);
+            color: var(--orange);
+        }
+
+        .info-content small {
+            display: block;
+
+            margin-bottom: 2px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .info-content strong {
+            display: block;
+
+            color: var(--dark);
+
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            color: #344054;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            transition: all 0.25s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+            background: var(--blue);
+
+            transform: translateY(-3px);
+
+            border-color: var(--blue);
+        }
+
+        /* =========================
+           FORM CARD
+        ========================== */
+
+        .form-card {
+            position: relative;
+
+            padding: 40px;
+
+            background: #ffffff;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            box-shadow:
+                0 25px 70px rgba(16, 24, 40, 0.08);
+
+            overflow: hidden;
+        }
+
+        .form-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            background: linear-gradient(
+                90deg,
+                var(--blue),
+                var(--orange)
+            );
+        }
+
+        .form-header {
+            margin-bottom: 28px;
+        }
+
+        .form-header h2 {
+            font-size: 27px;
+
+            margin-bottom: 8px;
+
+            letter-spacing: -1px;
+        }
+
+        .form-header p {
+            color: var(--text);
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           FORM GRID
+        ========================== */
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            margin-bottom: 8px;
+
+            color: #344054;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        label span {
+            color: var(--orange);
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #d8dee8;
+            border-radius: 9px;
+
+            background: #ffffff;
+
+            color: var(--dark);
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #a3acba;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--blue);
+
+            box-shadow:
+                0 0 0 3px rgba(18, 97, 255, 0.09);
+        }
+
+        textarea {
+            min-height: 140px;
+
+            resize: vertical;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        /* =========================
+           SUBMIT
+        ========================== */
+
+        .submit-btn {
+            position: relative;
+
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 15px 20px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: var(--blue);
+
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--blue-dark);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px rgba(18, 97, 255, 0.22);
+        }
+
+        .submit-btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-note {
+            margin-top: 14px;
+
+            text-align: center;
+
+            color: #98a2b3;
+
+            font-size: 11px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding: 30px 6%;
+
+            background: #07111f;
+
+            color: #ffffff;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .footer-logo span {
+            color: var(--orange);
+        }
+
+        .footer-tagline {
+            margin-top: 3px;
+
+            color: #98a2b3;
+
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 22px;
+        }
+
+        .footer-links a {
+            color: #c5cbd5;
+
+            font-size: 12px;
+
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+            }
+
+            .contact-info {
+                max-width: 700px;
+                margin: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                height: 70px;
+
+                padding: 0 5%;
+            }
+
+            .header-btn {
+                padding: 9px 14px;
+            }
+
+            .contact-hero {
+                padding: 75px 5% 65px;
+            }
+
+            h1 {
+                font-size: 43px;
+
+                letter-spacing: -2.5px;
+            }
+
+            .hero-text {
+                font-size: 15px;
+            }
+
+            .contact-section {
+                padding: 25px 5% 70px;
+            }
+
+            .form-card {
+                padding: 25px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .footer-container {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* =========================
+           REDUCED MOTION
+        ========================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            abcd<span>.</span>
+        </a>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#solutions">Solutions</a>
+            <a href="index.html#industries">Industries</a>
+            <a href="index.html#portfolio">Portfolio</a>
+            <a href="index.html#insights">Insights</a>
+        </nav>
+
+        <a href="contact.html" class="header-btn">
+            Let's Build →
+        </a>
+
+    </header>
+
+
+    <!-- =========================
+         CONTACT HERO
+    ========================== -->
+
+    <main>
+
+        <section class="contact-hero">
+
+            <!-- Decorative AI Nodes -->
+            <div class="floating-node node-1"></div>
+            <div class="floating-node orange node-2"></div>
+            <div class="floating-node node-3"></div>
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    Let's Connect
+                </div>
+
+                <h1>
+                    Ready to
+                    <span class="blue">Automate.</span>
+                    <span class="orange">Engage.</span>
+                    <span class="blue">Grow?</span>
+                </h1>
+
+                <p class="hero-text">
+                    Tell us about your business, challenge or idea.
+                    Our team will help identify the right technology,
+                    marketing and growth solution for you.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT CONTENT
+        ========================== -->
+
+        <section class="contact-section">
+
+            <div class="contact-container">
+
+
+                <!-- CONTACT INFORMATION -->
+
+                <div class="contact-info">
+
+                    <h2>
+                        Let's build something
+                        <span>intelligent.</span>
+                    </h2>
+
+                    <p>
+                        Whether you need AI automation, digital marketing,
+                        a powerful website, CRM integration or a complete
+                        digital transformation strategy, let's talk about
+                        what your business needs next.
+                    </p>
+
+
+                    <div class="info-list">
+
+                        <!-- Email -->
+
+                        <a href="#" class="info-item">
+
+                            <div class="info-icon">
+    <i class="fa-solid fa-envelope"></i>
+</div>
+
+                            <div class="info-content">
+
+                                <small>Email</small>
+
+                                <strong>
+                                    Alphytix@gmail.com
+                                </strong>
+
+                            </div>
+
+                        </a>
+
+
+                        <!-- Phone -->
+
+                        <a href="tel:+919999999999" class="info-item">
+
+                            <div class="info-icon">
+                                ☎
+                            </div>
+
+                            <div class="info-content">
+
+                                <small>Phone</small>
+
+                                <strong>
+                                    +91 99999 99999
+                                </strong>
+
+                            </div>
+
+                        </a>
+
+
+                        <!-- WhatsApp -->
+
+                        <a href="#"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="info-item">
+
+                            <div class="info-icon">
+    <i class="fa-brands fa-whatsapp"></i>
+</div>
+
+                            <div class="info-content">
+
+                                <small>WhatsApp</small>
+
+                                <strong>
+                                    Chat with our team
+                                </strong>
+
+                            </div>
+
+                        </a>
+
+
+                        <!-- Location -->
+
+                        <div class="info-item">
+
+                            <div class="info-icon">
+    <i class="fa-solid fa-location-dot"></i>
+</div>
+
+                            <div class="info-content">
+
+                                <small>Location</small>
+
+                                <strong>
+                                    Kerala, India
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Social Media -->
+
+                    <div class="social-links">
+
+<a href="#" aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin-in"></i>
+</a>                        
+
+                        <a href="#" aria-label="Instagram">
+    <i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#" aria-label="Facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+</a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT FORM -->
+
+                <div class="form-card">
+
+                    <div class="form-header">
+
+                        <h2>
+                            Tell us about your project
+                        </h2>
+
+                        <p>
+                            Fill in the details below and our team
+                            will get back to you.
+                        </p>
+
+                    </div>
+
+
+                    <form action="#" method="POST">
+
+                        <div class="form-grid">
+
+
+                            <!-- Name -->
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Name <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Your full name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- Company -->
+
+                            <div class="form-group">
+
+                                <label for="company">
+                                    Company <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="company"
+                                    name="company"
+                                    placeholder="Company name"
+                                    autocomplete="organization"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- Email -->
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email <span>*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="you@company.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- Phone -->
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone / WhatsApp <span>*</span>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="+91 XXXXX XXXXX"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- Industry -->
+
+                            <div class="form-group">
+
+                                <label for="industry">
+                                    Industry <span>*</span>
+                                </label>
+
+                                <select
+                                    id="industry"
+                                    name="industry"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select industry
+                                    </option>
+
+                                    <option>
+                                        Real Estate
+                                    </option>
+
+                                    <option>
+                                        E-commerce
+                                    </option>
+
+                                    <option>
+                                        Beauty & Fashion
+                                    </option>
+
+                                    <option>
+                                        F&B & Hospitality
+                                    </option>
+
+                                    <option>
+                                        Professional Services
+                                    </option>
+
+                                    <option>
+                                        Finance & Accounting
+                                    </option>
+
+                                    <option>
+                                        Healthcare
+                                    </option>
+
+                                    <option>
+                                        Education
+                                    </option>
+
+                                    <option>
+                                        Startup / SME
+                                    </option>
+
+                                    <option>
+                                        Corporate
+                                    </option>
+
+                                    <option>
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- Service -->
+
+                            <div class="form-group">
+
+                                <label for="service">
+                                    Service Required <span>*</span>
+                                </label>
+
+                                <select
+                                    id="service"
+                                    name="service"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select service
+                                    </option>
+
+                                    <option>
+                                        AI Agents & Automation
+                                    </option>
+
+                                    <option>
+                                        Digital & Social Media Marketing
+                                    </option>
+
+                                    <option>
+                                        Neuromarketing
+                                    </option>
+
+                                    <option>
+                                        CRM & Marketing Automation
+                                    </option>
+
+                                    <option>
+                                        Website & Application Development
+                                    </option>
+
+                                    <option>
+                                        IT Support & Services
+                                    </option>
+
+                                    <option>
+                                        Branding & Digital Creative
+                                    </option>
+
+                                    <option>
+                                        Multiple Services
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- Project -->
+
+                            <div class="form-group full">
+
+                                <label for="project">
+                                    Tell Us About Your Project
+                                    <span>*</span>
+                                </label>
+
+                                <textarea
+                                    id="project"
+                                    name="project"
+                                    placeholder="Tell us about your business, challenge, idea or project..."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+                            <!-- Budget 
+
+                            <div class="form-group full">
+
+                                <label for="budget">
+                                    Budget Range
+                                    <small style="font-weight:400;color:#98a2b3;">
+                                        (Optional)
+                                    </small>
+                                </label>
+
+                                <select
+                                    id="budget"
+                                    name="budget"
+                                >
+
+                                    <option value="">
+                                        Select budget range
+                                    </option>
+
+                                    <option>
+                                        Under ₹50,000
+                                    </option>
+
+                                    <option>
+                                        ₹50,000 – ₹1 Lakh
+                                    </option>
+
+                                    <option>
+                                        ₹1 Lakh – ₹3 Lakhs
+                                    </option>
+
+                                    <option>
+                                        ₹3 Lakhs – ₹5 Lakhs
+                                    </option>
+
+                                    <option>
+                                        ₹5 Lakhs+
+                                    </option>
+
+                                    <option>
+                                        Not sure yet
+                                    </option>
+
+                                </select>
+
+                            </div>-->
+
+                        </div>
+
+
+                        <!-- Submit -->
+
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                        >
+                            <span>
+                                Let's Talk →
+                            </span>
+                        </button>
+
+                        <p class="form-note">
+                            Your information will only be used to respond
+                            to your enquiry.
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div>
+
+                <div class="footer-logo">
+                    abcd<span>.</span>
+                </div>
+
+                <div class="footer-tagline">
+                    Automate. Engage. Grow.
+                </div>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#about">
+                    About
+                </a>
+
+                <a href="index.html#services">
+                    Services
+                </a>
+
+                <a href="index.html#portfolio">
+                    Portfolio
+                </a>
+
+                <a>
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
