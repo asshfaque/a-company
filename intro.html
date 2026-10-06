@@ -2,333 +2,1095 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Alphytix — Automate. Engage. Grow.">
+    <!-- Basic security policy -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';">
 
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <title>Alphytix — Welcome</title>
+    <meta name="description"
+          content="Alphytix — AI agents, intelligent automation, digital growth, CRM, technology and branding solutions.">
+
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Alphytix — Automate. Engage. Grow.</title>
 
     <style>
-        * {
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #101828;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :focus-visible {
+            outline: 3px solid #ff7a00;
+            outline-offset: 4px;
+        }
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
 
         :root {
             --blue: #1261ff;
+            --blue-dark: #073b9e;
+            --blue-light: #eaf2ff;
+
             --orange: #ff7300;
-            --dark: #07111f;
+            --orange-light: #fff1e6;
+
+            --dark: #101828;
+            --gray: #667085;
+            --light-gray: #f6f8fc;
+            --border: #e6eaf0;
+
+            --max-width: 1200px;
+            --radius: 18px;
         }
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
+        /* =========================================================
+           UTILITIES
+        ========================================================= */
+
+        .container {
+            width: min(92%, var(--max-width));
+            margin-inline: auto;
         }
 
-        body {
-            overflow: hidden;
-            background: #ffffff;
-            font-family: Arial, Helvetica, sans-serif;
+        .section {
+            padding: 100px 0;
         }
 
-        .intro {
+        .section-label {
+            
+            align-items: center;
+            gap: 8px;
+            color: var(--blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .section-label::before {
+            content: "";
+            width: 24px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .section-title {
+            max-width: 700px;
+            font-size: clamp(2rem, 4vw, 3.3rem);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 18px;
+        }
+
+        .section-description {
+            max-width: 680px;
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        /* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(230, 234, 240, 0.8);
+}
+
+.nav {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Logo */
+
+.logo {
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--dark);
+}
+
+.logo span {
+    color: var(--orange);
+}
+
+.s_logo {
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: white;
+}
+
+.s_logo span {
+    color: var(--orange);
+}
+
+
+/* Navigation */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.25s ease;
+}
+
+/* Orange/blue underline */
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 2px;
+    background: var(--orange);
+    transition: width 0.25s ease;
+}
+
+/* Hover */
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Active page */
+
+.nav-links a.active {
+    color: var(--blue);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Let's Build button */
+
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    background: var(--blue);
+    color: #ffffff !important;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+}
+
+.nav-cta:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(18, 97, 255, 0.2);
+}
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
             position: relative;
-            width: 100%;
-            height: 100vh;
+            min-height: 720px;
             display: flex;
             align-items: center;
-            justify-content: center;
             overflow: hidden;
             background:
-                radial-gradient(
-                    circle at center,
-                    rgba(18, 97, 255, 0.08),
-                    transparent 40%
-                ),
+                radial-gradient(circle at 85% 25%, rgba(18, 97, 255, 0.10), transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(255, 115, 0, 0.08), transparent 28%),
                 #ffffff;
         }
 
-        /* Background circles */
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid rgba(18, 97, 255, 0.12);
-            animation: rotate 10s linear infinite;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            align-items: center;
+            gap: 60px;
         }
 
-        .circle.one {
-            width: 500px;
-            height: 500px;
-        }
-
-        .circle.two {
-            width: 350px;
-            height: 350px;
-            border-color: rgba(255, 115, 0, 0.16);
-            animation-duration: 7s;
-            animation-direction: reverse;
-        }
-
-        .circle.three {
-            width: 200px;
-            height: 200px;
-            border-style: dashed;
-            animation-duration: 5s;
-        }
-
-        /* Main content */
-
-        .content {
+        .hero-content {
             position: relative;
-            z-index: 5;
-            text-align: center;
+            z-index: 2;
         }
 
-        .logo {
-            font-size: clamp(4rem, 10vw, 8rem);
-            font-weight: 900;
-            letter-spacing: -7px;
-            color: #07111f;
-
-            opacity: 0;
-            transform: translateY(25px);
-
-            animation:
-                logoIn 1s ease forwards,
-                logoFloat 3s ease-in-out 1.2s infinite;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 13px;
+            border: 1px solid #dbe6ff;
+            border-radius: 100px;
+            background: #f7faff;
+            color: var(--blue);
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 24px;
         }
 
-        .logo span {
-            color: var(--orange);
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--orange);
+            border-radius: 50%;
+            animation: pulse 1.8s infinite;
         }
 
-        .tagline {
-            margin-top: 18px;
-
-            font-size: clamp(1rem, 2vw, 1.35rem);
-            font-weight: 600;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-
-            color: #667085;
-
-            opacity: 0;
-            animation: taglineIn 1s ease 0.7s forwards;
+        .hero h1 {
+            font-size: clamp(3.3rem, 7vw, 6.2rem);
+            line-height: 0.95;
+            letter-spacing: -5px;
+            max-width: 750px;
+            margin-bottom: 28px;
         }
 
-        .tagline .blue {
+        .hero h1 span {
             color: var(--blue);
         }
 
-        .tagline .orange {
+        .hero h1 .orange {
             color: var(--orange);
         }
 
-        /* Loading line */
-
-        .loader {
-            width: 180px;
-            height: 3px;
-            margin: 45px auto 0;
-
-            background: #e7ecf5;
-            border-radius: 20px;
-            overflow: hidden;
-
-            opacity: 0;
-            animation: fadeIn 0.8s ease 1.2s forwards;
+        .hero-description {
+            max-width: 650px;
+            color: var(--gray);
+            font-size: 1.13rem;
+            margin-bottom: 35px;
         }
 
-        .loader::after {
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 50px;
+            padding: 0 23px;
+            border-radius: 9px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+            box-shadow: 0 12px 30px rgba(18, 97, 255, 0.22);
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        /* =========================================================
+           HERO VISUAL
+        ========================================================= */
+
+        .hero-visual {
+            position: relative;
+            min-height: 500px;
+            display: grid;
+            place-items: center;
+        }
+
+        .ai-orbit {
+            width: 410px;
+            height: 410px;
+            position: relative;
+            border: 1px solid #dce6fb;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle, rgba(18, 97, 255, 0.07), transparent 55%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .ai-orbit::before,
+        .ai-orbit::after {
             content: "";
-            display: block;
-
-            width: 0;
-            height: 100%;
-
-            background: linear-gradient(
-                90deg,
-                var(--blue),
-                var(--orange)
-            );
-
-            animation: loading 2.4s ease 1.3s forwards;
+            position: absolute;
+            inset: 35px;
+            border: 1px dashed #b9c9eb;
+            border-radius: 50%;
         }
 
-        .loading-text {
-            margin-top: 14px;
-
-            color: #98a2b3;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-
-            opacity: 0;
-            animation: fadeIn 0.8s ease 1.3s forwards;
+        .ai-orbit::after {
+            inset: 90px;
+            border-color: #ffd0ad;
         }
 
-        /* Animated nodes */
+        .ai-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 115px;
+            height: 115px;
+            transform: translate(-50%, -50%);
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), #4f8cff);
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 800;
+            box-shadow:
+                0 0 0 14px rgba(18, 97, 255, 0.08),
+                0 20px 50px rgba(18, 97, 255, 0.25);
+        }
 
         .node {
             position: absolute;
+            width: 72px;
+            height: 72px;
+            display: grid;
+            place-items: center;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            box-shadow: 0 15px 35px rgba(16, 24, 40, 0.09);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-align: center;
+        }
 
-            width: 10px;
-            height: 10px;
+        .node-blue {
+            color: var(--blue);
+        }
 
+        .node-orange {
+            color: var(--orange);
+        }
+
+        .node-1 {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .node-2 {
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .node-3 {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .node-4 {
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        .intro {
+            background: var(--light-gray);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .intro-big {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800;
+            color: var(--blue);
+            line-height: 0.9;
+            letter-spacing: -4px;
+        }
+
+        .intro-content h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .intro-content p {
+            color: var(--gray);
+            font-size: 1.08rem;
+            margin-bottom: 25px;
+        }
+
+        .text-link {
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .text-link:hover {
+            color: var(--orange);
+        }
+
+        /* =========================================================
+           SERVICES
+        ========================================================= */
+
+        .services-grid {
+            margin-top: 55px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .service-card {
+            position: relative;
+            padding: 28px;
+            min-height: 250px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: white;
+            overflow: hidden;
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            right: -45px;
+            bottom: -45px;
+            background: rgba(18, 97, 255, 0.07);
             border-radius: 50%;
-
-            background: var(--blue);
-
-            box-shadow:
-                0 0 20px rgba(18, 97, 255, 0.45);
-
-            animation: nodeFloat 3s ease-in-out infinite;
+            transition: transform 0.35s ease;
         }
 
-        .node.orange {
-            background: var(--orange);
-
-            box-shadow:
-                0 0 20px rgba(255, 115, 0, 0.45);
+        .service-card:hover {
+            transform: translateY(-7px);
+            border-color: #cbd9f5;
+            box-shadow: 0 20px 45px rgba(16, 24, 40, 0.09);
         }
 
-        .node.n1 {
-            top: 25%;
-            left: 25%;
+        .service-card:hover::after {
+            transform: scale(2);
         }
 
-        .node.n2 {
-            top: 30%;
-            right: 22%;
-            animation-delay: .5s;
+        .service-number {
+            font-size: 0.78rem;
+            color: var(--orange);
+            font-weight: 800;
+            margin-bottom: 20px;
         }
 
-        .node.n3 {
-            bottom: 25%;
-            left: 20%;
-            animation-delay: 1s;
+        .service-card h3 {
+            font-size: 1.15rem;
+            line-height: 1.2;
+            margin-bottom: 13px;
         }
 
-        .node.n4 {
-            bottom: 20%;
-            right: 25%;
-            animation-delay: 1.5s;
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
         }
 
-        /* Transition */
-
-        .intro.exit {
-            animation: exitScreen 0.8s ease forwards;
+        .services-footer {
+            margin-top: 35px;
+            text-align: center;
         }
 
-        /* Animations */
+        /* =========================================================
+           WHY US
+        ========================================================= */
 
-        @keyframes logoIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .why {
+            background: #f8faff;
         }
 
-        @keyframes logoFloat {
+        .why-grid {
+            margin-top: 55px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            padding: 30px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .why-icon {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-weight: 800;
+            margin-bottom: 22px;
+        }
+
+        .why-card:nth-child(even) .why-icon {
+            background: var(--orange-light);
+            color: var(--orange);
+        }
+
+        .why-card h3 {
+            margin-bottom: 9px;
+        }
+
+        .why-card p {
+            color: var(--gray);
+            font-size: 0.92rem;
+        }
+
+        /* =========================================================
+           PROCESS
+        ========================================================= */
+
+        .process {
+            position: relative;
+        }
+
+        .process-grid {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+        }
+
+        .process-card {
+            position: relative;
+            padding: 25px 18px;
+            border-top: 3px solid var(--blue);
+        }
+
+        .process-card:nth-child(even) {
+            border-color: var(--orange);
+        }
+
+        .process-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #dce6fb;
+            margin-bottom: 15px;
+        }
+
+        .process-card h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .process-card p {
+            color: var(--gray);
+            font-size: 0.84rem;
+        }
+
+        /* =========================================================
+           SOLUTIONS
+        ========================================================= */
+
+        .solutions {
+            background: var(--dark);
+            color: white;
+        }
+
+        .solutions .section-label {
+            color: #70a1ff;
+        }
+
+        .solutions .section-description {
+            color: #98a2b3;
+        }
+
+        .solutions-grid {
+            margin-top: 55px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .solution-card {
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            background: rgba(255,255,255,0.04);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,0.07);
+        }
+
+        .solution-card span {
+            color: var(--orange);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .solution-card h3 {
+            margin: 13px 0 10px;
+        }
+
+        .solution-card p {
+            color: #98a2b3;
+            font-size: 0.9rem;
+        }
+
+        /* =========================================================
+           INDUSTRIES
+        ========================================================= */
+
+        .industries-grid {
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .industry {
+            padding: 13px 19px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: white;
+            font-weight: 600;
+            color: #344054;
+            transition: 0.25s ease;
+        }
+
+        .industry:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        /* =========================================================
+           PORTFOLIO
+        ========================================================= */
+
+        .portfolio {
+            background: var(--light-gray);
+        }
+
+        .portfolio-grid {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .portfolio-card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: white;
+        }
+
+        .portfolio-image {
+            height: 230px;
+            display: grid;
+            place-items: center;
+            background:
+                linear-gradient(135deg, #eaf2ff, #fff1e6);
+            color: var(--blue);
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-content small {
+            color: var(--orange);
+            font-weight: 700;
+        }
+
+        .portfolio-content h3 {
+            margin-top: 7px;
+        }
+
+        /* =========================================================
+           INSIGHTS
+        ========================================================= */
+
+        .insights-grid {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .insight-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(16, 24, 40, 0.08);
+        }
+
+        .insight-category {
+            color: var(--blue);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .insight-card h3 {
+            margin: 14px 0;
+            line-height: 1.3;
+        }
+
+        .insight-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .final-cta {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 90% 20%, rgba(255,115,0,0.18), transparent 25%),
+                radial-gradient(circle at 10% 90%, rgba(18,97,255,0.18), transparent 25%),
+                #f5f8ff;
+        }
+
+        .cta-box {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            color: var(--gray);
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #0b1220;
+            color: white;
+            padding: 70px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr repeat(3, 1fr);
+            gap: 50px;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand p {
+            color: #98a2b3;
+            max-width: 300px;
+            margin-top: 15px;
+        }
+
+        .footer-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #98a2b3;
+            font-size: 0.88rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #667085;
+            font-size: 0.8rem;
+        }
+
+        /* =========================================================
+           ANIMATIONS
+        ========================================================= */
+
+        @keyframes float {
             0%, 100% {
                 transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-7px);
+                transform: translateY(-15px);
             }
         }
 
-        @keyframes taglineIn {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255,115,0,0.4);
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            50% {
+                box-shadow: 0 0 0 8px rgba(255,115,0,0);
             }
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero-visual {
+                min-height: 420px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @keyframes loading {
-            from {
-                width: 0;
+        @media (max-width: 760px) {
+            .section {
+                padding: 70px 0;
             }
 
-            to {
+            .nav {
+                min-height: 68px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .hero-visual {
+                min-height: 350px;
+            }
+
+            .ai-orbit {
+                width: 300px;
+                height: 300px;
+            }
+
+            .ai-core {
+                width: 90px;
+                height: 90px;
+                font-size: 1.2rem;
+            }
+
+            .node {
+                width: 58px;
+                height: 58px;
+                font-size: 0.62rem;
+            }
+
+            .intro-grid,
+            .why-grid,
+            .solutions-grid,
+            .portfolio-grid,
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
                 width: 100%;
             }
-        }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
+            .hero h1 {
+                font-size: 3.2rem;
             }
         }
 
-        @keyframes nodeFloat {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-            }
-
-            50% {
-                transform: translateY(-15px) scale(1.2);
-            }
-        }
-
-        @keyframes exitScreen {
-            to {
-                opacity: 0;
-                transform: scale(1.08);
-            }
-        }
-
-        /* Accessibility */
+        /* =========================================================
+           ACCESSIBILITY
+        ========================================================= */
 
         @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
             *,
             *::before,
             *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .circle.one {
-                width: 350px;
-                height: 350px;
-            }
-
-            .circle.two {
-                width: 250px;
-                height: 250px;
-            }
-
-            .circle.three {
-                width: 150px;
-                height: 150px;
-            }
-
-            .tagline {
-                letter-spacing: 3px;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -336,67 +1098,896 @@
 
 <body>
 
-    <main class="intro" id="intro">
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
 
-        <!-- Animated background -->
-        <div class="circle one"></div>
-        <div class="circle two"></div>
-        <div class="circle three"></div>
+    <header class="header">
+    <nav class="nav container" aria-label="Main navigation">
 
-        <!-- Floating AI nodes -->
-        <div class="node n1"></div>
-        <div class="node orange n2"></div>
-        <div class="node n3"></div>
-        <div class="node orange n4"></div>
+        <a href="index.html" class="logo" aria-label="abcd Home">
+            Alphytix<span>.</span>
+        </a>
 
-        <!-- Main intro -->
-        <div class="content">
+        <ul class="nav-links">
+            <li>
+                <a href="#home" class="active">Home</a>
+            </li>
 
-            <div class="logo">
-                Alphytix<span>.</span>
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#services">Services</a>
+            </li>
+
+            <li>
+                <a href="#solutions">Solutions</a>
+            </li>
+
+            <li>
+                <a href="#industries">Industries</a>
+            </li>
+
+            <li>
+                <a href="#portfolio">Portfolio</a>
+            </li>
+
+            <li>
+                <a href="#insights">Insights</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+
+        <a href="contact.html" class="nav-cta">
+            Let's Build →
+        </a>
+
+    </nav>
+</header>
+
+    <main>
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section class="hero" id="home">
+
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        AI-Powered Digital Growth
+                    </div>
+
+                    <h1>
+                        Automate.
+                        <span>Engage.</span>
+                        <span class="orange">Grow.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        AI-powered systems, intelligent automation and
+                        digital growth solutions built to help businesses
+                        operate smarter and scale faster.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#contact" class="btn btn-primary">
+                            Start a Project →
+                        </a>
+
+                        <a href="#services" class="btn btn-secondary">
+                            Explore Our Services
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI visual -->
+
+                <div class="hero-visual" aria-hidden="true">
+
+                    <div class="ai-orbit">
+
+                        <div class="ai-core">
+                            AI
+                        </div>
+
+                        <div class="node node-1 node-blue">
+                            AUTOMATE
+                        </div>
+
+                        <div class="node node-2 node-orange">
+                            MARKET
+                        </div>
+
+                        <div class="node node-3 node-blue">
+                            CUSTOMER
+                        </div>
+
+                        <div class="node node-4 node-orange">
+                            GROWTH
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="tagline">
-                <span class="blue">Automate.</span>
-                <span class="orange">Engage.</span>
-                <span class="blue">Grow.</span>
+        </section>
+
+
+        <!-- =====================================================
+             ABOUT INTRO
+        ====================================================== -->
+
+        <section class="section intro" id="about">
+
+            <div class="container intro-grid">
+
+                <div class="intro-big">
+                    AI<br>
+                    +<br>
+                    GROWTH
+                </div>
+
+                <div class="intro-content">
+
+                    <div class="section-label">
+                        What is Alphytix?
+                    </div>
+
+                    <h2>
+                        Building smarter businesses
+                        through intelligent technology.
+                    </h2>
+
+                    <p>
+                        Alphytix combines AI technology, automation,
+                        intelligent marketing, neuromarketing,
+                        digital experiences and IT solutions to
+                        create smarter businesses and stronger
+                        customer connections.
+                    </p>
+
+                    <a href="about.html" class="text-link">
+                        Discover Alphytix→
+                    </a>
+
+                </div>
+
             </div>
 
-            <div class="loader"></div>
+        </section>
 
-            <div class="loading-text">
-                POWERING DIGITAL GROWTH
+
+        <!-- =====================================================
+             SERVICES
+        ====================================================== -->
+
+        <section class="section" id="services">
+
+            <div class="container">
+
+                <div class="section-label">
+                    What We Do
+                </div>
+
+                <h2 class="section-title">
+                    Technology, marketing and growth —
+                    connected.
+                </h2>
+
+                <p class="section-description">
+                    From AI agents to branding, we bring the
+                    essential pieces of digital growth together
+                    under one ecosystem.
+                </p>
+
+
+                <div class="services-grid">
+
+                    <article class="service-card">
+                        <div class="service-number">01</div>
+                        <h3>AI Agents & Automation</h3>
+                        <p>
+                            Intelligent AI agents, chatbots and
+                            automated workflows that streamline
+                            business operations.
+                        </p>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-number">02</div>
+                        <h3>Digital & Social Media Marketing</h3>
+                        <p>
+                            SEO, advertising, social media,
+                            content and performance marketing
+                            designed for measurable growth.
+                        </p>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-number">03</div>
+                        <h3>Neuromarketing</h3>
+                        <p>
+                            Behavioural insights into attention,
+                            emotion and consumer responses to
+                            improve experiences.
+                        </p>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-number">04</div>
+                        <h3>CRM & Marketing Automation</h3>
+                        <p>
+                            AI-powered CRM systems, lead scoring,
+                            customer journeys and automated
+                            follow-ups.
+                        </p>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-number">05</div>
+                        <h3>Website & Application Development</h3>
+                        <p>
+                            Modern websites, web applications,
+                            mobile applications and UI/UX
+                            experiences.
+                        </p>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-number">06</div>
+                        <h3>IT Support & Services</h3>
+                        <p>
+                            Cloud, hosting, cybersecurity,
+                            system administration and technical
+                            support.
+                        </p>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-number">07</div>
+                        <h3>Branding & Digital Creative</h3>
+                        <p>
+                            Brand identity, logo design,
+                            messaging, content and digital
+                            creative assets.
+                        </p>
+                    </article>
+
+                </div>
+
+
+                <div class="services-footer">
+                    <a href="#contact" class="btn btn-primary">
+                        Explore All Services →
+                    </a>
+                </div>
+
             </div>
 
-        </div>
+        </section>
+
+
+        <!-- =====================================================
+             WHY ABD
+        ====================================================== -->
+
+        <section class="section why" id="services">
+
+            <div class="container">
+
+                <div class="section-label">
+                    Why Alphytix
+                </div>
+
+                <h2 class="section-title">
+                    Built around intelligent growth.
+                </h2>
+
+                <div class="why-grid">
+
+                    <article class="why-card">
+                        <div class="why-icon">AI</div>
+                        <h3>AI-FIRST</h3>
+                        <p>
+                            Intelligent technology integrated into
+                            business and marketing systems.
+                        </p>
+                    </article>
+
+                    <article class="why-card">
+                        <div class="why-icon">01</div>
+                        <h3>AUTOMATION-DRIVEN</h3>
+                        <p>
+                            Reduce repetitive work and connect
+                            business processes.
+                        </p>
+                    </article>
+
+                    <article class="why-card">
+                        <div class="why-icon">D</div>
+                        <h3>DATA-LED</h3>
+                        <p>
+                            Use analytics, testing and behavioural
+                            insights to make better decisions.
+                        </p>
+                    </article>
+
+                    <article class="why-card">
+                        <div class="why-icon">C</div>
+                        <h3>CUSTOMER-CENTRIC</h3>
+                        <p>
+                            Build experiences that engage customers
+                            and improve conversion.
+                        </p>
+                    </article>
+
+                    <article class="why-card">
+                        <div class="why-icon">∞</div>
+                        <h3>END-TO-END</h3>
+                        <p>
+                            Technology, marketing, branding and
+                            digital growth under one ecosystem.
+                        </p>
+                    </article>
+
+                    <article class="why-card">
+                        <div class="why-icon">↗</div>
+                        <h3>SCALABLE</h3>
+                        <p>
+                            Solutions designed to evolve as the
+                            business grows.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PROCESS
+        ====================================================== -->
+
+        <section class="section" id="services">
+
+            <div class="container">
+
+                <div class="section-label">
+                    Our Process
+                </div>
+
+                <h2 class="section-title">
+                    From idea to intelligent growth.
+                </h2>
+
+                <div class="process-grid">
+
+                    <article class="process-card">
+                        <div class="process-number">01</div>
+                        <h3>Discover</h3>
+                        <p>
+                            Understand the business,
+                            challenges and objectives.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="process-number">02</div>
+                        <h3>Strategize</h3>
+                        <p>
+                            Develop the right technology,
+                            marketing and growth strategy.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="process-number">03</div>
+                        <h3>Build</h3>
+                        <p>
+                            Create AI systems, automation,
+                            digital experiences or campaigns.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="process-number">04</div>
+                        <h3>Integrate</h3>
+                        <p>
+                            Connect CRM, marketing,
+                            analytics and workflows.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="process-number">05</div>
+                        <h3>Optimize</h3>
+                        <p>
+                            Measure performance and
+                            continuously improve.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="process-number">06</div>
+                        <h3>Scale</h3>
+                        <p>
+                            Expand successful systems
+                            and strategies.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SOLUTIONS
+        ====================================================== -->
+
+        <section class="section solutions" id="solutions">
+
+            <div class="container">
+
+                <div class="section-label">
+                    Solutions
+                </div>
+
+                <h2 class="section-title">
+                    More than services.
+                    Complete growth systems.
+                </h2>
+
+                <p class="section-description">
+                    Combine multiple capabilities into one
+                    connected solution designed around your
+                    business objectives.
+                </p>
+
+
+                <div class="solutions-grid">
+
+                    <article class="solution-card">
+                        <span>01</span>
+                        <h3>AI Business Automation</h3>
+                        <p>
+                            AI Agents + Automation + CRM +
+                            Analytics.
+                        </p>
+                    </article>
+
+                    <article class="solution-card">
+                        <span>02</span>
+                        <h3>AI Lead Generation</h3>
+                        <p>
+                            Paid Ads + AI Lead Qualification +
+                            CRM + Automated Follow-Up.
+                        </p>
+                    </article>
+
+                    <article class="solution-card">
+                        <span>03</span>
+                        <h3>Digital Growth System</h3>
+                        <p>
+                            SEO + Social Media + Paid Ads +
+                            Content + Analytics.
+                        </p>
+                    </article>
+
+                    <article class="solution-card">
+                        <span>04</span>
+                        <h3>Intelligent Customer Experience</h3>
+                        <p>
+                            AI Chatbot + CRM + Automation +
+                            UX.
+                        </p>
+                    </article>
+
+                    <article class="solution-card">
+                        <span>05</span>
+                        <h3>Brand Launch System</h3>
+                        <p>
+                            Branding + Website + Content +
+                            Marketing + Lead Generation.
+                        </p>
+                    </article>
+
+                    <article class="solution-card">
+                        <span>06</span>
+                        <h3>Business Digital Transformation</h3>
+                        <p>
+                            AI + Automation + IT + CRM +
+                            Digital Marketing.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INDUSTRIES
+        ====================================================== -->
+
+        <section class="section" id="industries">
+
+            <div class="container">
+
+                <div class="section-label">
+                    Industries
+                </div>
+
+                <h2 class="section-title">
+                    Solutions built for different
+                    business environments.
+                </h2>
+
+                <div class="industries-grid">
+
+                    <span class="industry">Real Estate</span>
+                    <span class="industry">E-commerce</span>
+                    <span class="industry">Beauty & Fashion</span>
+                    <span class="industry">F&B & Hospitality</span>
+                    <span class="industry">Professional Services</span>
+                    <span class="industry">Finance & Accounting</span>
+                    <span class="industry">Healthcare</span>
+                    <span class="industry">Education</span>
+                    <span class="industry">Startups & SMEs</span>
+                    <span class="industry">Corporate Businesses</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PORTFOLIO
+        ====================================================== -->
+
+        <section class="section portfolio" id="portfolio">
+
+            <div class="container">
+
+                <div class="section-label">
+                    
+                </div>
+
+                <h2 class="section-title">
+                    Work that turns technology
+                    into business value.
+                </h2>
+
+                <div class="portfolio-grid">
+
+                    <article class="portfolio-card">
+
+                        <div class="portfolio-image">
+                            AI & AUTOMATION
+                        </div>
+
+                        <div class="portfolio-content">
+                            <small>AI & Automation</small>
+                            <h3>Intelligent Business System</h3>
+                        </div>
+
+                    </article>
+
+
+                    <article class="portfolio-card">
+
+                        <div class="portfolio-image">
+                            DIGITAL GROWTH
+                        </div>
+
+                        <div class="portfolio-content">
+                            <small>Digital Marketing</small>
+                            <h3>Digital Growth Campaign</h3>
+                        </div>
+
+                    </article>
+
+
+                    <article class="portfolio-card">
+
+                        <div class="portfolio-image">
+                            BRANDING
+                        </div>
+
+                        <div class="portfolio-content">
+                            <small>Branding</small>
+                            <h3>Digital Brand Experience</h3>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INSIGHTS
+        ====================================================== -->
+
+        <section class="section" id="insights">
+
+            <div class="container">
+
+                <div class="section-label">
+                </div>
+
+                <h2 class="section-title">
+                    Ideas for the intelligent
+                    business.
+                </h2>
+
+                <div class="insights-grid">
+
+                    <article class="insight-card">
+                        <span class="insight-category">
+                            AI & Automation
+                        </span>
+
+                        <h3>
+                            How AI Agents Can Automate
+                            Business Operations
+                        </h3>
+
+                        <p>
+                            Explore how intelligent agents can
+                            reduce repetitive work and improve
+                            business workflows.
+                        </p>
+                    </article>
+
+
+                    <article class="insight-card">
+                        <span class="insight-category">
+                            Marketing
+                        </span>
+
+                        <h3>
+                            AI-Powered Digital Marketing
+                        </h3>
+
+                        <p>
+                            Discover how AI can support modern
+                            marketing strategies and customer
+                            engagement.
+                        </p>
+                    </article>
+
+
+                    <article class="insight-card">
+                        <span class="insight-category">
+                            Neuromarketing
+                        </span>
+
+                        <h3>
+                            Understanding Consumer Behaviour
+                        </h3>
+
+                        <p>
+                            Learn how behavioural insights can
+                            improve marketing and digital
+                            experiences.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FINAL CTA
+        ====================================================== -->
+
+        <section class="section final-cta" id="contact">
+
+            <div class="container">
+
+                <div class="cta-box">
+
+                    <div class="section-label">
+                        Let's Build
+                    </div>
+
+                    <h2>
+                        Ready to
+                        <span style="color: #1261ff;">
+                            Automate.
+                        </span>
+                        <span style="color: #ff7300;">
+                            Engage.
+                        </span>
+                        Grow?
+                    </h2>
+
+                    <p>
+                        Tell us about your business, challenge
+                        or idea. Our team will help identify the
+                        right technology, marketing and growth
+                        solution for you.
+                    </p>
+
+                    <a href="contact.html"
+                       class="btn btn-primary">
+                        Let's Talk →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 
 
-    <script>
-        "use strict";
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
 
-        /*
-         * The intro remains visible for approximately 3.8 seconds.
-         * Then the user is taken to the main website.
-         */
+    <footer>
 
-        window.addEventListener("load", function () {
+        <div class="container">
 
-            const intro = document.getElementById("intro");
+            <div class="footer-grid">
 
-            setTimeout(function () {
+                <div class="footer-brand">
 
-                intro.classList.add("exit");
+                    <div class="s_logo">
+                        Alphytix<span>.</span>
+                    </div>
 
-                setTimeout(function () {
-                    window.location.replace("index.html");
-                }, 700);
+                    <p>
+                        Automate. Engage. Grow.
+                    </p>
 
-            }, 3800);
+                </div>
 
-        });
-    </script>
+
+                <div>
+
+                    <div class="footer-title">
+                        Company
+                    </div>
+
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#industries">Industries</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#insights">Insights</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        Services
+                    </div>
+
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#services">
+                                AI Agents & Automation
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#services">
+                                Digital Marketing
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#services">
+                                Neuromarketing
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#services">
+                                CRM & Automation
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#services">
+                                Web & App Development
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        Connect
+                    </div>
+
+                    <ul class="footer-links">
+                        <li>
+				<a>LinkedIn</a>
+                        </li>
+
+                        <li>
+                            <a>
+                                Instagram
+                            </a>
+                        </li>
+
+                        <li>
+                            <a>
+                                Facebook
+                            </a>
+                        </li>
+
+                        </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Alphytix. All rights reserved.
+                </span>
+
+                <span>
+                    Privacy Policy · Terms & Conditions · Cookie Policy
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
