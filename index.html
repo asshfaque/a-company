@@ -92,7 +92,7 @@ nav ul{list-style:none;margin:0;padding:0}
             rgba(3, 11, 91, 0.65) 50%,
             rgba(3, 11, 91, 0.25) 100%
         ),
-        url("pexels-mikhail-nilov-7988240.jpg");
+        url("C:/newLearning/work/in progress/pexels-mikhail-nilov-7988240.jpg");
 
     background-size: cover;
     background-position: center;
@@ -976,6 +976,108 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     color: #C1272D;
 }
 
+
+/* HOME PAGE — MOBILE NAVIGATION FIX */
+@media (max-width: 768px) {
+
+  /* Keep the header and burger above page content */
+  #top {
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    background: #FFFFFF;
+  }
+
+  #top .bar {
+    position: relative;
+  }
+
+  /* Main mobile navigation panel */
+  #mainNav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 16px 20px;
+    margin: 0;
+    background: #FFFFFF;
+    border-top: 1px solid #E1E5F0;
+    box-shadow: 0 12px 24px rgba(3, 11, 91, 0.12);
+  }
+
+  /* Show only when the burger is clicked */
+  body.menu-open #mainNav {
+    display: flex;
+  }
+
+  #mainNav > li {
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  #mainNav > li > a,
+  #mainNav > li > .dropdown-toggle {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    text-align: left;
+    white-space: normal;
+    padding: 14px 8px;
+  }
+
+  /* Dropdowns stay within the mobile menu */
+  #mainNav .dropdown-menu:not(.mega-menu),
+  #mainNav .mega-menu {
+    display: none;
+    position: static;
+    inset: auto;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    overflow: visible;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px 14px;
+    box-shadow: none;
+    border-radius: 6px;
+  }
+
+  /* Open dropdowns only when JavaScript adds .open */
+  #mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
+    display: block;
+  }
+
+  #mainNav .dropdown.open > .mega-menu {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  #mainNav .mega-column {
+    width: 100%;
+  }
+
+  #mainNav .dropdown-menu a {
+    white-space: normal;
+  }
+
+  /* Don't let hover/focus force dropdowns open on phones */
+  #mainNav .dropdown:hover > .dropdown-menu,
+  #mainNav .dropdown:focus-within > .dropdown-menu {
+    /* Visibility is controlled by the .open rules above. */
+  }
+}
+
 </style>
 </head>
 <body>
@@ -997,7 +1099,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
 <header id="top"><div class="wrap bar">
 <a class="logo" href="#top" aria-label="abc BUSINESS SOLUTION home">
-  <img src="model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
+  <img src="C:\newLearning\work\in progress\AlphytixBusiness Soultion Logos\AlphytixBusiness Soultion Logos\model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
 </a>
 <nav aria-label="Main navigation">
   <ul class="nav-links" id="mainNav">
@@ -1092,7 +1194,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
         </div>
 
         <div class="vis in" style="animation-delay:.4s">
-		<img src="pexels-silverkblack-23496604.jpg" alt="Business professionals collaborating in an office" style="width:100%;height:100%;object-fit:cover">
+		<img src="C:\newLearning\work\in progress\pexels-silverkblack-23496604.jpg" alt="Business professionals collaborating in an office" style="width:100%;height:100%;object-fit:cover">
             <div class="float">
                 <b>Mainland, free zone or offshore</b>
                 We help you compare structures before you decide.
@@ -1141,7 +1243,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     <div class="what-abc-visual">
       <div class="what-abc-image-frame">
         <img
-          src="pexels-silverkblack-36733319.jpg"
+          src="C:\newLearning\work\in progress\pexels-silverkblack-36733319.jpg"
           alt="Modern business buildings representing UAE corporate services"
           loading="lazy"
         >
@@ -1395,8 +1497,105 @@ const safeHref = u =>
 /* Navigation */
 const $ = selector => document.querySelector(selector);
 
+
+
+
 const mainNav = document.getElementById("mainNav");
 const burger = document.getElementById("burger");
+
+function closeAll() {
+  if (!mainNav || !burger) return;
+
+  mainNav.querySelectorAll(".dropdown.open").forEach(item => {
+    item.classList.remove("open");
+
+    const toggle = item.querySelector(".dropdown-toggle");
+
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.body.classList.remove("menu-open");
+  burger.setAttribute("aria-expanded", "false");
+  burger.setAttribute("aria-label", "Open menu");
+}
+
+if (mainNav && burger) {
+  // Open and close the mobile menu.
+  burger.addEventListener("click", event => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const isOpen = document.body.classList.contains("menu-open");
+
+    if (isOpen) {
+      closeAll();
+    } else {
+      document.body.classList.add("menu-open");
+      burger.setAttribute("aria-expanded", "true");
+      burger.setAttribute("aria-label", "Close menu");
+    }
+  });
+
+  // Open dropdowns without closing the entire mobile menu.
+  mainNav.querySelectorAll(".dropdown-toggle").forEach(toggle => {
+    toggle.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const dropdown = toggle.closest(".dropdown");
+      if (!dropdown) return;
+
+      const shouldOpen = !dropdown.classList.contains("open");
+
+      mainNav.querySelectorAll(".dropdown.open").forEach(item => {
+        item.classList.remove("open");
+
+        const otherToggle = item.querySelector(".dropdown-toggle");
+
+        if (otherToggle) {
+          otherToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      if (shouldOpen) {
+        dropdown.classList.add("open");
+        toggle.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  // Close after choosing a navigation link.
+  mainNav.addEventListener("click", event => {
+    if (event.target.closest("a")) {
+      closeAll();
+    }
+  });
+
+  // Close after tapping outside the navigation.
+  document.addEventListener("click", event => {
+    if (!event.target.closest("#mainNav, #burger")) {
+      closeAll();
+    }
+  });
+
+  // Close when Escape is pressed.
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeAll();
+    }
+  });
+
+  // Reset mobile navigation when returning to desktop width.
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      closeAll();
+    }
+  });
+}
+
+
 
 function closeAll() {
   if (!mainNav || !burger) return;
@@ -1588,7 +1787,7 @@ const FOOT=[
  const brand=h("div","br");
  
 const logo = h("img", null, "", {
-  src: "white model2.png",
+  src: "C:/newLearning/work/in progress/AlphytixBusiness Soultion Logos/AlphytixBusiness Soultion Logos/white model2.png",
   alt: "abc BUSINESS SOLUTION",
   style: "width:120px;max-width:100%;height:auto;object-fit:contain;display:block;margin-bottom:12px;"
 });
