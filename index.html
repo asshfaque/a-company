@@ -976,6 +976,109 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     color: #C1272D;
 }
 
+
+/* Corrected mobile navigation */
+@media (max-width: 1080px) {
+  header .bar {
+    position: relative;
+  }
+
+  header nav {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E1E5F0;
+    transition: max-height 0.3s ease;
+    z-index: 1000;
+  }
+
+  body.menu-open header nav {
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  #mainNav {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+    padding: 8px 20px 20px;
+    list-style: none;
+  }
+
+  #mainNav > li {
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  #mainNav > li > a,
+  #mainNav > li > .dropdown-toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 14px 4px;
+    text-align: left;
+    white-space: normal;
+    font-size: 14px;
+  }
+
+  #mainNav .dropdown-menu:not(.mega-menu) {
+    display: none;
+    position: static;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 4px 0 8px 12px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
+    display: block;
+  }
+
+  #mainNav .mega-menu {
+    display: none;
+    position: static;
+    left: auto;
+    right: auto;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    overflow: visible;
+    box-sizing: border-box;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 0;
+    padding: 12px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #mainNav .dropdown.open > .mega-menu {
+    display: grid;
+  }
+
+  #mainNav .mega-column a {
+    white-space: normal;
+    padding: 8px 0;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -997,7 +1100,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
 <header id="top"><div class="wrap bar">
 <a class="logo" href="#top" aria-label="abc BUSINESS SOLUTION home">
-  <img src="C:\newLearning\work\in progress\AlphytixBusiness Soultion Logos\AlphytixBusiness Soultion Logos\model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
+  <img src="model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
 </a>
 <nav aria-label="Main navigation">
   <ul class="nav-links" id="mainNav">
@@ -1060,7 +1163,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
   </ul>
 </nav>
 <a class="btn hcta" href="contact.html">Talk to an Expert</a>
-<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+<button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
     <span></span><span></span><span></span>
 </button>
 </div></header>
@@ -1360,11 +1463,13 @@ const safeHref=u=>/^(#|https:\/\/|mailto:|tel:)/.test(u)?u:"#";
 
 const $ = selector => document.querySelector(selector);
 
+
+
 const mainNav = document.getElementById("mainNav");
 const burger = document.getElementById("burger");
 
-function closeAll() {
-  if (!mainNav || !burger) return;
+function closeDropdowns() {
+  if (!mainNav) return;
 
   mainNav.querySelectorAll(".dropdown.open").forEach(item => {
     item.classList.remove("open");
@@ -1372,53 +1477,72 @@ function closeAll() {
     const button = item.querySelector(".dropdown-toggle");
     if (button) button.setAttribute("aria-expanded", "false");
   });
+}
 
+function closeMobileMenu() {
+  closeDropdowns();
   document.body.classList.remove("menu-open");
-  burger.setAttribute("aria-expanded", "false");
-  burger.setAttribute("aria-label", "Open menu");
+
+  if (burger) {
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", "Open menu");
+  }
 }
 
 if (mainNav && burger) {
+  burger.addEventListener("click", event => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const isOpen = document.body.classList.contains("menu-open");
+
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      document.body.classList.add("menu-open");
+      burger.setAttribute("aria-expanded", "true");
+      burger.setAttribute("aria-label", "Close menu");
+    }
+  });
+
   mainNav.querySelectorAll(".dropdown-toggle").forEach(button => {
-    button.addEventListener("click", () => {
-      const parent = button.closest(".dropdown");
-      if (!parent) return;
+    button.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
 
-      const shouldOpen = !parent.classList.contains("open");
+      const dropdown = button.closest(".dropdown");
+      if (!dropdown) return;
 
-      closeAll();
+      const shouldOpen = !dropdown.classList.contains("open");
+
+      closeDropdowns();
 
       if (shouldOpen) {
-        parent.classList.add("open");
+        dropdown.classList.add("open");
         button.setAttribute("aria-expanded", "true");
       }
     });
   });
 
-  burger.addEventListener("click", () => {
-    const isOpen = document.body.classList.toggle("menu-open");
-
-    burger.setAttribute("aria-expanded", String(isOpen));
-    burger.setAttribute(
-      "aria-label",
-      isOpen ? "Close menu" : "Open menu"
-    );
-  });
-
-  mainNav.addEventListener("click", event => {
-    if (event.target.closest("a")) closeAll();
+  mainNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMobileMenu);
   });
 
   document.addEventListener("click", event => {
     if (!event.target.closest("#mainNav, #burger")) {
-      closeAll();
+      closeMobileMenu();
     }
   });
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeAll();
+    if (event.key === "Escape") closeMobileMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1080) closeMobileMenu();
   });
 }
+
 
 // Continue with your existing card(), quiz, carousel,
 // comparison, footer and animation JavaScript below.
