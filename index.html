@@ -241,24 +241,12 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.in,.rv{opacity:1;transform:none}}
 @media(max-width:600px){section{padding:54px 0}.hero{padding:38px 0 54px}.vis{min-height:280px}.panel{padding:20px}.fg{gap:22px}}
 
-.logo-text {
-  display: inline-block;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 2px;
-  color: #030B5B;
-  text-transform: uppercase;
-  vertical-align: middle;
-  margin-left: 8px;
-}
 .site-logo {
   display: block;
-  width: 40px;
+  width: 110px;
   height: auto;
   object-fit: contain;
 }
-
 
 
 /* WHAT IS ABC */
@@ -545,8 +533,8 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 #topnav .mega-links a {
   display: block;
   padding: 9px 0;
-  color: #50596D;
-  font-size: 13px;
+  color: #3f4d6b;
+  font-size: 15px;
   line-height: 1.5;
   text-decoration: none;
 }
@@ -583,6 +571,411 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
   }
 }
 
+.logo-section {
+  padding: 75px 5%;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+.logo-container {
+  max-width: 1250px;
+  margin: auto;
+}
+
+.logo-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo-heading > span {
+  color: #C1272D;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.logo-heading h2 {
+  margin: 12px 0;
+  color: #030B5B;
+  font-size: clamp(27px, 3vw, 38px);
+}
+
+.logo-heading h2 strong {
+  color: #C1272D;
+}
+
+.logo-heading p {
+  color: #687083;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.logo-carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.logo-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.8s ease-in-out;
+}
+
+.logo-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+  align-items: center;
+}
+
+.logo-card {
+  height: 125px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ECEEF4;
+  border-radius: 8px;
+  background: #FFFFFF;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(3, 11, 91, 0.08);
+}
+
+.logo-card img {
+  display: block;
+  max-width: 100%;
+  max-height: 75px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Carousel indicators */
+.logo-dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 25px;
+}
+
+.logo-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #D7D9E3;
+  cursor: pointer;
+}
+
+.logo-dot.active {
+  width: 25px;
+  border-radius: 10px;
+  background: #C1272D;
+}
+
+@media (max-width: 700px) {
+  .logo-section {
+    padding: 55px 20px;
+  }
+
+  .logo-slide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  /* Display 4 logos in a 2 x 2 grid on mobile */
+  .logo-card {
+    height: 100px;
+    padding: 15px;
+  }
+
+  .logo-slide .logo-card:nth-child(n+5) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-track,
+  .logo-card {
+    transition: none;
+  }
+}
+
+
+/* Neat, compact header quote button */
+.hcta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 10px 17px;
+  min-height: 38px;
+
+  background: #C1272D;
+  color: #FFFFFF;
+  border: 1px solid #C1272D;
+  border-radius: 7px;
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+
+  box-shadow: 0 3px 8px rgba(3, 11, 91, 0.12);
+  transition: background 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              transform 0.25s ease;
+}
+
+.hcta:hover {
+  background:  #030B5B;
+  border-color: #030B5B;
+  color: #FFFFFF;
+  box-shadow: 0 5px 12px rgba(193, 39, 45, 0.2);
+  transform: translateY(-1px);
+}
+
+.hcta:focus-visible {
+  outline: 2px solid #C1272D;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1080px) {
+  .hcta {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hcta {
+    transition: none;
+  }
+
+  .hcta:hover {
+    transform: none;
+  }
+}
+
+/* Active navigation link */
+#topnav > li > a.active,
+#topnav > li > button.active {
+    color: #C1272D !important;
+    font-weight: 700;
+}
+
+#topnav > li > a.active::after,
+#topnav > li > button.active::after {
+    transform: scaleX(1);
+}
+/* Parent navigation */
+#mainNav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#mainNav > li {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Top-level headings */
+#mainNav > li > a,
+#mainNav > li > .dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    color: #030B5B;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* Standard dropdown: directly under its heading */
+#mainNav .dropdown-menu:not(.mega-menu) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 210px;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    background: #fff;
+    border: 1px solid #E1E5F0;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(3, 11, 91, 0.12);
+    z-index: 1000;
+}
+
+/* Standard dropdown links */
+#mainNav .dropdown-menu:not(.mega-menu) li a {
+    display: block;
+    padding: 11px 18px;
+    color: #030B5B;
+    font-size: 13px;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#mainNav .dropdown-menu li a:hover {
+    color: #C1272D;
+    background: #F5F7FB;
+}
+
+/* Services mega menu: centered below the navigation */
+#mainNav .mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    display: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    width: 720px;
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #E1E5F0;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(3, 11, 91, 0.12);
+    z-index: 1000;
+}
+
+/* Show menus on hover, keyboard focus, or click */
+#mainNav .dropdown:hover > .dropdown-menu:not(.mega-menu),
+#mainNav .dropdown:focus-within > .dropdown-menu:not(.mega-menu),
+#mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
+    display: block;
+}
+
+#mainNav .dropdown:hover > .mega-menu,
+#mainNav .dropdown:focus-within > .mega-menu,
+#mainNav .dropdown.open > .mega-menu {
+    display: grid;
+}
+
+/* Three evenly aligned service columns */
+#mainNav .mega-column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+    gap: 2px;
+}
+
+#mainNav .mega-column h4 {
+    margin: 0 0 10px;
+    color: #C1272D;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+}
+
+#mainNav .mega-column a {
+    display: block;
+    padding: 8px 0;
+    color: #030B5B;
+    font-size: 13px;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: normal;
+}
+
+/* Smaller screens */
+@media (max-width: 900px) {
+    #mainNav .mega-menu {
+        left: auto;
+        right: 0;
+        transform: none;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        width: min(320px, calc(100vw - 32px));
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+}
+
+/* Hide dropdown menus by default */
+#mainNav .dropdown-menu {
+    display: none;
+}
+
+/* Show the Business Setup dropdown only on hover, focus, or click */
+#mainNav .dropdown:hover > .dropdown-menu:not(.mega-menu),
+#mainNav .dropdown:focus-within > .dropdown-menu:not(.mega-menu),
+#mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
+    display: block;
+}
+
+/* Show the Services mega menu only on hover, focus, or click */
+#mainNav .dropdown:hover > .mega-menu,
+#mainNav .dropdown:focus-within > .mega-menu,
+#mainNav .dropdown.open > .mega-menu {
+    display: grid;
+}
+
+
+/* Navigation heading underline animation */
+#mainNav > li > a {
+    position: relative;
+}
+
+/* Underline on hover */
+#mainNav > li > a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 100%;
+    height: 2px;
+    background-color: #C1272D;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+/* Show underline when hovering */
+#mainNav > li > a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Keep underline on the active page */
+#mainNav > li > a.active::after {
+    transform: scaleX(1);
+}
+
+/* Optional: change heading color on hover */
+#mainNav > li > a:hover {
+    color: #C1272D;
+}
+
 </style>
 </head>
 <body>
@@ -604,12 +997,72 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
 <header id="top"><div class="wrap bar">
 <a class="logo" href="#top" aria-label="abc BUSINESS SOLUTION home">
-  <img src="C:\newLearning\work\in progress\AlphytixBusiness Soultion Logos\AlphytixBusiness Soultion Logos\Alpha.png" alt="abc BUSINESS SOLUTION" class="site-logo">
+  <img src="C:\newLearning\work\in progress\AlphytixBusiness Soultion Logos\AlphytixBusiness Soultion Logos\model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
 </a>
-<small class="logo-text">abc</small>
-<nav id="nav" aria-label="Main"><ul class="top" id="topnav"></ul></nav>
-<a class="btn hcta" href="#/contact">Get a Free Quote</a>
-<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+<nav aria-label="Main navigation">
+  <ul class="nav-links" id="mainNav">
+    <li>
+      <a href="index.html">HOME</a>
+    </li>
+
+    <li class="dropdown">
+      <button type="button" class="dropdown-toggle" aria-expanded="false">
+        BUSINESS SETUP <span class="arrow">▾</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="index.html#freezones">Free Zones</a></li>
+        <li><a href="index.html#quiz">Mainland</a></li>
+        <li><a href="index.html#jurisdiction">Offshore Setup</a></li>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+      <button type="button" class="dropdown-toggle" aria-expanded="false">
+        SERVICES <span class="arrow">▾</span>
+      </button>
+
+      <div class="dropdown-menu mega-menu">
+        <div class="mega-column">
+          <h4>PRO &amp; VISA</h4>
+          <a href="index.html#services">Investor Visa</a>
+          <a href="index.html#services">Partner Visa</a>
+          <a href="index.html#services">Golden Visa</a>
+          <a href="index.html#services">Emirates ID</a>
+          <a href="index.html#services">PRO Services</a>
+        </div>
+
+        <div class="mega-column">
+          <h4>COMPANY SETUP</h4>
+          <a href="index.html#solutions">Company Formation</a>
+          <a href="index.html#jurisdiction">Mainland Setup</a>
+          <a href="index.html#freezones">Free Zone Setup</a>
+          <a href="index.html#jurisdiction">Offshore Setup</a>
+          <a href="index.html#services">Business Licensing</a>
+        </div>
+
+        <div class="mega-column">
+          <h4>CORPORATE SERVICES</h4>
+          <a href="index.html#services">Banking Assistance</a>
+          <a href="index.html#services">Accounting</a>
+          <a href="index.html#services">VAT</a>
+          <a href="index.html#services">Corporate Tax</a>
+          <a href="index.html#services">Insurance</a>
+          <a href="index.html#services">License Renewal</a>
+          <a href="index.html#services">License Amendment</a>
+          <a href="index.html#services">Business Closure</a>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <a href="index.html#why">ABOUT</a>
+    </li>
+  </ul>
+</nav>
+<a class="btn hcta" href="contact.html">Talk to an Expert</a>
+<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+    <span></span><span></span><span></span>
+</button>
 </div></header>
 
 <main id="home">
@@ -628,7 +1081,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
             </p>
 
             <div class="btns in" style="animation-delay:.5s">
-                <a class="btn" href="#/contact">Get a Free Quote</a>
+                <a class="btn" href="contact.html">Get a Free Quote</a>
                 <a class="btn o" href="#quiz">Find Your Setup</a>
             </div>
 
@@ -712,8 +1165,79 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 <section id="services"><div class="wrap"><div class="hd rv"><span class="lab">Services</span><h2>Our Business Services</h2><p>Practical business support from formation to ongoing corporate administration.</p></div><div class="grid g4" id="svc-g"></div></div></section>
 <section class="alt" id="jurisdiction"><div class="wrap"><div class="hd rv"><span class="lab">Compare</span><h2>Choose Your Business Jurisdiction</h2><p>Understand the differences before deciding where to establish your business.</p></div><div class="grid g3" id="jur-g"></div><p style="margin-top:28px"><button class="btn" id="cmpbtn" aria-expanded="false" aria-controls="cmp">Compare Options</button></p><div class="tw" id="cmp" hidden></div><p class="note" style="margin-top:12px">General considerations only; rules vary by authority and activity. Confirm with the licensing authority.</p></div></section>
 <section id="freezones"><div class="wrap"><div class="hd rv"><span class="lab">Free zones</span><h2>Explore Popular UAE Free Zones</h2><p>Discover jurisdictions that may suit different industries, activities and business objectives.</p></div><div class="grid g4" id="fz-g"></div><p class="note" style="margin-top:14px">Descriptions are general. Verify current activities, fees and eligibility with each authority. abc BUSINESS SOLUTION is not affiliated with these free zones unless stated.</p></div></section>
-<section class="alt" id="costs"><div class="wrap"><div class="hd rv"><span class="lab">Costs</span><h2>Transparent Business Setup</h2><p>Understand the main cost components before making your decision.</p></div><div class="grid g2"><div class="card rv"><h3>What makes up the total</h3><ul class="chk" id="cost-l"></ul><p>Total costs vary by jurisdiction, business activity, visa requirements, office arrangements and government charges. No verified pricing is published here, so we prepare a tailored quotation.</p></div><div class="card est rv"><h3>Quote request builder</h3><p class="note">Select what you need. This produces no prices; it only prepares your request for a tailored quotation.</p><div id="est"></div><p id="est-out" aria-live="polite" style="font-weight:600;color:var(--n)"></p><a class="btn" href="#/contact" id="est-btn">Get a Detailed Quote</a></div></div></div></section>
+
+<section class="alt" id="costs">
+  <div class="wrap">
+    <div class="hd rv">
+      <span class="lab">Costs</span>
+      <h2>Transparent Business Setup</h2>
+      <p>Understand the main cost components before making your decision.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card rv">
+      <h3>What makes up the total</h3>
+      <ul class="chk" id="cost-l"></ul>
+      <p>Total costs vary by jurisdiction, business activity, visa requirements, office arrangements and government charges. No verified pricing is published here, so we prepare a tailored quotation.</p>
+    </div>
+    <div class="card est rv">
+      <h3>Quote request builder</h3>
+      <p class="note">Select what you need. This produces no prices; it only prepares your request for a tailored quotation.</p>
+      <div id="est">
+      </div>
+      <p id="est-out" aria-live="polite" style="font-weight:600;color:var(--n)"></p>
+      <a class="btn" href="contact.html" id="est-btn">Get a Detailed Quote</a>
+    </div>
+  </div>
+</div>
+</section>
+
 <section id="how"><div class="wrap"><div class="hd rv"><span class="lab">Process</span><h2>How It Works</h2><p>A clear process to help you move from planning to setup.</p></div><ol class="steps" id="steps" style="list-style:none;margin:0"></ol><p class="note">Licences, visas and bank accounts depend on eligibility, authority approval and third-party requirements; none are guaranteed.</p></div></section>
+
+<!-- LOGO CAROUSEL SECTION -->
+<section class="logo-section">
+  <div class="logo-container">
+
+    <div class="logo-heading">
+      <span>OUR PARTNERS</span>
+      <h2>Trusted by <strong>Leading Brands</strong></h2>
+      <p>Building strong relationships with businesses and partners.</p>
+    </div>
+
+    <div class="logo-carousel" id="logoCarousel">
+      <div class="logo-track" id="logoTrack">
+
+        <!-- GROUP 1: FIRST 5 LOGOS -->
+        <div class="logo-slide">
+          <div>
+            <img
+                style="width: 150px; height: 150px; object-fit: contain; display: block;"
+                src="https://i.pinimg.com/1200x/73/a7/28/73a72898a5265702b913ff227b8a0204.jpg"
+                alt="Partner 1">
+          </div>
+          <div class="logo-card"><img src="images/logo2.png" alt="Partner 2"></div>
+          <div class="logo-card"><img src="images/logo3.png" alt="Partner 3"></div>
+          <div class="logo-card"><img src="images/logo4.png" alt="Partner 4"></div>
+          <div class="logo-card"><img src="images/logo5.png" alt="Partner 5"></div>
+        </div>
+
+        <!-- GROUP 2: NEXT 5 LOGOS -->
+        <div class="logo-slide">
+          <div class="logo-card"><img src="images/logo6.png" alt="Partner 6"></div>
+          <div class="logo-card"><img src="images/logo7.png" alt="Partner 7"></div>
+          <div class="logo-card"><img src="images/logo8.png" alt="Partner 8"></div>
+          <div class="logo-card"><img src="images/logo9.png" alt="Partner 9"></div>
+          <div class="logo-card"><img src="images/logo10.png" alt="Partner 10"></div>
+        </div>
+
+        <!-- GROUP 3: ADD MORE LOGOS HERE IF NEEDED -->
+
+      </div>
+    </div>
+
+    <div class="logo-dots" id="logoDots"></div>
+
+  </div>
+</section>
 
 <section class="alt" id="why">
 	<div class="wrap">
@@ -727,148 +1251,223 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 	</div>
 </section>
 
-<section id="clients"><div class="wrap"><div class="hd rv"><span class="lab">Testimonials</span><h2>What Our Clients Say</h2></div><div class="panel car rv"><span class="tag">PLACEHOLDER — replace with verified, authorised reviews</span><blockquote id="tq"></blockquote><p id="tn" class="note"></p><div class="row" style="justify-content:center"><button class="btn o" id="tp" aria-label="Previous testimonial">← Prev</button><button class="btn o" id="tx" aria-label="Next testimonial">Next →</button></div></div></div></section>
-<section class="alt" id="guides"><div class="wrap"><div class="hd rv"><span class="lab">Resources</span><h2>Business Guides &amp; Insights</h2><p>Useful information to help you make informed decisions about starting and managing a UAE business.</p></div><div class="grid g4" id="gd-g"></div><p style="margin-top:28px"><a class="btn o" href="#guides">Explore All Guides</a> <span class="note">(guides coming soon)</span></p></div></section>
-<section><div class="wrap"><div class="cta rv"><h2>Ready to Start Your UAE Business?</h2><p>Get the right setup. The right license. The right support.</p><a class="btn" href="#/contact">Get Started</a></div></div></section>
+
+
+<section>
+  <div class="wrap">
+    <div class="cta rv">
+      <h2>Ready to Start Your UAE Business?</h2>
+      <p>Get the right setup. The right license. The right support.</p>
+      <a class="btn" href="contact.html">Get Started</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<main id="contact-view" hidden><section><div class="wrap">
-<div class="hd"><span class="lab">Contact</span><h1>Let’s Discuss Your UAE Business Plans</h1><p>Tell us what you need, and our team can help you explore the next steps.</p></div>
-<div class="grid g4" id="cc" style="margin-bottom:40px"></div>
-<form id="cf" novalidate autocomplete="on">
-<div class="hp" aria-hidden="true"><label for="website">Leave blank</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
-<div><label for="name">Name</label><input id="name" name="name" maxlength="80" required autocomplete="name"><div class="err" id="e-name"></div></div>
-<div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" maxlength="20" required autocomplete="tel"><div class="err" id="e-phone"></div></div>
-<div><label for="email">Email</label><input id="email" name="email" type="email" maxlength="120" required autocomplete="email"><div class="err" id="e-email"></div></div>
-<div><label for="nat">Nationality</label><input id="nat" name="nationality" maxlength="60" required><div class="err" id="e-nat"></div></div>
-<div><label for="ctry">Current Country</label><input id="ctry" name="country" maxlength="60" required><div class="err" id="e-ctry"></div></div>
-<div><label for="svc">Service Required</label><select id="svc" name="service" required></select><div class="err" id="e-svc"></div></div>
-<div><label for="msg">Message</label><textarea id="msg" name="message" rows="5" maxlength="1000" required></textarea><div class="err" id="e-msg"></div></div>
-<div><label style="font-weight:400"><input type="checkbox" id="consent" style="width:auto"> I agree that abc BUSINESS SOLUTION may use these details only to respond to my enquiry. <a href="#privacy">Privacy notice</a>: we collect only what is needed to reply and keep it no longer than necessary (set your retention period).</label><div class="err" id="e-consent"></div></div>
-<div><button class="btn" id="sub" type="submit">Get My Free Consultation</button></div><div id="fs" role="status" aria-live="polite" hidden></div>
-<p class="note">This form is a front-end demo until a secure backend endpoint is configured. Do not submit real personal information until it is connected.</p>
-</form></div></section></main>
 
-<footer><div class="wrap"><div class="fg" id="fg"></div><div class="fb"><span>© <span id="yr"></span> abc BUSINESS SOLUTION. All rights reserved.</span><nav aria-label="Legal"><a href="#privacy">Privacy Policy</a><a href="#terms">Terms &amp; Conditions</a><a href="#cookies">Cookie Policy</a></nav></div></div></footer>
+<footer>
+  <div class="wrap">
+    <div class="fg" id="fg">      
+    </div><div class="fb">
+      <span>© <span id="yr"></span> abc BUSINESS SOLUTION. All rights reserved.</span>
+      <nav aria-label="Legal">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms &amp; Conditions</a>
+        <a href="#cookies">Cookie Policy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
 <button id="up" aria-label="Back to top" hidden>↑</button>
 
 <script>
-"use strict";
-/* Add verified contact details and a secured HTTPS form endpoint before launch. */
-const CONFIG={whatsapp:"",phone:"",email:"",address:"",FORM_ENDPOINT:""};
-const NS="http://www.w3.org/2000/svg";
-const $=s=>document.querySelector(s);
-const h=(t,c,x,a)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;if(a)for(const k in a)e.setAttribute(k,a[k]);return e};
-const ic=n=>{const s=document.createElementNS(NS,"svg");s.setAttribute("class","ic");s.setAttribute("aria-hidden","true");const u=document.createElementNS(NS,"use");u.setAttribute("href","#i-"+n);s.append(u);return s};
-const safeHref=u=>/^(#|https:\/\/|mailto:|tel:)/.test(u)?u:"#";
-const NAV=[
-["HOME","#"],
-["BUSINESS SETUP",[["Free Zones","#freezones"],["Mainland","#quiz"],["Offshore Setup","#jurisdiction"]]],
-["PRO & VISA",[["PRO Services","#services"],["Investor Visa","#services"],["Partner Visa","#services"],["Golden Visa","#services"],["Emirates ID","#services"],["Medical and Document Clearing","#services"]]],
-["CORPORATE SERVICES", [
-  ["PRO & VISA", [
-    ["Investor Visa", "#services"],
-    ["Partner Visa", "#services"],
-    ["Golden Visa", "#services"],
-    ["Emirates ID", "#services"],
-    ["PRO Services", "#services"]
-  ]],
-  ["COMPANY SETUP", [
-    ["Company Formation", "#solutions"],
-    ["Mainland Setup", "#jurisdiction"],
-    ["Free Zone Setup", "#freezones"],
-    ["Offshore Setup", "#jurisdiction"],
-    ["Business Licensing", "#services"]
-  ]],
-  ["CORPORATE SERVICES", [
-    ["Banking Assistance", "#services"],
-    ["Accounting", "#services"],
-    ["VAT", "#services"],
-    ["Corporate Tax", "#services"],
-    ["Insurance", "#services"],
-    ["License Renewal", "#services"],
-    ["License Amendment", "#services"],
-    ["Business Closure", "#services"]
-  ]]
-]],
-["ABOUT","#why"]
-];
+(() => {
+  const track = document.getElementById("logoTrack");
+  const carousel = document.getElementById("logoCarousel");
+  const dotsContainer = document.getElementById("logoDots");
 
+  if (!track || !carousel || !dotsContainer) return;
 
+  const slides = Array.from(track.querySelectorAll(".logo-slide"));
+  if (slides.length < 2) return;
 
-const topnav = $("#topnav");
+  let currentIndex = 0;
+  let timer;
 
-NAV.forEach(([label, sub]) => {
-  const li = h("li");
+  // Create one indicator per group of logos
+  slides.forEach((slide, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "logo-dot";
+    dot.setAttribute("aria-label", "Show logo group " + (index + 1));
 
-  // Simple navigation link
-  if (typeof sub === "string") {
-    li.append(h("a", null, label, { href: sub }));
-    topnav.append(li);
-    return;
-  }
-
-  // Dropdown button
-  const b = h(
-    "button",
-    null,
-    label + " ▾",
-    {
-      "aria-expanded": "false",
-      "aria-haspopup": "true",
-      "type": "button"
-    }
-  );
-
-  // Dropdown container
-  const ul = h("ul", "sub");
-
-  // Check whether this menu contains nested groups
-  const isMegaMenu = sub.some(item => Array.isArray(item[1]));
-
-  if (isMegaMenu) {
-    ul.classList.add("mega-menu");
-
-    sub.forEach(([heading, items]) => {
-      const column = h("li", "mega-column");
-
-      const title = h("h3", "mega-heading", heading);
-      column.append(title);
-
-      const links = h("ul", "mega-links");
-
-      items.forEach(([text, href]) => {
-        const item = h("li");
-        item.append(h("a", null, text, { href }));
-        links.append(item);
-      });
-
-      column.append(links);
-      ul.append(column);
+    dot.addEventListener("click", () => {
+      showSlide(index);
+      restartTimer();
     });
-  } else {
-    // Existing standard dropdown
-    sub.forEach(([text, href]) => {
-      const item = h("li");
-      item.append(h("a", null, text, { href }));
-      ul.append(item);
-    });
-  }
 
-  b.addEventListener("click", () => {
-    const open = li.classList.toggle("open");
-    b.setAttribute("aria-expanded", String(open));
+    dotsContainer.appendChild(dot);
   });
 
-  li.append(b, ul);
-  topnav.append(li);
-});
+  const dots = Array.from(dotsContainer.querySelectorAll(".logo-dot"));
 
-function closeAll(){document.querySelectorAll(".top>li.open").forEach(li=>{li.classList.remove("open");const b=li.querySelector("button");if(b)b.setAttribute("aria-expanded","false")});document.body.classList.remove("menu-open");$("#burger").setAttribute("aria-expanded","false");$("#burger").setAttribute("aria-label","Open menu")}
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeAll()});
-document.addEventListener("click",e=>{if(!e.target.closest(".top>li.open")&&!e.target.closest(".burger"))closeAll()});
-$("#burger").addEventListener("click",()=>{const open=document.body.classList.toggle("menu-open");$("#burger").setAttribute("aria-expanded",String(open));$("#burger").setAttribute("aria-label",open?"Close menu":"Open menu")});
-$("#nav").addEventListener("click",e=>{if(e.target.closest(".sub a")||e.target.closest(".top>li>a"))closeAll()});
+  function showSlide(index) {
+    currentIndex = index;
+    track.style.transform = `translateX(-${index * 100}%)`;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+      dot.setAttribute("aria-current", i === index ? "true" : "false");
+    });
+  }
+
+  function nextSlide() {
+    showSlide((currentIndex + 1) % slides.length);
+  }
+
+  function restartTimer() {
+    clearInterval(timer);
+    timer = setInterval(nextSlide, 10000);
+  }
+
+  showSlide(0);
+  restartTimer();
+
+  // Pause rotation when the visitor hovers over the carousel
+  carousel.addEventListener("mouseenter", () => clearInterval(timer));
+  carousel.addEventListener("mouseleave", restartTimer);
+
+  // Stop the timer when the page is hidden
+  document.addEventListener("visibilitychange", () => {
+    clearInterval(timer);
+    if (!document.hidden) restartTimer();
+  });
+})();
+</script>
+<script>
+
+"use strict";
+
+/* Add verified contact details and a secured HTTPS form endpoint before launch. */
+const CONFIG = {
+  whatsapp: "",
+  phone: "",
+  email: "",
+  address: "",
+  FORM_ENDPOINT: ""
+};
+
+const NS = "http://www.w3.org/2000/svg";
+
+const h = (t, c, x, a) => {
+  const e = document.createElement(t);
+
+  if (c) e.className = c;
+  if (x != null) e.textContent = x;
+
+  if (a) {
+    for (const k in a) {
+      e.setAttribute(k, a[k]);
+    }
+  }
+
+  return e;
+};
+
+const ic = n => {
+  const s = document.createElementNS(NS, "svg");
+  s.setAttribute("class", "ic");
+  s.setAttribute("aria-hidden", "true");
+
+  const u = document.createElementNS(NS, "use");
+  u.setAttribute("href", "#i-" + n);
+
+  s.append(u);
+  return s;
+};
+
+const safeHref = u =>
+  /^(#|https:\/\/|mailto:|tel:)/.test(u) ? u : "#";
+
+
+/* Navigation */
+const $ = selector => document.querySelector(selector);
+
+const mainNav = document.getElementById("mainNav");
+const burger = document.getElementById("burger");
+
+function closeAll() {
+  if (!mainNav || !burger) return;
+
+  mainNav.querySelectorAll(".dropdown.open").forEach(item => {
+    item.classList.remove("open");
+
+    const button = item.querySelector(".dropdown-toggle");
+
+    if (button) {
+      button.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.body.classList.remove("menu-open");
+
+  burger.setAttribute("aria-expanded", "false");
+  burger.setAttribute("aria-label", "Open menu");
+}
+
+if (mainNav && burger) {
+  mainNav.querySelectorAll(".dropdown-toggle").forEach(button => {
+    button.addEventListener("click", () => {
+      const parent = button.closest(".dropdown");
+      if (!parent) return;
+
+      const shouldOpen = !parent.classList.contains("open");
+
+      closeAll();
+
+      if (shouldOpen) {
+        parent.classList.add("open");
+        button.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  burger.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("menu-open");
+
+    burger.setAttribute("aria-expanded", String(isOpen));
+    burger.setAttribute(
+      "aria-label",
+      isOpen ? "Close menu" : "Open menu"
+    );
+  });
+
+  mainNav.addEventListener("click", event => {
+    if (event.target.closest("a")) {
+      closeAll();
+    }
+  });
+
+  document.addEventListener("click", event => {
+    if (!event.target.closest("#mainNav, #burger")) {
+      closeAll();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeAll();
+    }
+  });
+}
+
+// Continue with your existing card(), quiz, carousel,
+// comparison, footer and animation JavaScript below.
+
+
+
 
 function card(parent,o){
  const a=h(o.href?"a":"div","card rv");
@@ -899,17 +1498,21 @@ function card(parent,o){
 ["bank","Banking","Assistance with account-opening preparation."],
 ["calc","Accounting & Tax","Bookkeeping, VAT and corporate tax support."],
 ["list","Document Clearing","Attestation, translation and document processing."]
-].forEach(([icon,title,text])=>card($("#svc-g"),{icon,title,text,href:"#/contact",cta:"Learn More"}));
+]
 
+.forEach(([icon,title,text])=>card($("#svc-g"),{icon,title,text,href:"contact.html",cta:"Learn More"}));
 [
 ["Mainland","Suitable business activities: trading, services and activities needing UAE-wide market access.","Operating: consider office and local-licence requirements.","Licensing: issued by the relevant emirate authority; some activities need approvals."],
 ["Free Zone","Benefits are jurisdiction-specific; check each zone’s terms.","Activities: limited to the zone’s approved list.","Office and visa options vary by zone and package."],
 ["Offshore","Potential holding or international structuring uses.","Limitations: typically restricted from trading inside the UAE.","Regulatory: ongoing compliance and substance rules may apply."]
-].forEach(([title,a,b,c])=>{
+]
+
+
+.forEach(([title,a,b,c])=>{
  const k=card($("#jur-g"),{icon:"list",title,text:""});
  k.querySelector("p").remove();
  const ul=h("ul","chk");[a,b,c].forEach(x=>ul.append(h("li",null,x)));
- k.append(ul,h("a","go","Explore "+title,{href:"#/contact"}));
+ k.append(ul,h("a","go","Explore "+title,{href:"contact.html"}));
 });
 
 const CMP=[
@@ -937,9 +1540,11 @@ $("#cmpbtn").addEventListener("click",function(){const cmp=$("#cmp");cmp.hidden=
 ["JAFZA","Jebel Ali Free Zone","Dubai (Jebel Ali)","Logistics, trade and industrial operations."],
 ["Dubai South","Dubai South Free Zone","Dubai (near Al Maktoum Airport)","Aviation, logistics and e-commerce."],
 ["SHAMS","Sharjah Media City","Sharjah","Media, creative and consulting activities."]
-].forEach(([name,full,location,description])=>{
+]
+
+.forEach(([name,full,location,description])=>{
  const k=card($("#fz-g"),{icon:"pin",title:name,text:full+" — "+location+". "+description});
- k.append(h("a","go","Explore Free Zone",{href:"#/contact"}));
+ k.append(h("a","go","Explore Free Zone",{href:"contact.html"}));
 });
 
 const COST=["License","Visa","Office","Government Fees","Additional Services"];
@@ -968,27 +1573,33 @@ COST.forEach(item=>{
 ["shield","Support Throughout the Process","Help from enquiry to licence."],
 ["doc","Practical Corporate Assistance","Help with everyday administration."],
 ["gear","Ongoing Business Support","Renewals, amendments and compliance."]
-].forEach(([icon,title,text])=>card($("#why-g"),{icon,title,text}));
+]
 
-[
-["Mainland vs Free Zone: Understanding the Differences","Setup"],
-["Documents Required to Start a UAE Business","Documents"],
-["Understanding UAE Business License Costs","Costs"],
-["A Beginner’s Guide to UAE Residency Visas","Visas"]
-].forEach(([title,category])=>{const k=card($("#gd-g"),{icon:"doc",title,text:"Article in preparation. Content will be published after review."});k.insertBefore(h("span","tag",category+" · Coming soon"),k.firstChild);k.append(h("span","go","Read More"))});
+.forEach(([icon,title,text])=>card($("#why-g"),{icon,title,text}));
 
 const FOOT=[
-["BUSINESS SETUP",["Company Formation","Mainland","Free Zone","Offshore","Business Licenses","Business Activities"],"#solutions"],
+["BUSINESS SETUP",["Company Formation","Mainland","Free Zone","Offshore"],"#solutions"],
 ["PRO & VISA",["PRO Services","Investor Visa","Partner Visa","Golden Visa","Emirates ID","Medical","Document Clearing"],"#services"],
-["CORPORATE SERVICES",["Banking","Accounting","VAT","Corporate Tax","Insurance","Renewal","License Amendment","Business Closure"],"#services"],
-["RESOURCES",["Blog","Guides","FAQs","Free Zone Comparison","Setup Calculator","Case Studies"],"#guides"],
+["SERVICES",["Banking","Accounting","VAT","Corporate Tax","Insurance","Renewal","License Amendment","Business Closure"],"#services"],
 ["COMPANY",["About","Why abc","Contact"],"#why"]
 ];
 {
+  
  const brand=h("div","br");
- brand.append(h("div",null,"abc BUSINESS SOLUTION",{style:"font-weight:800;font-size:1.2rem;color:#fff"}),h("p","note","Business setup and corporate support for entrepreneurs and companies exploring opportunities in the UAE.",{style:"color:#cfd3ec"}));
+ 
+const logo = h("img", null, "", {
+  src: "C:/newLearning/work/in progress/AlphytixBusiness Soultion Logos/AlphytixBusiness Soultion Logos/white model2.png",
+  alt: "abc BUSINESS SOLUTION",
+  style: "width:120px;max-width:100%;height:auto;object-fit:contain;display:block;margin-bottom:12px;"
+});
+
+brand.append(logo,
+
+ h("p","note","Business setup and corporate support for entrepreneurs and companies exploring opportunities in the UAE.",
+ {style:"color:#cfd3ec"}));
+ 
  $("#fg").append(brand);
- FOOT.forEach(([title,items,destination])=>{const col=h("div");col.append(h("h4",null,title));const ul=h("ul");items.forEach(label=>{const li=h("li");li.append(h("a",null,label,{href:label==="Contact"?"#/contact":destination}));ul.append(li)});col.append(ul);$("#fg").append(col)});
+ FOOT.forEach(([title,items,destination])=>{const col=h("div");col.append(h("h4",null,title));const ul=h("ul");items.forEach(label=>{const li=h("li");li.append(h("a",null,label,{href:label==="Contact"?"contact.html":destination}));ul.append(li)});col.append(ul);$("#fg").append(col)});
 }
 $("#yr").textContent=new Date().getFullYear();
 
@@ -1010,7 +1621,7 @@ function renderQuiz(){
   else if(location===1)guidance="A free zone may suit internationally focused activities; compare zones by activity list, office and visa options.";
   else guidance="Both mainland and free zone options may fit. A consultation can clarify which suits your activity and markets.";
   qb.append(h("h3",null,"Your preliminary guidance"),h("p",null,guidance),h("p","note","This is preliminary guidance only, not a definitive legal or financial recommendation. Requirements depend on your activity and the licensing authority."));
-  const row=h("div","row");const contact=h("a","btn","Request a consultation",{href:"#/contact"});const restart=h("button","btn o","Restart",{type:"button"});
+  const row=h("div","row");const contact=h("a","btn","Request a consultation",{href:"contact.html"});const restart=h("button","btn o","Restart",{type:"button"});
   restart.addEventListener("click",()=>{qi=0;qa.length=0;renderQuiz()});row.append(contact,restart);qb.append(row);return;
  }
  const progress=h("div","prog");const fill=h("i");fill.style.width=(qi/Q.length*100)+"%";progress.append(fill);
@@ -1025,80 +1636,6 @@ function renderQuiz(){
 }
 renderQuiz();
 
-/* Placeholder testimonials: replace with genuine authorised reviews before publishing. */
-const testimonials=[
-["Placeholder quote: add a genuine, authorised client testimonial here.","Client name — Business type — Service"],
-["Placeholder quote: replace before publication.","Client name — Business type — Service"],
-["Placeholder quote: replace before publication.","Client name — Business type — Service"]
-];
-let testimonialIndex=0;
-function showTestimonial(){$("#tq").textContent="“"+testimonials[testimonialIndex][0]+"”";$("#tn").textContent=testimonials[testimonialIndex][1]}
-showTestimonial();
-$("#tp").addEventListener("click",()=>{testimonialIndex=(testimonialIndex+testimonials.length-1)%testimonials.length;showTestimonial()});
-$("#tx").addEventListener("click",()=>{testimonialIndex=(testimonialIndex+1)%testimonials.length;showTestimonial()});
-
-/* Contact details */
-{
- const container=$("#cc");
- const digits=value=>(value||"").replace(/\D/g,"");
- const make=(icon,title,value,href)=>{const item=h(href?"a":"div","card");if(href){item.href=safeHref(href);item.rel="noopener noreferrer"}item.append(ic(icon),h("h3",null,title),h("p",null,value||"Add verified details in CONFIG"));container.append(item)};
- make("phone","WhatsApp Us",CONFIG.whatsapp,digits(CONFIG.whatsapp)&&"https://wa.me/"+digits(CONFIG.whatsapp));
- make("phone","Call Us",CONFIG.phone,digits(CONFIG.phone)&&"tel:+"+digits(CONFIG.phone));
- make("mail","Email Us",CONFIG.email,/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONFIG.email)&&"mailto:"+CONFIG.email);
- make("pin","Location",CONFIG.address,null);
-}
-["Select a service","Business Setup","Mainland","Free Zone","Visa","PRO","Banking","Accounting","Tax","Renewal","Other"].forEach((service,index)=>$("#svc").append(h("option",null,service,{value:index?service:""})));
-
-const cf=$("#cf");
-const validators={
- name:value=>value.length>=2&&value.length<=80&&!/[<>]/.test(value),
- phone:value=>/^\+?[0-9 ()-]{7,20}$/.test(value),
- email:value=>value.length<=120&&/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]{2,}$/.test(value),
- nat:value=>/^[\p{L} .'-]{2,60}$/u.test(value),
- ctry:value=>/^[\p{L} .'-]{2,60}$/u.test(value),
- svc:value=>value!=="",
- msg:value=>value.length>=10&&value.length<=1000
-};
-const messages={
- name:"Enter your name (2–80 characters, no < or >).",
- phone:"Enter a valid phone number (7–20 digits; + ( ) - allowed).",
- email:"Enter a valid email address.",
- nat:"Enter your nationality (letters only).",
- ctry:"Enter your current country (letters only).",
- svc:"Select a service.",
- msg:"Enter a message of 10–1000 characters."
-};
-cf.addEventListener("submit",async event=>{
- event.preventDefault();
- const status=$("#fs");let valid=true,firstInvalid=null;
- for(const key in validators){
-  const element=$("#"+key);
-  const raw=key==="msg"?element.value.trim():element.value.normalize("NFC").trim().replace(/\s+/g," ");
-  const invalid=!validators[key](raw);
-  element.setAttribute("aria-invalid",String(invalid));
-  $("#e-"+key).textContent=invalid?messages[key]:"";
-  if(invalid){valid=false;firstInvalid=firstInvalid||element}
- }
- const consent=$("#consent").checked;
- $("#e-consent").textContent=consent?"":"Please accept the privacy notice to continue.";
- if(!consent)valid=false;
- if(!valid){status.hidden=false;status.textContent="Please correct the highlighted fields."; (firstInvalid||$("#consent")).focus();return}
- if($("#website").value)return;
- const button=$("#sub");if(button.disabled)return;button.disabled=true;status.hidden=false;
- if(!CONFIG.FORM_ENDPOINT||!/^https:\/\//.test(CONFIG.FORM_ENDPOINT)){
-  status.textContent="Your details look valid, but this demo is not connected to a backend, so nothing was sent. Please contact us by phone or email.";
-  button.disabled=false;return;
- }
- try{
-  status.textContent="Sending…";
-  const body={name:$("#name").value.trim(),phone:$("#phone").value.trim(),email:$("#email").value.trim(),nationality:$("#nat").value.trim(),country:$("#ctry").value.trim(),service:$("#svc").value,message:$("#msg").value.trim()};
-  const response=await fetch(CONFIG.FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),credentials:"same-origin"});
-  if(!response.ok)throw new Error("Request failed");
-  cf.reset();status.textContent="Thank you. Your enquiry has been submitted.";
- }catch(error){status.textContent="Sorry, we could not send your message. Please try again later."}
- finally{button.disabled=false}
-});
-
 /* Reveal animations, route handling and back-to-top */
 let revealObserver=null;
 if("IntersectionObserver" in window){
@@ -1112,19 +1649,7 @@ function observeReveals(){
  });
 }
 observeReveals();
-function route(){
- const contact=location.hash==="#/contact";
- $("#home").hidden=contact;
- $("#contact-view").hidden=!contact;
- if(contact){window.scrollTo(0,0);closeAll();return}
- if(location.hash.length>1){
-  const targetId=location.hash.slice(1);
-  const target=document.getElementById(targetId);
-  if(target)requestAnimationFrame(()=>target.scrollIntoView({behavior:"smooth",block:"start"}));
- }
-}
-window.addEventListener("hashchange",route);
-route();
+
 const up=$("#up");
 window.addEventListener("scroll",()=>{up.hidden=window.scrollY<600},{passive:true});
 up.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
@@ -1135,6 +1660,66 @@ up.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
   progress.style.width=(maxScroll>0?window.scrollY/maxScroll*100:0)+"%";
  },{passive:true});
 }
+
+// head scroll active
+document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll("#topnav > li > a");
+
+    // Map top-level navigation headings to real section IDs
+    const sectionMap = {
+        "HOME": "top",
+        "BUSINESS SETUP": "jurisdiction",
+        "SERVICES": "services",
+        "ABOUT": "why"
+    };
+
+    const sections = [];
+
+    navLinks.forEach(link => {
+        const label = link.textContent.trim().toUpperCase();
+        const sectionId = sectionMap[label];
+
+        if (!sectionId) return;
+
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+            sections.push({
+                link: link,
+                section: section
+            });
+        }
+    });
+
+    function updateActiveLink() {
+        let current = null;
+
+        // Keep HOME active at the very top
+        if (window.scrollY < 100) {
+            current = sections.find(item =>
+                item.link.textContent.trim().toUpperCase() === "HOME"
+            );
+        } else {
+            sections.forEach(item => {
+                if (item.section.getBoundingClientRect().top <= 160) {
+                    current = item;
+                }
+            });
+        }
+
+        navLinks.forEach(link => link.classList.remove("active"));
+
+        if (current) {
+            current.link.classList.add("active");
+        }
+    }
+
+    window.addEventListener("scroll", updateActiveLink);
+    window.addEventListener("resize", updateActiveLink);
+
+    updateActiveLink();
+});
+
 </script>
 </body>
 </html>
