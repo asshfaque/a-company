@@ -978,10 +978,23 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
 
 /* HOME PAGE — MOBILE NAVIGATION FIX */
-
 @media (max-width: 768px) {
+
+  /* Keep the header and burger above page content */
+  #top {
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    background: #FFFFFF;
+  }
+
+  #top .bar {
+    position: relative;
+  }
+
+  /* Main mobile navigation panel */
   #mainNav {
-    display: none !important;
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -993,20 +1006,21 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 12px 16px;
+    padding: 12px 16px 20px;
     margin: 0;
-    background: #fff;
+    background: #FFFFFF;
     border-top: 1px solid #E1E5F0;
     box-shadow: 0 12px 24px rgba(3, 11, 91, 0.12);
-    z-index: 3000;
   }
 
+  /* Show only when the burger is clicked */
   body.menu-open #mainNav {
-    display: flex !important;
+    display: flex;
   }
 
   #mainNav > li {
     width: 100%;
+    flex-shrink: 0;
   }
 
   #mainNav > li > a,
@@ -1015,101 +1029,55 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     width: 100%;
     box-sizing: border-box;
     justify-content: space-between;
-    padding: 14px 8px;
-    white-space: normal;
     text-align: left;
+    white-space: normal;
+    padding: 14px 8px;
   }
 
+  /* Dropdowns stay within the mobile menu */
   #mainNav .dropdown-menu:not(.mega-menu),
   #mainNav .mega-menu {
-    display: none !important;
+    display: none;
     position: static;
+    inset: auto;
+    transform: none;
     width: 100%;
     max-width: 100%;
     max-height: none;
     overflow: visible;
     box-sizing: border-box;
     margin: 0;
-    padding: 12px;
-    transform: none;
+    padding: 10px 14px;
     box-shadow: none;
+    border-radius: 6px;
   }
 
+  /* Open dropdowns only when JavaScript adds .open */
   #mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
-    display: block !important;
+    display: block;
   }
 
   #mainNav .dropdown.open > .mega-menu {
-    display: grid !important;
+    display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
   }
-}
 
-@media (max-width: 768px) {
-  header .bar {
-    position: relative;
-  }
-
-  #burger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    cursor: pointer;
-    z-index: 5000;
-  }
-
-  #burger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: #030B5B;
-  }
-
-  #mainNav {
-    display: none !important;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    box-sizing: border-box;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 12px 20px;
-    background: #FFFFFF;
-    box-shadow: 0 12px 24px rgba(3, 11, 91, 0.12);
-    z-index: 4000;
-  }
-
-  body.menu-open #mainNav {
-    display: flex !important;
-  }
-
-  #mainNav > li {
+  #mainNav .mega-column {
     width: 100%;
   }
 
-  #mainNav > li > a,
-  #mainNav > li > .dropdown-toggle {
-    width: 100%;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 14px 8px;
+  #mainNav .dropdown-menu a {
+    white-space: normal;
+  }
+
+  /* Don't let hover/focus force dropdowns open on phones */
+  #mainNav .dropdown:hover > .dropdown-menu,
+  #mainNav .dropdown:focus-within > .dropdown-menu {
+    /* Visibility is controlled by the .open rules above. */
   }
 }
 
-@media (max-width: 768px) {
-  #mainNav {
-    display: none !important;
-  }
-
-  body.menu-open #mainNav {
-    display: flex !important;
-  }
-}
 </style>
 </head>
 <body>
@@ -1131,7 +1099,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
 <header id="top"><div class="wrap bar">
 <a class="logo" href="#top" aria-label="abc BUSINESS SOLUTION home">
-  <img src="C:\newLearning\work\in progress\AlphytixBusiness Soultion Logos\AlphytixBusiness Soultion Logos\model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
+  <img src="model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
 </a>
 <nav aria-label="Main navigation">
   <ul class="nav-links" id="mainNav">
@@ -1194,16 +1162,8 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
   </ul>
 </nav>
 <a class="btn hcta" href="contact.html">Talk to an Expert</a>
-<button
-  class="burger"
-  id="burger"
-  type="button"
-  aria-label="Open menu"
-  aria-expanded="false"
-  aria-controls="mainNav">
-  <span></span>
-  <span></span>
-  <span></span>
+<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+    <span></span><span></span><span></span>
 </button>
 </div></header>
 
@@ -1539,16 +1499,48 @@ const $ = selector => document.querySelector(selector);
 
 
 
-
 const mainNav = document.getElementById("mainNav");
 const burger = document.getElementById("burger");
 
-if (mainNav && burger) {
-  // Open and close the mobile navigation.
-  burger.addEventListener("click", function (event) {
-    event.preventDefault();
-    event.stopPropagation();
 
+
+function closeAll() {
+  if (!mainNav || !burger) return;
+
+  mainNav.querySelectorAll(".dropdown.open").forEach(item => {
+    item.classList.remove("open");
+
+    const button = item.querySelector(".dropdown-toggle");
+
+    if (button) {
+      button.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.body.classList.remove("menu-open");
+
+  burger.setAttribute("aria-expanded", "false");
+  burger.setAttribute("aria-label", "Open menu");
+}
+
+if (mainNav && burger) {
+  mainNav.querySelectorAll(".dropdown-toggle").forEach(button => {
+    button.addEventListener("click", () => {
+      const parent = button.closest(".dropdown");
+      if (!parent) return;
+
+      const shouldOpen = !parent.classList.contains("open");
+
+      closeAll();
+
+      if (shouldOpen) {
+        parent.classList.add("open");
+        button.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  burger.addEventListener("click", () => {
     const isOpen = document.body.classList.toggle("menu-open");
 
     burger.setAttribute("aria-expanded", String(isOpen));
@@ -1558,74 +1550,21 @@ if (mainNav && burger) {
     );
   });
 
-  // Open one dropdown at a time.
-  mainNav.querySelectorAll(".dropdown-toggle").forEach(function (button) {
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const dropdown = button.closest(".dropdown");
-      if (!dropdown) return;
-
-      const shouldOpen = !dropdown.classList.contains("open");
-
-      mainNav.querySelectorAll(".dropdown.open").forEach(function (item) {
-        item.classList.remove("open");
-
-        const toggle = item.querySelector(".dropdown-toggle");
-        if (toggle) toggle.setAttribute("aria-expanded", "false");
-      });
-
-      if (shouldOpen) {
-        dropdown.classList.add("open");
-        button.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-
-  // Close after clicking a navigation link.
-  mainNav.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", function () {
-      document.body.classList.remove("menu-open");
-
-      burger.setAttribute("aria-expanded", "false");
-      burger.setAttribute("aria-label", "Open menu");
-
-      mainNav.querySelectorAll(".dropdown.open").forEach(function (item) {
-        item.classList.remove("open");
-        const toggle = item.querySelector(".dropdown-toggle");
-        if (toggle) toggle.setAttribute("aria-expanded", "false");
-      });
-    });
-  });
-
-  // Close when clicking outside the navigation.
-  document.addEventListener("click", function (event) {
-    if (!event.target.closest("#mainNav, #burger")) {
-      document.body.classList.remove("menu-open");
-      burger.setAttribute("aria-expanded", "false");
-      burger.setAttribute("aria-label", "Open menu");
-
-      mainNav.querySelectorAll(".dropdown.open").forEach(function (item) {
-        item.classList.remove("open");
-        const toggle = item.querySelector(".dropdown-toggle");
-        if (toggle) toggle.setAttribute("aria-expanded", "false");
-      });
+  mainNav.addEventListener("click", event => {
+    if (event.target.closest("a")) {
+      closeAll();
     }
   });
 
-  // Close when pressing Escape.
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      document.body.classList.remove("menu-open");
-      burger.setAttribute("aria-expanded", "false");
-      burger.setAttribute("aria-label", "Open menu");
+  document.addEventListener("click", event => {
+    if (!event.target.closest("#mainNav, #burger")) {
+      closeAll();
+    }
+  });
 
-      mainNav.querySelectorAll(".dropdown.open").forEach(function (item) {
-        item.classList.remove("open");
-        const toggle = item.querySelector(".dropdown-toggle");
-        if (toggle) toggle.setAttribute("aria-expanded", "false");
-      });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeAll();
     }
   });
 }
