@@ -836,6 +836,78 @@
 #mainNav > li > a:hover {
     color: #C1272D;
 }
+
+
+/* Mobile navigation fix — desktop styles remain unchanged */
+@media (max-width: 768px) {
+
+  /* Hide the navigation until the burger is clicked */
+  #mainNav {
+    display: none;
+  }
+
+  /* Show the navigation only when opened */
+  #mainNav.open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  #mainNav > li {
+    width: 100%;
+  }
+
+  #mainNav > li > a,
+  #mainNav > li > .dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    white-space: normal;
+    text-align: left;
+  }
+
+  /* Disable hover-triggered dropdown opening on mobile */
+  #mainNav .dropdown:hover > .dropdown-menu:not(.mega-menu),
+  #mainNav .dropdown:focus-within > .dropdown-menu:not(.mega-menu) {
+    display: none;
+  }
+
+  #mainNav .dropdown:hover > .mega-menu,
+  #mainNav .dropdown:focus-within > .mega-menu {
+    display: none;
+  }
+
+  /* Dropdowns open when JavaScript adds .open */
+  #mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
+    display: block;
+    position: static;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    border-radius: 0;
+    transform: none;
+  }
+
+  #mainNav .dropdown.open > .mega-menu {
+    display: grid;
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    overflow: visible;
+    box-sizing: border-box;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+    box-shadow: none;
+    border-radius: 0;
+    transform: none;
+  }
+}
+
   </style>
 </head>
 
@@ -1093,82 +1165,144 @@
       All rights reserved.</p>
   </footer>
 
-  <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation" : "Open navigation"
-      );
-      menuToggle.textContent = isOpen ? "×" : "☰";
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+
+  // Close the mobile menu and all dropdowns.
+  function closeNavigation() {
+    if (mainNav) {
+      mainNav.classList.remove("open");
+
+      mainNav.querySelectorAll(".dropdown.open").forEach(item => {
+        item.classList.remove("open");
+
+        const dropdownToggle = item.querySelector(".dropdown-toggle");
+
+        if (dropdownToggle) {
+          dropdownToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+
+    if (menuToggle) {
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
+      menuToggle.textContent = "☰";
+    }
+  }
+
+  if (menuToggle && mainNav) {
+    // Ensure the mobile menu starts closed.
+    closeNavigation();
+
+    // Open or close the mobile navigation.
+    menuToggle.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const isOpen = !mainNav.classList.contains("open");
+
+      closeNavigation();
+
+      if (isOpen) {
+        mainNav.classList.add("open");
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", "Close navigation");
+        menuToggle.textContent = "×";
+      }
     });
 
-    mainNav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open navigation");
-        menuToggle.textContent = "☰";
+    // Open or close dropdown menus.
+    mainNav.querySelectorAll(".dropdown-toggle").forEach(button => {
+      button.addEventListener("click", event => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const parent = button.closest(".dropdown");
+        if (!parent) return;
+
+        const shouldOpen = !parent.classList.contains("open");
+
+        // Close other dropdowns first.
+        mainNav.querySelectorAll(".dropdown.open").forEach(item => {
+          item.classList.remove("open");
+
+          const otherButton = item.querySelector(".dropdown-toggle");
+
+          if (otherButton) {
+            otherButton.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        if (shouldOpen) {
+          parent.classList.add("open");
+          button.setAttribute("aria-expanded", "true");
+        }
       });
     });
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    // Close navigation after selecting a link.
+    mainNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", closeNavigation);
+    });
 
-    /*
-      This is a front-end form only.
-      Connect a secure backend or form service before publishing.
-      Do not display a success message or claim an enquiry was sent
-      until your backend confirms it.
-    */
-    document.getElementById("enquiryForm").addEventListener("submit", event => {
+    // Close when clicking outside the navigation.
+    document.addEventListener("click", event => {
+      if (!event.target.closest("#mainNav, #menuToggle")) {
+        closeNavigation();
+      }
+    });
+
+    // Close when pressing Escape.
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeNavigation();
+      }
+    });
+
+    // Close the mobile menu when switching to desktop width.
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768) {
+        closeNavigation();
+      }
+    });
+  }
+
+  // Update the copyright year.
+  const yearElement = document.getElementById("year");
+
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  /*
+    Front-end form only.
+    Connect a secure backend or form service before publishing.
+  */
+  const enquiryForm = document.getElementById("enquiryForm");
+
+  if (enquiryForm) {
+    enquiryForm.addEventListener("submit", event => {
       event.preventDefault();
 
       const form = event.currentTarget;
       const status = document.getElementById("formStatus");
+      const honeypot = document.getElementById("website");
 
       if (!form.reportValidity()) return;
 
-      if (document.getElementById("website").value) return;
+      if (honeypot && honeypot.value) return;
 
-      status.style.display = "block";
-      status.textContent =
-        "The form design is ready, but submission is not connected yet. Please configure a form backend before accepting enquiries.";
-    });
-
-
-    document.querySelectorAll("#mainNav .dropdown-toggle").forEach(button => {
-  button.addEventListener("click", () => {
-    const parent = button.closest(".dropdown");
-    const shouldOpen = !parent.classList.contains("open");
-
-    document.querySelectorAll("#mainNav .dropdown").forEach(item => {
-      item.classList.remove("open");
-      item.querySelector(".dropdown-toggle")
-        ?.setAttribute("aria-expanded", "false");
-    });
-
-    if (shouldOpen) {
-      parent.classList.add("open");
-      button.setAttribute("aria-expanded", "true");
-    }
-  });
-});
-
-document.addEventListener("click", event => {
-  if (!event.target.closest("#mainNav")) {
-    document.querySelectorAll("#mainNav .dropdown").forEach(item => {
-      item.classList.remove("open");
-      item.querySelector(".dropdown-toggle")
-        ?.setAttribute("aria-expanded", "false");
+      if (status) {
+        status.style.display = "block";
+        status.textContent =
+          "The form is not connected to a submission service yet. Please contact us directly until submission is configured.";
+      }
     });
   }
-});
-  </script>
+</script>
 
 </body>
 </html>
