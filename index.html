@@ -976,108 +976,6 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     color: #C1272D;
 }
 
-
-/* HOME PAGE — MOBILE NAVIGATION FIX */
-@media (max-width: 768px) {
-
-  /* Keep the header and burger above page content */
-  #top {
-    position: sticky;
-    top: 0;
-    z-index: 2000;
-    background: #FFFFFF;
-  }
-
-  #top .bar {
-    position: relative;
-  }
-
-  /* Main mobile navigation panel */
-  #mainNav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-height: calc(100vh - 80px);
-    overflow-y: auto;
-    box-sizing: border-box;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 12px 16px 20px;
-    margin: 0;
-    background: #FFFFFF;
-    border-top: 1px solid #E1E5F0;
-    box-shadow: 0 12px 24px rgba(3, 11, 91, 0.12);
-  }
-
-  /* Show only when the burger is clicked */
-  body.menu-open #mainNav {
-    display: flex;
-  }
-
-  #mainNav > li {
-    width: 100%;
-    flex-shrink: 0;
-  }
-
-  #mainNav > li > a,
-  #mainNav > li > .dropdown-toggle {
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
-    justify-content: space-between;
-    text-align: left;
-    white-space: normal;
-    padding: 14px 8px;
-  }
-
-  /* Dropdowns stay within the mobile menu */
-  #mainNav .dropdown-menu:not(.mega-menu),
-  #mainNav .mega-menu {
-    display: none;
-    position: static;
-    inset: auto;
-    transform: none;
-    width: 100%;
-    max-width: 100%;
-    max-height: none;
-    overflow: visible;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 10px 14px;
-    box-shadow: none;
-    border-radius: 6px;
-  }
-
-  /* Open dropdowns only when JavaScript adds .open */
-  #mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
-    display: block;
-  }
-
-  #mainNav .dropdown.open > .mega-menu {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  #mainNav .mega-column {
-    width: 100%;
-  }
-
-  #mainNav .dropdown-menu a {
-    white-space: normal;
-  }
-
-  /* Don't let hover/focus force dropdowns open on phones */
-  #mainNav .dropdown:hover > .dropdown-menu,
-  #mainNav .dropdown:focus-within > .dropdown-menu {
-    /* Visibility is controlled by the .open rules above. */
-  }
-}
-
 </style>
 </head>
 <body>
@@ -1099,7 +997,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
 <header id="top"><div class="wrap bar">
 <a class="logo" href="#top" aria-label="abc BUSINESS SOLUTION home">
-  <img src="model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
+  <img src="C:\newLearning\work\in progress\AlphytixBusiness Soultion Logos\AlphytixBusiness Soultion Logos\model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
 </a>
 <nav aria-label="Main navigation">
   <ul class="nav-links" id="mainNav">
@@ -1449,60 +1347,21 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 })();
 </script>
 <script>
+"use strict";
+/* Add verified contact details and a secured HTTPS form endpoint before launch. */
+const CONFIG={whatsapp:"",phone:"",email:"",address:"",FORM_ENDPOINT:""};
+const NS="http://www.w3.org/2000/svg";
+const h=(t,c,x,a)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;if(a)for(const k in a)e.setAttribute(k,a[k]);return e};
+const ic=n=>{const s=document.createElementNS(NS,"svg");s.setAttribute("class","ic");s.setAttribute("aria-hidden","true");const u=document.createElementNS(NS,"use");u.setAttribute("href","#i-"+n);s.append(u);return s};
+const safeHref=u=>/^(#|https:\/\/|mailto:|tel:)/.test(u)?u:"#";
+
 
 "use strict";
 
-/* Add verified contact details and a secured HTTPS form endpoint before launch. */
-const CONFIG = {
-  whatsapp: "",
-  phone: "",
-  email: "",
-  address: "",
-  FORM_ENDPOINT: ""
-};
-
-const NS = "http://www.w3.org/2000/svg";
-
-const h = (t, c, x, a) => {
-  const e = document.createElement(t);
-
-  if (c) e.className = c;
-  if (x != null) e.textContent = x;
-
-  if (a) {
-    for (const k in a) {
-      e.setAttribute(k, a[k]);
-    }
-  }
-
-  return e;
-};
-
-const ic = n => {
-  const s = document.createElementNS(NS, "svg");
-  s.setAttribute("class", "ic");
-  s.setAttribute("aria-hidden", "true");
-
-  const u = document.createElementNS(NS, "use");
-  u.setAttribute("href", "#i-" + n);
-
-  s.append(u);
-  return s;
-};
-
-const safeHref = u =>
-  /^(#|https:\/\/|mailto:|tel:)/.test(u) ? u : "#";
-
-
-/* Navigation */
 const $ = selector => document.querySelector(selector);
-
-
 
 const mainNav = document.getElementById("mainNav");
 const burger = document.getElementById("burger");
-
-
 
 function closeAll() {
   if (!mainNav || !burger) return;
@@ -1511,14 +1370,10 @@ function closeAll() {
     item.classList.remove("open");
 
     const button = item.querySelector(".dropdown-toggle");
-
-    if (button) {
-      button.setAttribute("aria-expanded", "false");
-    }
+    if (button) button.setAttribute("aria-expanded", "false");
   });
 
   document.body.classList.remove("menu-open");
-
   burger.setAttribute("aria-expanded", "false");
   burger.setAttribute("aria-label", "Open menu");
 }
@@ -1551,9 +1406,7 @@ if (mainNav && burger) {
   });
 
   mainNav.addEventListener("click", event => {
-    if (event.target.closest("a")) {
-      closeAll();
-    }
+    if (event.target.closest("a")) closeAll();
   });
 
   document.addEventListener("click", event => {
@@ -1563,9 +1416,7 @@ if (mainNav && burger) {
   });
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape") {
-      closeAll();
-    }
+    if (event.key === "Escape") closeAll();
   });
 }
 
