@@ -1,1396 +1,1174 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="Contact abcd — Tell us about your business, challenge or idea. Let's automate, engage and grow.">
-
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-
-    <title>Contact | abcd — Automate. Engage. Grow.</title>
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        /* =========================
-           RESET
-        ========================== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #07111f;
-            background: #ffffff;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        input,
-        textarea,
-        select {
-            font: inherit;
-        }
-
-        /* =========================
-           VARIABLES
-        ========================== */
-
-        :root {
-            --blue: #1261ff;
-            --blue-dark: #0845c7;
-            --orange: #ff7300;
-            --dark: #07111f;
-            --text: #475467;
-            --muted: #98a2b3;
-            --border: #e6eaf0;
-            --light: #f7f9fc;
-        }
-
-        /* =========================
-           HEADER
-        ========================== */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            height: 78px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 6%;
-
-            background: rgba(255, 255, 255, 0.94);
-            border-bottom: 1px solid rgba(230, 234, 240, 0.8);
-
-            backdrop-filter: blur(14px);
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: -1.5px;
-        }
-
-        .logo span {
-            color: var(--orange);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        nav a {
-            position: relative;
-
-            font-size: 14px;
-            font-weight: 600;
-            color: #344054;
-
-            transition: color 0.25s ease;
-        }
-
-        nav a::after {
-            content: "";
-
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-
-            width: 0;
-            height: 2px;
-
-            background: var(--orange);
-
-            transition: width 0.25s ease;
-        }
-
-        nav a:hover {
-            color: var(--blue);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .header-btn {
-            padding: 11px 20px;
-
-            color: white;
-            background: var(--blue);
-
-            border-radius: 8px;
-
-            font-size: 14px;
-            font-weight: 700;
-
-            transition:
-                transform 0.25s ease,
-                background 0.25s ease,
-                box-shadow 0.25s ease;
-        }
-
-        .header-btn:hover {
-            background: var(--blue-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(18, 97, 255, 0.2);
-        }
-
-        /* =========================
-           HERO
-        ========================== */
-
-        .contact-hero {
-            position: relative;
-            overflow: hidden;
-
-            padding: 100px 6% 80px;
-
-            background:
-                radial-gradient(
-                    circle at 15% 30%,
-                    rgba(18, 97, 255, 0.09),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 90% 20%,
-                    rgba(255, 115, 0, 0.08),
-                    transparent 28%
-                ),
-                #ffffff;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-
-            max-width: 900px;
-            margin: auto;
-
-            text-align: center;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-
-            margin-bottom: 20px;
-
-            padding: 7px 13px;
-
-            border: 1px solid rgba(18, 97, 255, 0.14);
-            border-radius: 50px;
-
-            background: rgba(18, 97, 255, 0.05);
-
-            color: var(--blue);
-
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-
-        .eyebrow-dot {
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-            background: var(--orange);
-
-            box-shadow: 0 0 12px rgba(255, 115, 0, 0.5);
-        }
-
-        h1 {
-            font-size: clamp(42px, 6vw, 76px);
-            line-height: 1.05;
-            letter-spacing: -4px;
-            font-weight: 900;
-
-            margin-bottom: 25px;
-        }
-
-        h1 .blue {
-            color: var(--blue);
-        }
-
-        h1 .orange {
-            color: var(--orange);
-        }
-
-        .hero-text {
-            max-width: 700px;
-            margin: auto;
-
-            color: var(--text);
-
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        /* =========================
-           DECORATIVE NODES
-        ========================== */
-
-        .floating-node {
-            position: absolute;
-
-            width: 9px;
-            height: 9px;
-
-            border-radius: 50%;
-
-            background: var(--blue);
-
-            box-shadow:
-                0 0 20px rgba(18, 97, 255, 0.35);
-
-            animation: floatNode 4s ease-in-out infinite;
-        }
-
-        .floating-node.orange {
-            background: var(--orange);
-
-            box-shadow:
-                0 0 20px rgba(255, 115, 0, 0.35);
-        }
-
-        .node-1 {
-            top: 25%;
-            left: 10%;
-        }
-
-        .node-2 {
-            top: 45%;
-            right: 12%;
-            animation-delay: 1s;
-        }
-
-        .node-3 {
-            bottom: 15%;
-            left: 20%;
-            animation-delay: 2s;
-        }
-
-        @keyframes floatNode {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        /* =========================
-           CONTACT SECTION
-        ========================== */
-
-        .contact-section {
-            padding: 40px 6% 110px;
-
-            background: #f8fafc;
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: auto;
-
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-
-            gap: 70px;
-
-            align-items: start;
-        }
-
-        /* =========================
-           CONTACT INFO
-        ========================== */
-
-        .contact-info {
-            padding-top: 20px;
-        }
-
-        .contact-info h2 {
-            font-size: 34px;
-            line-height: 1.15;
-
-            margin-bottom: 18px;
-
-            letter-spacing: -1.5px;
-        }
-
-        .contact-info h2 span {
-            color: var(--blue);
-        }
-
-        .contact-info > p {
-            color: var(--text);
-
-            font-size: 15px;
-            line-height: 1.8;
-
-            margin-bottom: 35px;
-        }
-
-        .info-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-
-            padding: 17px;
-
-            background: #ffffff;
-
-            border: 1px solid var(--border);
-            border-radius: 12px;
-
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease,
-                border-color 0.25s ease;
-        }
-
-        .info-item:hover {
-            transform: translateX(5px);
-
-            border-color: rgba(18, 97, 255, 0.25);
-
-            box-shadow:
-                0 12px 30px rgba(16, 24, 40, 0.06);
-        }
-
-        .info-icon {
-            width: 44px;
-            height: 44px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 10px;
-
-            background: rgba(18, 97, 255, 0.08);
-
-            color: var(--blue);
-
-            font-size: 18px;
-            font-weight: 800;
-        }
-
-        .info-item:nth-child(even) .info-icon {
-            background: rgba(255, 115, 0, 0.09);
-            color: var(--orange);
-        }
-
-        .info-content small {
-            display: block;
-
-            margin-bottom: 2px;
-
-            color: var(--muted);
-
-            font-size: 11px;
-            font-weight: 700;
-
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .info-content strong {
-            display: block;
-
-            color: var(--dark);
-
-            font-size: 14px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 10px;
-
-            margin-top: 25px;
-        }
-
-        .social-links a {
-            width: 42px;
-            height: 42px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid var(--border);
-            border-radius: 10px;
-
-            background: #ffffff;
-
-            color: #344054;
-
-            font-size: 12px;
-            font-weight: 800;
-
-            transition: all 0.25s ease;
-        }
-
-        .social-links a:hover {
-            color: #ffffff;
-            background: var(--blue);
-
-            transform: translateY(-3px);
-
-            border-color: var(--blue);
-        }
-
-        /* =========================
-           FORM CARD
-        ========================== */
-
-        .form-card {
-            position: relative;
-
-            padding: 40px;
-
-            background: #ffffff;
-
-            border: 1px solid var(--border);
-            border-radius: 18px;
-
-            box-shadow:
-                0 25px 70px rgba(16, 24, 40, 0.08);
-
-            overflow: hidden;
-        }
-
-        .form-card::before {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 4px;
-
-            background: linear-gradient(
-                90deg,
-                var(--blue),
-                var(--orange)
-            );
-        }
-
-        .form-header {
-            margin-bottom: 28px;
-        }
-
-        .form-header h2 {
-            font-size: 27px;
-
-            margin-bottom: 8px;
-
-            letter-spacing: -1px;
-        }
-
-        .form-header p {
-            color: var(--text);
-
-            font-size: 14px;
-        }
-
-        /* =========================
-           FORM GRID
-        ========================== */
-
-        .form-grid {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            margin-bottom: 8px;
-
-            color: #344054;
-
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        label span {
-            color: var(--orange);
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-
-            padding: 13px 14px;
-
-            border: 1px solid #d8dee8;
-            border-radius: 9px;
-
-            background: #ffffff;
-
-            color: var(--dark);
-
-            font-size: 14px;
-
-            outline: none;
-
-            transition:
-                border-color 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            color: #a3acba;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: var(--blue);
-
-            box-shadow:
-                0 0 0 3px rgba(18, 97, 255, 0.09);
-        }
-
-        textarea {
-            min-height: 140px;
-
-            resize: vertical;
-        }
-
-        select {
-            cursor: pointer;
-        }
-
-        /* =========================
-           SUBMIT
-        ========================== */
-
-        .submit-btn {
-            position: relative;
-
-            width: 100%;
-
-            margin-top: 25px;
-
-            padding: 15px 20px;
-
-            border: none;
-            border-radius: 9px;
-
-            background: var(--blue);
-
-            color: #ffffff;
-
-            font-size: 14px;
-            font-weight: 800;
-
-            cursor: pointer;
-
-            overflow: hidden;
-
-            transition:
-                transform 0.25s ease,
-                background 0.25s ease,
-                box-shadow 0.25s ease;
-        }
-
-        .submit-btn:hover {
-            background: var(--blue-dark);
-
-            transform: translateY(-2px);
-
-            box-shadow:
-                0 12px 30px rgba(18, 97, 255, 0.22);
-        }
-
-        .submit-btn span {
-            position: relative;
-            z-index: 2;
-        }
-
-        .form-note {
-            margin-top: 14px;
-
-            text-align: center;
-
-            color: #98a2b3;
-
-            font-size: 11px;
-        }
-
-        /* =========================
-           FOOTER
-        ========================== */
-
-        footer {
-            padding: 30px 6%;
-
-            background: #07111f;
-
-            color: #ffffff;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: auto;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            gap: 20px;
-        }
-
-        .footer-logo {
-            font-size: 22px;
-            font-weight: 900;
-        }
-
-        .footer-logo span {
-            color: var(--orange);
-        }
-
-        .footer-tagline {
-            margin-top: 3px;
-
-            color: #98a2b3;
-
-            font-size: 12px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 22px;
-        }
-
-        .footer-links a {
-            color: #c5cbd5;
-
-            font-size: 12px;
-
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--orange);
-        }
-
-        /* =========================
-           MOBILE
-        ========================== */
-
-        @media (max-width: 900px) {
-
-            nav {
-                display: none;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-
-                gap: 40px;
-            }
-
-            .contact-info {
-                max-width: 700px;
-                margin: auto;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            header {
-                height: 70px;
-
-                padding: 0 5%;
-            }
-
-            .header-btn {
-                padding: 9px 14px;
-            }
-
-            .contact-hero {
-                padding: 75px 5% 65px;
-            }
-
-            h1 {
-                font-size: 43px;
-
-                letter-spacing: -2.5px;
-            }
-
-            .hero-text {
-                font-size: 15px;
-            }
-
-            .contact-section {
-                padding: 25px 5% 70px;
-            }
-
-            .form-card {
-                padding: 25px 20px;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-group.full {
-                grid-column: auto;
-            }
-
-            .footer-container {
-                flex-direction: column;
-
-                align-items: flex-start;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
-            }
-        }
-
-        /* =========================
-           REDUCED MOTION
-        ========================== */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030B5B">
+  <meta name="description" content="Contact abc BUSINESS SOLUTION for UAE business setup, visas, licensing and corporate services.">
+  <title>Contact Us | abc BUSINESS SOLUTION</title>
+
+  <style>
+    :root {
+      --navy: #030B5B;
+      --red: #C1272D;
+      --white: #FFFFFF;
+      --light: #F5F7FB;
+      --muted: #667085;
+      --border: #E1E5F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 3px 18px rgba(3, 11, 91, 0.04);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      min-height: 82px;
+      padding: 12px 24px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand img {
+      display: block;
+      width: 112px;
+      max-height: 58px;
+      object-fit: contain;
+    }
+
+    /* Contact page navigation */
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    flex-shrink: 0;
+}
+
+.nav-links li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 12px 0;
+    text-decoration: none;
+}
+
+/* Active Contact link */
+.nav-links li a.active {
+    color: #C1272D;
+    font-weight: 700;
+}
+
+    <!--dsdasd-->
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--red);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 7px;
+      background: var(--navy);
+      border: 1px solid var(--navy);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: 0.25s ease;
+    }
+
+    .header-cta:hover {
+      background: var(--red);
+      border-color: var(--red);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      color: var(--navy);
+      font-size: 27px;
+    }
+
+    /* HERO */
+    .contact-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 76px 24px 88px;
+      color: white;
+      background:
+        radial-gradient(circle at 85% 25%, rgba(193, 39, 45, 0.27), transparent 28%),
+        radial-gradient(circle at 8% 100%, rgba(83, 105, 220, 0.22), transparent 35%),
+        linear-gradient(125deg, #030735, #030B5B 58%, #111b76);
+    }
+
+    .contact-hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -150px;
+      bottom: -230px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 35px rgba(255,255,255,0.025),
+        0 0 0 75px rgba(255,255,255,0.025);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: auto;
+      animation: appear 0.7s ease both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 19px;
+      color: #F3B7BA;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 27px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    .contact-hero h1 {
+      max-width: 700px;
+      margin-bottom: 17px;
+      font-size: clamp(37px, 5vw, 61px);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+    }
+
+    .contact-hero h1 span {
+      color: #F18A8E;
+    }
+
+    .contact-hero p {
+      max-width: 590px;
+      color: #D5D9F0;
+      font-size: 16px;
+    }
+
+    .hero-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 27px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 7px;
+      background: rgba(255,255,255,0.06);
+      color: #F4F5FF;
+      font-size: 12px;
+    }
+
+    .hero-note span {
+      color: #F18A8E;
+    }
+
+    /* CONTACT AREA */
+    .contact-area {
+      padding: 70px 24px 85px;
+      background: var(--light);
+    }
+
+    .contact-layout {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 0.85fr 1.4fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .contact-info {
+      padding: 34px 29px;
+      border-radius: 16px;
+      background: var(--navy);
+      color: white;
+      box-shadow: 0 15px 45px rgba(3, 11, 91, 0.12);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .contact-info::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -95px;
+      bottom: -90px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.17);
+      box-shadow: 0 0 0 25px rgba(255,255,255,0.025);
+    }
+
+    .contact-info h2 {
+      margin-bottom: 12px;
+      font-size: 25px;
+      line-height: 1.3;
+    }
+
+    .contact-info > p {
+      margin-bottom: 30px;
+      color: #CFD4EE;
+      font-size: 13px;
+    }
+
+    .info-item {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      margin: 23px 0;
+    }
+
+    .info-icon {
+      flex-shrink: 0;
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 11px;
+      background: rgba(255,255,255,0.08);
+      color: #F3A0A4;
+      font-size: 19px;
+    }
+
+    .info-item h3 {
+      margin: 1px 0 4px;
+      font-size: 13px;
+    }
+
+    .info-item p,
+    .info-item a {
+      color: #CFD4EE;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .info-item a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .whatsapp-link {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      margin-top: 30px;
+      padding: 13px 16px;
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 8px;
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .whatsapp-link:hover {
+      background: white;
+      color: var(--navy);
+    }
+
+    /* FORM */
+    .contact-form {
+      padding: 37px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 12px 40px rgba(3, 11, 91, 0.045);
+    }
+
+    .form-heading {
+      margin-bottom: 28px;
+    }
+
+    .form-heading .mini-label {
+      color: var(--red);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .form-heading h2 {
+      margin: 6px 0 8px;
+      font-size: 29px;
+      letter-spacing: -0.6px;
+    }
+
+    .form-heading p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 19px;
+    }
+
+    .field {
+      min-width: 0;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: #20294D;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field label span {
+      color: var(--red);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      display: block;
+      width: 100%;
+      min-height: 47px;
+      padding: 12px 13px;
+      border: 1px solid #DDE2EE;
+      border-radius: 7px;
+      outline: none;
+      background: #FCFCFE;
+      color: var(--navy);
+      font-size: 13px;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #98A0B4;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--navy);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(3, 11, 91, 0.07);
+    }
+
+    .field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 51px;
+      margin-top: 24px;
+      padding: 13px 18px;
+      border: 1px solid var(--red);
+      border-radius: 7px;
+      background: var(--red);
+      color: white;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .submit-button:hover {
+      background: #A91F25;
+      box-shadow: 0 7px 17px rgba(193, 39, 45, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .submit-button span {
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+
+    .submit-button:hover span {
+      transform: translateX(4px);
+    }
+
+    .privacy-note {
+      margin-top: 14px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .form-status {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 7px;
+      background: #FFF2F2;
+      color: #92252A;
+      font-size: 12px;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 25px 24px;
+      background: #020634;
+      color: #D0D5EC;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .site-footer strong {
+      color: white;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .header-inner {
+        gap: 14px;
+      }
+
+      .nav-links {
+        gap: 14px;
+        font-size: 12px;
+      }
+
+      .contact-layout {
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 20px;
+      }
+
+      .contact-form {
+        padding: 27px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        min-height: 72px;
+        padding: 10px 18px;
+      }
+
+      .brand img {
+        width: 95px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 14px 22px 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 12px 18px rgba(3,11,91,0.08);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid #F0F1F7;
+      }
+
+      .header-cta {
+        display: none;
+      }
+
+      .contact-hero {
+        padding: 57px 21px 63px;
+      }
+
+      .contact-hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .contact-hero p {
+        font-size: 14px;
+      }
+
+      .contact-area {
+        padding: 38px 16px 55px;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 23px;
+      }
+
+      .contact-info {
+        padding: 28px 23px;
+      }
+
+      .contact-form {
+        padding: 24px 19px;
+      }
+
+      .form-heading h2 {
+        font-size: 25px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .contact-hero h1 {
+        font-size: 37px;
+      }
+
+      .hero-note {
+        font-size: 11px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+
+/* Parent navigation */
+#mainNav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#mainNav > li {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Top-level headings */
+#mainNav > li > a,
+#mainNav > li > .dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    color: #030B5B;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* Standard dropdown: directly under its heading */
+#mainNav .dropdown-menu:not(.mega-menu) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 210px;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    background: #fff;
+    border: 1px solid #E1E5F0;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(3, 11, 91, 0.12);
+    z-index: 1000;
+}
+
+/* Standard dropdown links */
+#mainNav .dropdown-menu:not(.mega-menu) li a {
+    display: block;
+    padding: 11px 18px;
+    color: #030B5B;
+    font-size: 13px;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#mainNav .dropdown-menu li a:hover {
+    color: #C1272D;
+    background: #F5F7FB;
+}
+
+/* Services mega menu: centered below the navigation */
+#mainNav .mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    display: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    width: 720px;
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #E1E5F0;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(3, 11, 91, 0.12);
+    z-index: 1000;
+}
+
+/* Show menus on hover, keyboard focus, or click */
+#mainNav .dropdown:hover > .dropdown-menu:not(.mega-menu),
+#mainNav .dropdown:focus-within > .dropdown-menu:not(.mega-menu),
+#mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
+    display: block;
+}
+
+#mainNav .dropdown:hover > .mega-menu,
+#mainNav .dropdown:focus-within > .mega-menu,
+#mainNav .dropdown.open > .mega-menu {
+    display: grid;
+}
+
+/* Three evenly aligned service columns */
+#mainNav .mega-column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+    gap: 2px;
+}
+
+#mainNav .mega-column h4 {
+    margin: 0 0 10px;
+    color: #C1272D;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+}
+
+#mainNav .mega-column a {
+    display: block;
+    padding: 8px 0;
+    color: #030B5B;
+    font-size: 13px;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: normal;
+}
+
+/* Smaller screens */
+@media (max-width: 900px) {
+    #mainNav .mega-menu {
+        left: auto;
+        right: 0;
+        transform: none;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        width: min(320px, calc(100vw - 32px));
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+}
+
+/* Hide dropdown menus by default */
+#mainNav .dropdown-menu {
+    display: none;
+}
+
+/* Show the Business Setup dropdown only on hover, focus, or click */
+#mainNav .dropdown:hover > .dropdown-menu:not(.mega-menu),
+#mainNav .dropdown:focus-within > .dropdown-menu:not(.mega-menu),
+#mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
+    display: block;
+}
+
+/* Show the Services mega menu only on hover, focus, or click */
+#mainNav .dropdown:hover > .mega-menu,
+#mainNav .dropdown:focus-within > .mega-menu,
+#mainNav .dropdown.open > .mega-menu {
+    display: grid;
+}
+
+
+/* Navigation heading underline animation */
+#mainNav > li > a {
+    position: relative;
+}
+
+/* Underline on hover */
+#mainNav > li > a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 100%;
+    height: 2px;
+    background-color: #C1272D;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+/* Show underline when hovering */
+#mainNav > li > a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Keep underline on the active page */
+#mainNav > li > a.active::after {
+    transform: scaleX(1);
+}
+
+/* Optional: change heading color on hover */
+#mainNav > li > a:hover {
+    color: #C1272D;
+}
+  </style>
 </head>
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
-
-    <header>
-
-        <a href="index.html" class="logo">
-            abcd<span>.</span>
-        </a>
-
-        <nav aria-label="Main navigation">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="index.html#services">Services</a>
-            <a href="index.html#solutions">Solutions</a>
-            <a href="index.html#industries">Industries</a>
-            <a href="index.html#portfolio">Portfolio</a>
-            <a href="index.html#insights">Insights</a>
-        </nav>
-
-        <a href="contact.html" class="header-btn">
-            Let's Build →
-        </a>
-
-    </header>
-
-
-    <!-- =========================
-         CONTACT HERO
-    ========================== -->
-
-    <main>
-
-        <section class="contact-hero">
-
-            <!-- Decorative AI Nodes -->
-            <div class="floating-node node-1"></div>
-            <div class="floating-node orange node-2"></div>
-            <div class="floating-node node-3"></div>
-
-            <div class="hero-content">
-
-                <div class="eyebrow">
-                    <span class="eyebrow-dot"></span>
-                    Let's Connect
-                </div>
-
-                <h1>
-                    Ready to
-                    <span class="blue">Automate.</span>
-                    <span class="orange">Engage.</span>
-                    <span class="blue">Grow?</span>
-                </h1>
-
-                <p class="hero-text">
-                    Tell us about your business, challenge or idea.
-                    Our team will help identify the right technology,
-                    marketing and growth solution for you.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CONTACT CONTENT
-        ========================== -->
-
-        <section class="contact-section">
-
-            <div class="contact-container">
-
-
-                <!-- CONTACT INFORMATION -->
-
-                <div class="contact-info">
-
-                    <h2>
-                        Let's build something
-                        <span>intelligent.</span>
-                    </h2>
-
-                    <p>
-                        Whether you need AI automation, digital marketing,
-                        a powerful website, CRM integration or a complete
-                        digital transformation strategy, let's talk about
-                        what your business needs next.
-                    </p>
-
-
-                    <div class="info-list">
-
-                        <!-- Email -->
-
-                        <a href="#" class="info-item">
-
-                            <div class="info-icon">
-    <i class="fa-solid fa-envelope"></i>
-</div>
-
-                            <div class="info-content">
-
-                                <small>Email</small>
-
-                                <strong>
-                                    Alphytix@gmail.com
-                                </strong>
-
-                            </div>
-
-                        </a>
-
-
-                        <!-- Phone -->
-
-                        <a href="tel:+919999999999" class="info-item">
-
-                            <div class="info-icon">
-                                ☎
-                            </div>
-
-                            <div class="info-content">
-
-                                <small>Phone</small>
-
-                                <strong>
-                                    +91 99999 99999
-                                </strong>
-
-                            </div>
-
-                        </a>
-
-
-                        <!-- WhatsApp -->
-
-                        <a href="#"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="info-item">
-
-                            <div class="info-icon">
-    <i class="fa-brands fa-whatsapp"></i>
-</div>
-
-                            <div class="info-content">
-
-                                <small>WhatsApp</small>
-
-                                <strong>
-                                    Chat with our team
-                                </strong>
-
-                            </div>
-
-                        </a>
-
-
-                        <!-- Location -->
-
-                        <div class="info-item">
-
-                            <div class="info-icon">
-    <i class="fa-solid fa-location-dot"></i>
-</div>
-
-                            <div class="info-content">
-
-                                <small>Location</small>
-
-                                <strong>
-                                    Kerala, India
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Social Media -->
-
-                    <div class="social-links">
-
-<a href="#" aria-label="LinkedIn">
-    <i class="fa-brands fa-linkedin-in"></i>
-</a>                        
-
-                        <a href="#" aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-</a>
-
-<a href="#" aria-label="Facebook">
-    <i class="fa-brands fa-facebook-f"></i>
-</a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CONTACT FORM -->
-
-                <div class="form-card">
-
-                    <div class="form-header">
-
-                        <h2>
-                            Tell us about your project
-                        </h2>
-
-                        <p>
-                            Fill in the details below and our team
-                            will get back to you.
-                        </p>
-
-                    </div>
-
-
-                    <form action="#" method="POST">
-
-                        <div class="form-grid">
-
-
-                            <!-- Name -->
-
-                            <div class="form-group">
-
-                                <label for="name">
-                                    Name <span>*</span>
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    placeholder="Your full name"
-                                    autocomplete="name"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <!-- Company -->
-
-                            <div class="form-group">
-
-                                <label for="company">
-                                    Company <span>*</span>
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="company"
-                                    name="company"
-                                    placeholder="Company name"
-                                    autocomplete="organization"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <!-- Email -->
-
-                            <div class="form-group">
-
-                                <label for="email">
-                                    Email <span>*</span>
-                                </label>
-
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="you@company.com"
-                                    autocomplete="email"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <!-- Phone -->
-
-                            <div class="form-group">
-
-                                <label for="phone">
-                                    Phone / WhatsApp <span>*</span>
-                                </label>
-
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    placeholder="+91 XXXXX XXXXX"
-                                    autocomplete="tel"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <!-- Industry -->
-
-                            <div class="form-group">
-
-                                <label for="industry">
-                                    Industry <span>*</span>
-                                </label>
-
-                                <select
-                                    id="industry"
-                                    name="industry"
-                                    required
-                                >
-
-                                    <option value="">
-                                        Select industry
-                                    </option>
-
-                                    <option>
-                                        Real Estate
-                                    </option>
-
-                                    <option>
-                                        E-commerce
-                                    </option>
-
-                                    <option>
-                                        Beauty & Fashion
-                                    </option>
-
-                                    <option>
-                                        F&B & Hospitality
-                                    </option>
-
-                                    <option>
-                                        Professional Services
-                                    </option>
-
-                                    <option>
-                                        Finance & Accounting
-                                    </option>
-
-                                    <option>
-                                        Healthcare
-                                    </option>
-
-                                    <option>
-                                        Education
-                                    </option>
-
-                                    <option>
-                                        Startup / SME
-                                    </option>
-
-                                    <option>
-                                        Corporate
-                                    </option>
-
-                                    <option>
-                                        Other
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <!-- Service -->
-
-                            <div class="form-group">
-
-                                <label for="service">
-                                    Service Required <span>*</span>
-                                </label>
-
-                                <select
-                                    id="service"
-                                    name="service"
-                                    required
-                                >
-
-                                    <option value="">
-                                        Select service
-                                    </option>
-
-                                    <option>
-                                        AI Agents & Automation
-                                    </option>
-
-                                    <option>
-                                        Digital & Social Media Marketing
-                                    </option>
-
-                                    <option>
-                                        Neuromarketing
-                                    </option>
-
-                                    <option>
-                                        CRM & Marketing Automation
-                                    </option>
-
-                                    <option>
-                                        Website & Application Development
-                                    </option>
-
-                                    <option>
-                                        IT Support & Services
-                                    </option>
-
-                                    <option>
-                                        Branding & Digital Creative
-                                    </option>
-
-                                    <option>
-                                        Multiple Services
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <!-- Project -->
-
-                            <div class="form-group full">
-
-                                <label for="project">
-                                    Tell Us About Your Project
-                                    <span>*</span>
-                                </label>
-
-                                <textarea
-                                    id="project"
-                                    name="project"
-                                    placeholder="Tell us about your business, challenge, idea or project..."
-                                    required
-                                ></textarea>
-
-                            </div>
-
-
-                            <!-- Budget 
-
-                            <div class="form-group full">
-
-                                <label for="budget">
-                                    Budget Range
-                                    <small style="font-weight:400;color:#98a2b3;">
-                                        (Optional)
-                                    </small>
-                                </label>
-
-                                <select
-                                    id="budget"
-                                    name="budget"
-                                >
-
-                                    <option value="">
-                                        Select budget range
-                                    </option>
-
-                                    <option>
-                                        Under ₹50,000
-                                    </option>
-
-                                    <option>
-                                        ₹50,000 – ₹1 Lakh
-                                    </option>
-
-                                    <option>
-                                        ₹1 Lakh – ₹3 Lakhs
-                                    </option>
-
-                                    <option>
-                                        ₹3 Lakhs – ₹5 Lakhs
-                                    </option>
-
-                                    <option>
-                                        ₹5 Lakhs+
-                                    </option>
-
-                                    <option>
-                                        Not sure yet
-                                    </option>
-
-                                </select>
-
-                            </div>-->
-
-                        </div>
-
-
-                        <!-- Submit -->
-
-                        <button
-                            type="submit"
-                            class="submit-btn"
-                        >
-                            <span>
-                                Let's Talk →
-                            </span>
-                        </button>
-
-                        <p class="form-note">
-                            Your information will only be used to respond
-                            to your enquiry.
-                        </p>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="footer-container">
-
-            <div>
-
-                <div class="footer-logo">
-                    abcd<span>.</span>
-                </div>
-
-                <div class="footer-tagline">
-                    Automate. Engage. Grow.
-                </div>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a href="index.html#about">
-                    About
-                </a>
-
-                <a href="index.html#services">
-                    Services
-                </a>
-
-                <a href="index.html#portfolio">
-                    Portfolio
-                </a>
-
-                <a>
-                    Contact
-                </a>
-
-            </div>
-
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="abc BUSINESS SOLUTION home">
+        <!-- Change this path to your existing header logo path -->
+        <img src="images/model3.png" alt="abc BUSINESS SOLUTION">
+      </a>
+
+<nav aria-label="Main navigation">
+  <ul class="nav-links" id="mainNav">
+    <li>
+      <a href="index.html">HOME</a>
+    </li>
+
+    <li class="dropdown">
+      <button type="button" class="dropdown-toggle" aria-expanded="false">
+        BUSINESS SETUP <span class="arrow">▾</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="index.html#freezones">Free Zones</a></li>
+        <li><a href="index.html#quiz">Mainland</a></li>
+        <li><a href="index.html#jurisdiction">Offshore Setup</a></li>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+      <button type="button" class="dropdown-toggle" aria-expanded="false">
+        SERVICES <span class="arrow">▾</span>
+      </button>
+
+      <div class="dropdown-menu mega-menu">
+        <div class="mega-column">
+          <h4>PRO &amp; VISA</h4>
+          <a href="index.html#services">Investor Visa</a>
+          <a href="index.html#services">Partner Visa</a>
+          <a href="index.html#services">Golden Visa</a>
+          <a href="index.html#services">Emirates ID</a>
+          <a href="index.html#services">PRO Services</a>
         </div>
 
-    </footer>
+        <div class="mega-column">
+          <h4>COMPANY SETUP</h4>
+          <a href="index.html#solutions">Company Formation</a>
+          <a href="index.html#jurisdiction">Mainland Setup</a>
+          <a href="index.html#freezones">Free Zone Setup</a>
+          <a href="index.html#jurisdiction">Offshore Setup</a>
+          <a href="index.html#services">Business Licensing</a>
+        </div>
+
+        <div class="mega-column">
+          <h4>CORPORATE SERVICES</h4>
+          <a href="index.html#services">Banking Assistance</a>
+          <a href="index.html#services">Accounting</a>
+          <a href="index.html#services">VAT</a>
+          <a href="index.html#services">Corporate Tax</a>
+          <a href="index.html#services">Insurance</a>
+          <a href="index.html#services">License Renewal</a>
+          <a href="index.html#services">License Amendment</a>
+          <a href="index.html#services">Business Closure</a>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <a href="index.html#why">ABOUT</a>
+    </li>
+  </ul>
+</nav>
+      <a class="header-cta" href="#contact-form">Let's Talk <span>↗</span></a>
+
+      <button class="menu-toggle" id="menuToggle"
+        type="button" aria-label="Open navigation"
+        aria-expanded="false" aria-controls="mainNav">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="contact-hero">
+    <div class="hero-content">
+      <div class="eyebrow">Contact abc BUSINESS SOLUTION</div>
+
+      <h1>Let's Build Your UAE Business <span>Together.</span></h1>
+
+      <p>
+        Have a business idea or need help navigating the UAE setup process?
+        Tell us what you need. Our team can help you explore the next steps.
+      </p>
+
+      <div class="hero-note">
+        <span>✦</span> Your business journey starts with a conversation.
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM AND DETAILS -->
+  <main class="contact-area" id="contact">
+    <div class="contact-layout">
+
+      <!-- CONTACT DETAILS -->
+      <aside class="contact-info">
+        <h2>We're here to help.</h2>
+        <p>
+          Connect with us through your preferred channel and tell us how
+          we can assist with your business requirements.
+        </p>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">⌕</div>
+          <div>
+            <h3>WhatsApp Us</h3>
+            <!-- Replace 971XXXXXXXXX with your WhatsApp number -->
+            <a href="https://wa.me/971XXXXXXXXX" target="_blank"
+              rel="noopener noreferrer">Chat with our team ↗</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">☎</div>
+          <div>
+            <h3>Call Us</h3>
+            <!-- Replace with your actual phone number -->
+            <a href="tel:+971XXXXXXXXX">+971 XX XXX XXXX</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">✉</div>
+          <div>
+            <h3>Email Us</h3>
+            <!-- Replace with your actual business email -->
+            <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">⌖</div>
+          <div>
+            <h3>Location</h3>
+            <p>United Arab Emirates</p>
+            <p>Update this with your actual office address.</p>
+          </div>
+        </div>
+
+        <a class="whatsapp-link" href="https://wa.me/971XXXXXXXXX"
+          target="_blank" rel="noopener noreferrer">
+          <span>◉</span> WhatsApp Us
+          <span aria-hidden="true">↗</span>
+        </a>
+      </aside>
+
+      <!-- FORM -->
+      <section class="contact-form" id="contact-form">
+        <div class="form-heading">
+          <div class="mini-label">Get in touch</div>
+          <h2>Tell us about your plans.</h2>
+          <p>Fill in the details below so we can understand your requirements.</p>
+        </div>
+
+        <form id="enquiryForm">
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="name">Full Name <span>*</span></label>
+              <input id="name" name="name" type="text"
+                placeholder="Enter your full name"
+                autocomplete="name" maxlength="100" required>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone Number <span>*</span></label>
+              <input id="phone" name="phone" type="tel"
+                placeholder="Include country code"
+                autocomplete="tel" maxlength="25"
+                pattern="[+0-9() .-]{7,25}" required>
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address <span>*</span></label>
+              <input id="email" name="email" type="email"
+                placeholder="you@example.com"
+                autocomplete="email" maxlength="254" required>
+            </div>
+
+            <div class="field">
+              <label for="nationality">Nationality <span>*</span></label>
+              <input id="nationality" name="nationality" type="text"
+                placeholder="Your nationality" maxlength="80" required>
+            </div>
+
+            <div class="field">
+              <label for="country">Current Country <span>*</span></label>
+              <input id="country" name="country" type="text"
+                placeholder="Where are you currently based?"
+                autocomplete="country-name" maxlength="80" required>
+            </div>
+
+            <div class="field">
+              <label for="service">Service Required <span>*</span></label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service</option>
+                <option>Business Setup</option>
+                <option>Mainland</option>
+                <option>Free Zone</option>
+                <option>Visa</option>
+                <option>PRO</option>
+                <option>Banking</option>
+                <option>Accounting</option>
+                <option>Tax</option>
+                <option>Renewal</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="message">Message <span>*</span></label>
+              <textarea id="message" name="message"
+                placeholder="Tell us briefly about your business plans or requirements..."
+                maxlength="3000" required></textarea>
+            </div>
+
+          </div>
+
+          <!-- Honeypot field: leave empty -->
+          <div style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"
+            aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input id="website" name="website" type="text"
+              tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="submit-button">
+            Get My Free Consultation <span aria-hidden="true">→</span>
+          </button>
+
+          <p class="privacy-note">
+            Your information should be handled securely and used to respond
+            to your enquiry.
+          </p>
+
+          <div class="form-status" id="formStatus" role="status"
+            aria-live="polite"></div>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> <strong>abc BUSINESS SOLUTION</strong>.
+      All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    mainNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    /*
+      This is a front-end form only.
+      Connect a secure backend or form service before publishing.
+      Do not display a success message or claim an enquiry was sent
+      until your backend confirms it.
+    */
+    document.getElementById("enquiryForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      const status = document.getElementById("formStatus");
+
+      if (!form.reportValidity()) return;
+
+      if (document.getElementById("website").value) return;
+
+      status.style.display = "block";
+      status.textContent =
+        "The form design is ready, but submission is not connected yet. Please configure a form backend before accepting enquiries.";
+    });
+
+
+    document.querySelectorAll("#mainNav .dropdown-toggle").forEach(button => {
+  button.addEventListener("click", () => {
+    const parent = button.closest(".dropdown");
+    const shouldOpen = !parent.classList.contains("open");
+
+    document.querySelectorAll("#mainNav .dropdown").forEach(item => {
+      item.classList.remove("open");
+      item.querySelector(".dropdown-toggle")
+        ?.setAttribute("aria-expanded", "false");
+    });
+
+    if (shouldOpen) {
+      parent.classList.add("open");
+      button.setAttribute("aria-expanded", "true");
+    }
+  });
+});
+
+document.addEventListener("click", event => {
+  if (!event.target.closest("#mainNav")) {
+    document.querySelectorAll("#mainNav .dropdown").forEach(item => {
+      item.classList.remove("open");
+      item.querySelector(".dropdown-toggle")
+        ?.setAttribute("aria-expanded", "false");
+    });
+  }
+});
+  </script>
 
 </body>
 </html>
