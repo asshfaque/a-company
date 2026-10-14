@@ -873,17 +873,31 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 }
 
 /* Show menus on hover, keyboard focus, or click */
-#mainNav .dropdown:hover > .dropdown-menu:not(.mega-menu),
-#mainNav .dropdown:focus-within > .dropdown-menu:not(.mega-menu),
-#mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
+/* Desktop: open on hover or click; allow closing on click */
+
+@media (min-width: 1081px) {
+  #mainNav .dropdown:hover > .dropdown-menu:not(.mega-menu),
+  #mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
     display: block;
+  }
+
+  #mainNav .dropdown:hover > .mega-menu,
+  #mainNav .dropdown.open > .mega-menu {
+    display: grid;
+  }
 }
 
-#mainNav .dropdown:hover > .mega-menu,
-#mainNav .dropdown:focus-within > .mega-menu,
-#mainNav .dropdown.open > .mega-menu {
+/* Mobile/tablet: open only when clicked */
+@media (max-width: 1080px) {
+  #mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
+    display: block;
+  }
+
+  #mainNav .dropdown.open > .mega-menu {
     display: grid;
+  }
 }
+
 
 /* Three evenly aligned service columns */
 #mainNav .mega-column {
@@ -931,19 +945,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     display: none;
 }
 
-/* Show the Business Setup dropdown only on hover, focus, or click */
-#mainNav .dropdown:hover > .dropdown-menu:not(.mega-menu),
-#mainNav .dropdown:focus-within > .dropdown-menu:not(.mega-menu),
-#mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
-    display: block;
-}
 
-/* Show the Services mega menu only on hover, focus, or click */
-#mainNav .dropdown:hover > .mega-menu,
-#mainNav .dropdown:focus-within > .mega-menu,
-#mainNav .dropdown.open > .mega-menu {
-    display: grid;
-}
 
 
 /* Navigation heading underline animation */
@@ -1477,7 +1479,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
   <div class="wrap bar">
 <a class="logo" href="#top" aria-label="abc BUSINESS SOLUTION home">
-  <img src="model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
+  <img src="C:\newLearning\work\in progress\AlphytixBusiness Soultion Logos\AlphytixBusiness Soultion Logos\model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
 </a>
 <nav aria-label="Main navigation">
   <ul class="nav-links" id="mainNav">
