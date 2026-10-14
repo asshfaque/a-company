@@ -1312,6 +1312,77 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     display: none !important;
   }
 }
+
+/* Desktop: center the first five logos */
+@media screen and (min-width: 769px) {
+  #logoCarousel .logo-slide:first-child {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mobile-logo-carousel {
+    display: none !important;
+  }
+}
+
+/* Mobile logo carousel */
+.mobile-logo-carousel {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  /* Hide the existing desktop carousel on mobile */
+  #logoCarousel {
+    display: none !important;
+  }
+
+  .mobile-logo-carousel {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mobile-logo-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .mobile-logo-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
+    padding: 12px 8px;
+  }
+
+  .mobile-logo-slide .logo-card {
+    width: 100%;
+    height: 75px;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+
+  .mobile-logo-slide .logo-card img {
+    display: block;
+    max-width: 100%;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+}
 </style>
 </head>
 <body>
@@ -1691,6 +1762,53 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
       </div>
     </div>
+
+<!-- MOBILE LOGO CAROUSEL -->
+<div class="mobile-logo-carousel" id="mobileLogoCarousel">
+
+  <div class="mobile-logo-track" id="mobileLogoTrack">
+
+    <!-- PART 1: Logos 1–3 -->
+    <div class="mobile-logo-slide">
+      <div class="logo-card">
+        <img src="https://i.pinimg.com/1200x/73/a7/28/73a72898a5265702b913ff227b8a0204.jpg" alt="Partner 1">
+      </div>
+      <div class="logo-card">
+        <img src="images/logo2.png" alt="Partner 2">
+      </div>
+      <div class="logo-card">
+        <img src="images/logo3.png" alt="Partner 3">
+      </div>
+    </div>
+
+    <!-- PART 2: Logos 4–6 -->
+    <div class="mobile-logo-slide">
+      <div class="logo-card">
+        <img src="images/logo4.png" alt="Partner 4">
+      </div>
+      <div class="logo-card">
+        <img src="images/logo5.png" alt="Partner 5">
+      </div>
+      <div class="logo-card">
+        <img src="images/logo6.png" alt="Partner 6">
+      </div>
+    </div>
+
+    <!-- PART 3: Logos 7–9 -->
+    <div class="mobile-logo-slide">
+      <div class="logo-card">
+        <img src="images/logo7.png" alt="Partner 7">
+      </div>
+      <div class="logo-card">
+        <img src="images/logo8.png" alt="Partner 8">
+      </div>
+      <div class="logo-card">
+        <img src="images/logo9.png" alt="Partner 9">
+      </div>
+    </div>
+
+  </div>
+</div>
 
     <div class="logo-dots" id="logoDots"></div>
 
@@ -2155,6 +2273,50 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", updateActiveLink);
 
     updateActiveLink();
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const carousel = document.getElementById("mobileLogoCarousel");
+  const track = document.getElementById("mobileLogoTrack");
+
+  if (!carousel || !track) return;
+
+  const slides = track.querySelectorAll(".mobile-logo-slide");
+  let currentSlide = 0;
+  let timer = null;
+
+  function showSlide(index) {
+    currentSlide = index;
+    track.style.transform =
+      `translateX(-${currentSlide * 100}%)`;
+  }
+
+  function startCarousel() {
+    if (window.innerWidth > 768 || timer) return;
+
+    timer = setInterval(function () {
+      showSlide((currentSlide + 1) % slides.length);
+    }, 5000);
+  }
+
+  function stopCarousel() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  function updateCarousel() {
+    stopCarousel();
+    showSlide(0);
+
+    if (window.innerWidth <= 768) {
+      startCarousel();
+    }
+  }
+
+  updateCarousel();
+  window.addEventListener("resize", updateCarousel);
 });
 
 </script>
