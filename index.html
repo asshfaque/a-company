@@ -92,7 +92,7 @@ nav ul{list-style:none;margin:0;padding:0}
             rgba(3, 11, 91, 0.65) 50%,
             rgba(3, 11, 91, 0.25) 100%
         ),
-        url("C:/newLearning/work/in progress/pexels-mikhail-nilov-7988240.jpg");
+        url("pexels-mikhail-nilov-7988240.jpg");
 
     background-size: cover;
     background-position: center;
@@ -1407,6 +1407,274 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     }
 }
 
+
+
+/* ===== ABC Business Solution: Flip Service Cards ===== */
+
+#svc-g.grid.g4 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+.service-flip-card {
+    perspective: 1200px;
+    min-width: 0;
+    min-height: 440px;
+}
+
+.service-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 440px;
+    transform-style: preserve-3d;
+    transition: transform 0.75s ease;
+}
+
+.service-flip-card.is-flipped .service-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.service-flip-front,
+.service-flip-back {
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    padding: 30px 26px;
+    border: 1px solid #E1E5F0;
+    border-radius: 18px;
+    background: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(3, 11, 91, 0.08);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.service-flip-front {
+    border-top: 4px solid #030B5B;
+}
+
+.service-flip-back {
+    transform: rotateY(180deg);
+    background: #030B5B;
+    color: #FFFFFF;
+    border-top: 4px solid #C1272D;
+}
+
+.service-flip-front h3,
+.service-flip-back h3 {
+    margin: 20px 0 12px;
+    color: #030B5B;
+    font-size: 22px;
+    line-height: 1.35;
+}
+
+.service-flip-back h3 {
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+
+.service-flip-front p {
+    color: #555B70;
+    line-height: 1.8;
+    margin: 0 0 20px;
+}
+
+.service-flip-back p {
+    color: #E7E9F5;
+    line-height: 1.7;
+    margin: 0 0 12px;
+}
+
+.service-flip-icon {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: #F5F7FB;
+    color: #030B5B;
+}
+
+.service-flip-icon .ic {
+    width: 29px;
+    height: 29px;
+}
+
+.service-flip-back ul {
+    padding-left: 20px;
+    margin: 4px 0 22px;
+    color: #FFFFFF;
+    line-height: 1.9;
+}
+
+.service-flip-back li {
+    padding-left: 2px;
+    margin-bottom: 5px;
+}
+
+.service-flip-action {
+    margin-top: auto;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 8px;
+    background: #C1272D;
+    color: #FFFFFF;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.service-flip-action:hover {
+    background: #A51F25;
+    transform: translateY(-2px);
+}
+
+.service-flip-action:focus-visible {
+    outline: 3px solid #C1272D;
+    outline-offset: 4px;
+}
+
+.service-flip-back .service-flip-action {
+    background: #FFFFFF;
+    color: #030B5B;
+}
+
+.service-flip-back .service-flip-action:hover {
+    background: #F5F7FB;
+}
+
+@media (max-width: 900px) {
+    #svc-g.grid.g4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    #svc-g.grid.g4 {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .service-flip-card,
+    .service-flip-inner {
+        min-height: 410px;
+    }
+
+    .service-flip-front,
+    .service-flip-back {
+        padding: 26px 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-flip-inner,
+    .service-flip-action {
+        transition: none;
+    }
+}
+
+
+
+/* Images on the three service cards */
+
+/* Full-background images on service cards */
+.service-flip-front {
+  position: absolute;
+  inset: 0;
+  padding: 28px 24px;
+  justify-content: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  border: none;
+  border-radius: 18px;
+  background: #030B5B;
+}
+
+/* Image fills the entire card */
+.service-flip-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Dark overlay keeps text readable */
+
+.service-flip-front::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(3, 11, 91, 0.82) 0%,
+    rgba(3, 11, 91, 0.48) 45%,
+    rgba(3, 11, 91, 0.05) 100%
+  );
+  z-index: -1;
+}
+
+
+.service-flip-front .service-flip-icon {
+  background: rgba(255, 255, 255, 0.95);
+  margin: 0 0 14px;
+}
+
+.service-flip-front h3 {
+  color: #FFFFFF;
+  margin: 0 0 12px;
+}
+
+.service-flip-front p {
+  color: #FFFFFF;
+  margin: 0 0 20px;
+  line-height: 1.7;
+}
+
+.service-flip-front .service-flip-action {
+  margin: 0;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .service-flip-front {
+    padding: 24px 22px;
+  }
+}
+
+
+
+/* Remove underline from service links */
+.service-detail-link,
+.service-detail-link:visited,
+.service-detail-link:hover,
+.service-detail-link:active {
+  text-decoration: none !important;
+  color: #FFFFFF;
+}
+
+.service-detail-link:hover {
+  color: #C1272D;
+}
+
+/* Hide orange indicators on mobile */
+@media (max-width: 768px) {
+  .mobile-logo-indicators,
+  .logo-dots {
+    display: none !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1501,7 +1769,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
   <div class="wrap bar">
 <a class="logo" href="#top" aria-label="abc BUSINESS SOLUTION home">
-  <img src="C:\newLearning\work\in progress\AlphytixBusiness Soultion Logos\AlphytixBusiness Soultion Logos\model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
+  <img src="model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
 </a>
 <nav aria-label="Main navigation">
   <ul class="nav-links" id="mainNav">
@@ -1650,7 +1918,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
         </div>
 
         <div class="vis in" style="animation-delay:.4s">
-		<img src="C:\newLearning\work\in progress\pexels-silverkblack-23496604.jpg" alt="Business professionals collaborating in an office" style="width:100%;height:100%;object-fit:cover">
+		<img src="pexels-silverkblack-23496604.jpg" alt="Business professionals collaborating in an office" style="width:100%;height:100%;object-fit:cover">
             <div class="float">
                 <b>Mainland, free zone or offshore</b>
                 We help you compare structures before you decide.
@@ -1699,7 +1967,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     <div class="what-abc-visual">
       <div class="what-abc-image-frame">
         <img
-          src="C:\newLearning\work\in progress\pexels-silverkblack-36733319.jpg"
+          src="pexels-silverkblack-36733319.jpg"
           alt="Modern business buildings representing UAE corporate services"
           loading="lazy"
         >
@@ -1720,7 +1988,17 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 <section class="alt" id="looking"><div class="wrap"><div class="hd rv"><span class="lab">How can we help</span><h2>What Are You Looking For?</h2><p>Tell us what you need, and we’ll help you find the right business solution.</p></div><div class="grid g4" id="looking-g"></div></div></section>
 <section id="solutions"><div class="wrap"><div class="hd rv"><span class="lab">Structures</span><h2>Complete Business Setup Solutions</h2><p>Choose a business structure that aligns with your goals, activities and long-term plans.</p></div><div class="grid g3" id="sol-g"></div></div></section>
 <section class="alt" id="quiz"><div class="wrap"><div class="hd rv"><span class="lab">Setup finder</span><h2>Find the Right UAE Business Setup</h2><p>Answer a few simple questions to discover which setup options may suit your business.</p></div><div class="panel rv" id="quizbox" aria-live="polite"></div></div></section>
-<section id="services"><div class="wrap"><div class="hd rv"><span class="lab">Services</span><h2>Our Business Services</h2><p>Practical business support from formation to ongoing corporate administration.</p></div><div class="grid g4" id="svc-g"></div></div></section>
+
+<section id="services"><div class="wrap"><div class="hd rv">
+  <span class="lab">Services</span>
+  <h2>Our Business Services</h2>
+  <p>Practical business support from formation to ongoing corporate administration.</p>
+</div>
+<div class="grid g4" id="svc-g">
+</div>
+</div>
+</section>
+
 <section class="alt" id="jurisdiction"><div class="wrap"><div class="hd rv"><span class="lab">Compare</span><h2>Choose Your Business Jurisdiction</h2><p>Understand the differences before deciding where to establish your business.</p></div><div class="grid g3" id="jur-g"></div><p style="margin-top:28px"><button class="btn" id="cmpbtn" aria-expanded="false" aria-controls="cmp">Compare Options</button></p><div class="tw" id="cmp" hidden></div><p class="note" style="margin-top:12px">General considerations only; rules vary by authority and activity. Confirm with the licensing authority.</p></div></section>
 <section id="freezones"><div class="wrap"><div class="hd rv"><span class="lab">Free zones</span><h2>Explore Popular UAE Free Zones</h2><p>Discover jurisdictions that may suit different industries, activities and business objectives.</p></div><div class="grid g4" id="fz-g"></div><p class="note" style="margin-top:14px">Descriptions are general. Verify current activities, fees and eligibility with each authority. abc BUSINESS SOLUTION is not affiliated with these free zones unless stated.</p></div></section>
 
@@ -1768,20 +2046,20 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
         <!-- GROUP 1: LOGOS 1–5 -->
         <div class="logo-slide">
           <div class="logo-card">
-            <img src="https://i.pinimg.com/1200x/73/a7/28/73a72898a5265702b913ff227b8a0204.jpg" alt="Partner 1">
+            <img src="Dubai Court.webp" alt="Partner 1">
           </div>
-          <div class="logo-card"><img src="images/logo2.png" alt="Partner 2"></div>
-          <div class="logo-card"><img src="images/logo3.png" alt="Partner 3"></div>
-          <div class="logo-card"><img src="images/logo4.png" alt="Partner 4"></div>
-          <div class="logo-card"><img src="images/logo5.png" alt="Partner 5"></div>
+          <div class="logo-card"><img src="Dubai Economy.png" alt="Partner 2"></div>
+          <div class="logo-card"><img src="JD-WM-Crest-RGB-vertical.jpg" alt="Partner 3"></div>
+          <div class="logo-card"><img src="land-department.png" alt="Partner 4"></div>
+          <div class="logo-card"><img src="MOFA.jpg" alt="Partner 5"></div>
         </div>
 
         <!-- GROUP 2: LOGOS 6–9 -->
         <div class="logo-slide">
-          <div class="logo-card"><img src="images/logo6.png" alt="Partner 6"></div>
-          <div class="logo-card"><img src="images/logo7.png" alt="Partner 7"></div>
-          <div class="logo-card"><img src="images/logo8.png" alt="Partner 8"></div>
-          <div class="logo-card"><img src="images/logo9.png" alt="Partner 9"></div>
+          <div class="logo-card"><img src="mohre.webp" alt="Partner 6"></div>
+          <div class="logo-card"><img src="rera.png" alt="Partner 7"></div>
+          <div class="logo-card"><img src="RTA.png" alt="Partner 8"></div>
+          <div class="logo-card"><img src="United Arab Emirates Ministry of Justice.png" alt="Partner 9"></div>
         </div>
 
       </div>
@@ -1795,39 +2073,39 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     <!-- PART 1: Logos 1–3 -->
     <div class="mobile-logo-slide">
       <div class="logo-card">
-        <img src="https://i.pinimg.com/1200x/73/a7/28/73a72898a5265702b913ff227b8a0204.jpg" alt="Partner 1">
+        <img src="C:\newLearning\work\in progress\Authority Logos\Authority Logos\Dubai Court.webp" alt="Partner 1">
       </div>
       <div class="logo-card">
-        <img src="images/logo2.png" alt="Partner 2">
+        <img src="C:\newLearning\work\in progress\Authority Logos\Authority Logos\Dubai Economy.png" alt="Partner 2">
       </div>
       <div class="logo-card">
-        <img src="images/logo3.png" alt="Partner 3">
+        <img src="JD-WM-Crest-RGB-vertical.jpg"" alt="Partner 3">
       </div>
     </div>
 
     <!-- PART 2: Logos 4–6 -->
     <div class="mobile-logo-slide">
       <div class="logo-card">
-        <img src="images/logo4.png" alt="Partner 4">
+        <img src="land-department.png" alt="Partner 4">
       </div>
       <div class="logo-card">
-        <img src="images/logo5.png" alt="Partner 5">
+        <img src="MOFA.jpg" alt="Partner 5">
       </div>
       <div class="logo-card">
-        <img src="images/logo6.png" alt="Partner 6">
+        <img src="mohre.webp" alt="Partner 6">
       </div>
     </div>
 
     <!-- PART 3: Logos 7–9 -->
     <div class="mobile-logo-slide">
       <div class="logo-card">
-        <img src="images/logo7.png" alt="Partner 7">
+        <img src="rera.png" alt="Partner 7">
       </div>
       <div class="logo-card">
-        <img src="images/logo8.png" alt="Partner 8">
+        <img src="RTA.png" alt="Partner 8">
       </div>
       <div class="logo-card">
-        <img src="images/logo9.png" alt="Partner 9">
+        <img src="United Arab Emirates Ministry of Justice.png" alt="Partner 9">
       </div>
     </div>
 
@@ -1930,7 +2208,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
   function restartTimer() {
     clearInterval(timer);
-    timer = setInterval(nextSlide, 10000);
+    timer = setInterval(nextSlide, 5000);
   }
 
   showSlide(0);
@@ -2068,18 +2346,154 @@ function card(parent,o){
 ["shield","Offshore","Offshore structures are typically used for holding assets or international structuring and carry operating limits, subject to applicable rules.","Explore Offshore"]
 ].forEach(([icon,title,text,cta])=>card($("#sol-g"),{icon,title,text,href:"#jurisdiction",cta}));
 
-[
-["building","Company Formation","Guidance on structure, activity and application."],
-["doc","Business Licenses","Support with licence types, applications and requirements."],
-["pin","Free Zones","Help comparing and applying to free zone authorities."],
-["users","PRO Services","Government liaison and administrative paperwork."],
-["id","Visa Services","Guidance on residency and visa processes."],
-["bank","Banking","Assistance with account-opening preparation."],
-["calc","Accounting & Tax","Bookkeeping, VAT and corporate tax support."],
-["list","Document Clearing","Attestation, translation and document processing."]
-]
 
-.forEach(([icon,title,text])=>card($("#svc-g"),{icon,title,text,href:"contact.html",cta:"Learn More"}));
+
+/* ===== Three Interactive Flip Service Cards ===== */
+
+const serviceGroups = [
+  {
+    icon: "id",
+    title: "Visa & PRO Services",
+    image: "https://images.pexels.com/photos/7820321/pexels-photo-7820321.jpeg",
+    intro: "Practical assistance with visas, identity documents and government-related procedures.",
+    description: "Get guidance with your UAE visa and administrative requirements.",
+    services: [
+    { title: "Golden Visa", page: "contact.html" },
+    { title: "Emirates ID", page: "mainland-setup.html" },
+    { title: "Other PRO Services", page: "free-zone-setup.html" },
+    ]
+  },
+  {
+    icon: "building",
+    title: "Company Setup",
+    image: "https://images.pexels.com/photos/31429683/pexels-photo-31429683.png",
+    intro: "Explore suitable business structures and get support throughout the company formation process.",
+    description: "Understand your options for establishing a business in the UAE.",
+    services: [
+    { title: "Company Formation", page: "contact.html" },
+    { title: "Mainland Setup", page: "mainland-setup.html" },
+    { title: "Free Zone Setup", page: "free-zone-setup.html" },
+    { title: "Offshore Setup", page: "offshore-setup.html" },
+    { title: "Business Licensing", page: "business-licensing.html" }    ]
+  },
+  {
+    icon: "calc",
+    title: "Corporate Services",
+    image: "https://images.pexels.com/photos/5439398/pexels-photo-5439398.jpeg",
+    intro: "Ongoing business support to help manage administration and corporate requirements.",
+    description: "Explore services for managing your existing UAE business.",
+    services: [
+    { title: "Banking Assistance", page: "contact.html" },
+    { title: "Acoounting", page: "mainland-setup.html" },
+    { title: "VAT", page: "free-zone-setup.html" },
+    { title: "Corporate Tax", page: "offshore-setup.html" },
+    { title: "Insurance", page: "business-licensing.html" },
+    { title: "License Renewal", page: "business-licensing.html" },
+    { title: "License Amendment", page: "business-licensing.html" },
+    { title: "Business Closure", page: "business-licensing.html" },
+    ]
+  }
+];
+
+const serviceGrid = $("#svc-g");
+
+if (serviceGrid) {
+  serviceGrid.replaceChildren();
+
+  serviceGroups.forEach((service, index) => {
+    const card = h("article", "service-flip-card");
+    const inner = h("div", "service-flip-inner");
+
+    // Front of the card
+    const front = h("div", "service-flip-front");
+    const iconBox = h("div", "service-flip-icon");
+    iconBox.append(ic(service.icon));
+
+    const frontTitle = h("h3", null, service.title);
+    const frontText = h("p", null, service.intro);
+
+    const learnButton = h(
+      "button",
+      "service-flip-action",
+      "Learn More",
+      {
+        type: "button",
+        "aria-expanded": "false",
+        "aria-label": "Learn more about " + service.title
+      }
+    );
+
+    
+const cardImage = h("img", "service-flip-image");
+cardImage.src = service.image;
+cardImage.alt = service.title;
+cardImage.loading = "lazy";
+
+front.append(cardImage, frontTitle, frontText, learnButton);
+
+
+    // Back of the card
+    const back = h("div", "service-flip-back");
+    back.setAttribute("aria-hidden", "true");
+    back.setAttribute("inert", "");
+
+    const backTitle = h("h3", null, service.title);
+    const backText = h("p", null, service.description);
+    const list = h("ul");
+
+
+service.services.forEach(item => {
+  const li = h("li");
+  const link = h("a", "service-detail-link", item.title);
+  link.href = item.page;
+  li.append(link);
+  list.append(li);
+});
+
+
+    const backButton = h(
+      "button",
+      "service-flip-action",
+      "← Back",
+      {
+        type: "button",
+        "aria-expanded": "true",
+        "aria-label": "Return to " + service.title
+      }
+    );
+
+    back.append(backTitle, backText, list, backButton);
+    inner.append(front, back);
+    card.append(inner);
+
+    function setFlipped(flipped) {
+      card.classList.toggle("is-flipped", flipped);
+
+      learnButton.setAttribute("aria-expanded", String(flipped));
+      backButton.setAttribute("aria-expanded", String(flipped));
+
+      back.setAttribute("aria-hidden", String(!flipped));
+
+      if (flipped) {
+        back.removeAttribute("inert");
+      } else {
+        back.setAttribute("inert", "");
+      }
+    }
+
+    learnButton.addEventListener("click", () => {
+      setFlipped(true);
+    });
+
+    backButton.addEventListener("click", () => {
+      setFlipped(false);
+      learnButton.focus();
+    });
+
+    serviceGrid.append(card);
+  });
+}
+
 [
 ["Mainland","Suitable business activities: trading, services and activities needing UAE-wide market access.","Operating: consider office and local-licence requirements.","Licensing: issued by the relevant emirate authority; some activities need approvals."],
 ["Free Zone","Benefits are jurisdiction-specific; check each zone’s terms.","Activities: limited to the zone’s approved list.","Office and visa options vary by zone and package."],
@@ -2167,7 +2581,7 @@ const FOOT=[
  const brand=h("div","br");
  
 const logo = h("img", null, "", {
-  src: "C:/newLearning/work/in progress/AlphytixBusiness Soultion Logos/AlphytixBusiness Soultion Logos/white model2.png",
+  src: "white model2.png",
   alt: "abc BUSINESS SOLUTION",
   style: "width:120px;max-width:100%;height:auto;object-fit:contain;display:block;margin-bottom:12px;"
 });
@@ -2322,7 +2736,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     timer = setInterval(function () {
       showSlide((currentSlide + 1) % slides.length);
-    }, 5000);
+    }, 3000);
   }
 
   function stopCarousel() {
