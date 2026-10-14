@@ -1386,14 +1386,16 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
   }
 }
 
-@media (max-width: 1080px) {
-    #mainNav .dropdown.open > .dropdown-menu:not(.mega-menu) {
-        display: block;
-    }
+/* Match dropdown button hover effect with navigation links */
+#mainNav .dropdown-toggle .arrow {
+    display: inline-block;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
 
-    #mainNav .dropdown.open > .mega-menu {
-        display: grid;
-    }
+/* Point upward whenever the dropdown is open */
+#mainNav .dropdown-toggle[aria-expanded="true"] .arrow {
+    transform: rotate(180deg) !important;
 }
 </style>
 </head>
