@@ -1397,6 +1397,16 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 #mainNav .dropdown-toggle[aria-expanded="true"] .arrow {
     transform: rotate(180deg) !important;
 }
+
+
+/* PC: Always show the down arrow */
+@media (min-width: 1081px) {
+    #mainNav .dropdown-toggle[aria-expanded="true"] .arrow,
+    #mainNav .dropdown-toggle .arrow {
+        transform: rotate(0deg) !important;
+    }
+}
+
 </style>
 </head>
 <body>
