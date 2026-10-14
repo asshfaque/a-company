@@ -92,7 +92,7 @@ nav ul{list-style:none;margin:0;padding:0}
             rgba(3, 11, 91, 0.65) 50%,
             rgba(3, 11, 91, 0.25) 100%
         ),
-        url("pexels-mikhail-nilov-7988240.jpg");
+        url("C:/newLearning/work/in progress/pexels-mikhail-nilov-7988240.jpg");
 
     background-size: cover;
     background-position: center;
@@ -352,7 +352,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
   box-shadow: 0 20px 50px rgba(3, 11, 91, 0.15);
 }
 
-.what-abc-image-frame  {
+.what-abc-image-frame img {
   width: 100%;
   height: 100%;
   display: block;
@@ -611,14 +611,14 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 }
 
 .logo-carousel {
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 }
 
 .logo-track {
   display: flex;
   width: 100%;
-  transition: transform 0.8s ease-in-out;
+  transition: transform 0.6s ease;
 }
 
 .logo-slide {
@@ -626,20 +626,18 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
   min-width: 0;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 20px;
-  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
-.logo-card {
-  height: 125px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ECEEF4;
-  border-radius: 8px;
-  background: #FFFFFF;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.logo-card img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .logo-card:hover {
@@ -701,10 +699,16 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .logo-track,
+@media (max-width: 600px) {
+  .logo-slide {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+  }
+
   .logo-card {
-    transition: none;
+    height: 100px;
+    padding: 6px;
   }
 }
 
@@ -1079,6 +1083,228 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
   }
 }
 
+
+/* Center logos when a desktop slide has fewer than 5 */
+
+/* Desktop: center all 4 logos in the second slide */
+@media (min-width: 601px) {
+  #logoTrack .logo-slide:nth-child(2) {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    flex: 0 0 100%;
+    box-sizing: border-box;
+  }
+
+  #logoTrack .logo-slide:nth-child(2) .logo-card {
+    flex: 0 1 180px;
+    width: 180px;
+    min-width: 0;
+  }
+}
+
+/* Mobile: keep 3 logos per row */
+@media (max-width: 600px) {
+  #logoTrack .logo-slide:nth-child(2) {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  #logoTrack .logo-slide:nth-child(2) .logo-card {
+    width: auto;
+    flex: initial;
+  }
+}
+
+
+
+/* TOP CONTACT BAR */
+.top-contact-bar {
+  width: 100%;
+  background: #030B5B;
+  color: #FFFFFF;
+  position: relative;
+  z-index: 51;
+  font-size: 12px;
+}
+
+.top-contact-inner {
+  max-width: 1250px;
+  min-height: 42px;
+  margin: 0 auto;
+  padding: 7px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.top-contact-info {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.top-contact-info a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.top-contact-info a:hover {
+  color: #FFB4B7;
+}
+
+.top-contact-info svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.top-social-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.top-social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: color 0.25s ease, background 0.25s ease,
+              transform 0.25s ease;
+}
+
+.top-social-links svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.top-social-links a:hover {
+  color: #FFFFFF;
+  background: #C1272D;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .top-contact-inner {
+    padding: 9px 14px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .top-contact-info {
+    width: 100%;
+    justify-content: center;
+    gap: 8px 18px;
+  }
+
+  .top-contact-info a {
+    font-size: 11px;
+  }
+
+  .top-social-links {
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .top-social-links a {
+    width: 27px;
+    height: 27px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-contact-info a,
+  .top-social-links a {
+    transition: none;
+  }
+}
+
+
+/* Hidden on desktop */
+.mobile-menu-extra {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-extra {
+    display: block;
+    padding: 18px 16px;
+    margin-top: 10px;
+    border-top: 1px solid #E1E5F0;
+    background: #FFFFFF;
+  }
+
+  .mobile-social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+
+  .mobile-social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #F5F7FB;
+    color: #030B5B;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .mobile-contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    color: #030B5B;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-contact-link > i {
+    width: 22px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .whatsapp-link > i {
+    color: #25D366;
+  }
+}
 </style>
 </head>
 <body>
@@ -1098,9 +1324,82 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
 </defs></svg>
 
-<header id="top"><div class="wrap bar">
+<header id="top">
+
+<!-- TOP CONTACT & SOCIAL BAR -->
+<div class="top-contact-bar">
+  <div class="top-contact-inner">
+
+    <!-- Left: Contact numbers -->
+    <div class="top-contact-info">
+      <a href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.7A8.5 8.5 0 1 1 20.5 11.5Z"/>
+          <path d="M8.5 8.5c.5 2.5 2.5 4.5 5 5l1.5-1.2 2 1c-.2 1.5-1.2 2.2-2.5 2.2-3.5-.5-6.5-3.5-7-7 0-1.3.7-2.3 2.2-2.5l1 2Z"/>
+        </svg>
+        <span>WhatsApp: +971 XX XXX XXXX</span>
+      </a>
+
+      <a href="tel:+971XXXXXXXXX" aria-label="Call our mobile number">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/>
+        </svg>
+        <span>Mobile: +971 XX XXX XXXX</span>
+      </a>
+    </div>
+
+    <!-- Right: Social media icons -->
+    <div class="top-social-links" aria-label="Social media links">
+
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 8h3V4h-3a5 5 0 0 0-5 5v3H6v4h3v5h4v-5h3l1-4h-4V9a1 1 0 0 1 1-1Z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 9v10M5 5v.1M10 19v-6a4 4 0 0 1 8 0v6M10 10v9"/>
+          <circle cx="5" cy="5" r="1"/>
+        </svg>
+      </a>
+
+      <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 4l16 16M20 4 4 20M4 4h5l11 16h-5L4 4Z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 3v11a4 4 0 1 1-4-4M14 3c1 3 3 5 6 5"/>
+        </svg>
+      </a>
+
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="2" y="5" width="20" height="14" rx="4"/>
+          <path d="m10 9 5 3-5 3Z" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="wrap bar">
 <a class="logo" href="#top" aria-label="abc BUSINESS SOLUTION home">
-  <img src="model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
+  <img src="C:\newLearning\work\in progress\AlphytixBusiness Soultion Logos\AlphytixBusiness Soultion Logos\model3.png" alt="abc BUSINESS SOLUTION" class="site-logo">
 </a>
 <nav aria-label="Main navigation">
   <ul class="nav-links" id="mainNav">
@@ -1126,12 +1425,10 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
       <div class="dropdown-menu mega-menu">
         <div class="mega-column">
-          <h4>PRO &amp; VISA</h4>
-          <a href="index.html#services">Investor Visa</a>
-          <a href="index.html#services">Partner Visa</a>
-          <a href="servicedemo.html">Golden Visa</a>
+          <h4>VISA SERVICES</h4>
+          <a href="index.html#services">Golden Visa</a>
           <a href="index.html#services">Emirates ID</a>
-          <a href="index.html#services">PRO Services</a>
+          <a href="index.html#services">Other PRO Services</a>
         </div>
 
         <div class="mega-column">
@@ -1157,14 +1454,70 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
       </div>
     </li>
 
+
     <li>
       <a href="index.html#why">ABOUT</a>
     </li>
   </ul>
+
+  <!-- Mobile-only social icons and contact details -->
+  <div class="mobile-menu-extra">
+
+    <div class="mobile-social-links">
+      <a href="YOUR_FACEBOOK_URL" target="_blank"
+         rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+
+      <a href="YOUR_FACEBOOK_URL" target="_blank"
+         rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+
+      <a href="YOUR_INSTAGRAM_URL" target="_blank"
+         rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="YOUR_LINKEDIN_URL" target="_blank"
+         rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+
+      <a href="YOUR_FACEBOOK_URL" target="_blank"
+         rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+
+      <a href="YOUR_FACEBOOK_URL" target="_blank"
+         rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </div>
+
+    <a class="mobile-contact-link" href="tel:+971XXXXXXXXX">
+      <i class="fas fa-phone"></i>
+      <span>+971 XX XXX XXXX</span>
+    </a>
+
+    <a class="mobile-contact-link whatsapp-link"
+       href="https://wa.me/971XXXXXXXXX"
+       target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-whatsapp"></i>
+      <span>WhatsApp: +971 XX XXX XXXX</span>
+    </a>
+
+  </div>
+</nav>
 </nav>
 <a class="btn hcta" href="contact.html">Talk to an Expert</a>
-<button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
-    <span></span><span></span><span></span>
+<button class="burger" id="burger" type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mainNav">
+    <span></span>
+    <span></span>
+    <span></span>
 </button>
 </div></header>
 
@@ -1195,7 +1548,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
         </div>
 
         <div class="vis in" style="animation-delay:.4s">
-		<img src="pexels-silverkblack-23496604.jpg" alt="Business professionals collaborating in an office" style="width:100%;height:100%;object-fit:cover">
+		<img src="C:\newLearning\work\in progress\pexels-silverkblack-23496604.jpg" alt="Business professionals collaborating in an office" style="width:100%;height:100%;object-fit:cover">
             <div class="float">
                 <b>Mainland, free zone or offshore</b>
                 We help you compare structures before you decide.
@@ -1244,7 +1597,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     <div class="what-abc-visual">
       <div class="what-abc-image-frame">
         <img
-          src="pexels-silverkblack-36733319.jpg"
+          src="C:\newLearning\work\in progress\pexels-silverkblack-36733319.jpg"
           alt="Modern business buildings representing UAE corporate services"
           loading="lazy"
         >
@@ -1296,6 +1649,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
 <section id="how"><div class="wrap"><div class="hd rv"><span class="lab">Process</span><h2>How It Works</h2><p>A clear process to help you move from planning to setup.</p></div><ol class="steps" id="steps" style="list-style:none;margin:0"></ol><p class="note">Licences, visas and bank accounts depend on eligibility, authority approval and third-party requirements; none are guaranteed.</p></div></section>
 
+
 <!-- LOGO CAROUSEL SECTION -->
 <section class="logo-section">
   <div class="logo-container">
@@ -1309,13 +1663,10 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
     <div class="logo-carousel" id="logoCarousel">
       <div class="logo-track" id="logoTrack">
 
-        <!-- GROUP 1: FIRST 5 LOGOS -->
+        <!-- GROUP 1: LOGOS 1–5 -->
         <div class="logo-slide">
-          <div>
-            <img
-                style="width: 150px; height: 150px; object-fit: contain; display: block;"
-                src="https://i.pinimg.com/1200x/73/a7/28/73a72898a5265702b913ff227b8a0204.jpg"
-                alt="Partner 1">
+          <div class="logo-card">
+            <img src="https://i.pinimg.com/1200x/73/a7/28/73a72898a5265702b913ff227b8a0204.jpg" alt="Partner 1">
           </div>
           <div class="logo-card"><img src="images/logo2.png" alt="Partner 2"></div>
           <div class="logo-card"><img src="images/logo3.png" alt="Partner 3"></div>
@@ -1323,16 +1674,13 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
           <div class="logo-card"><img src="images/logo5.png" alt="Partner 5"></div>
         </div>
 
-        <!-- GROUP 2: NEXT 5 LOGOS -->
+        <!-- GROUP 2: LOGOS 6–9 -->
         <div class="logo-slide">
           <div class="logo-card"><img src="images/logo6.png" alt="Partner 6"></div>
           <div class="logo-card"><img src="images/logo7.png" alt="Partner 7"></div>
           <div class="logo-card"><img src="images/logo8.png" alt="Partner 8"></div>
           <div class="logo-card"><img src="images/logo9.png" alt="Partner 9"></div>
-          <div class="logo-card"><img src="images/logo10.png" alt="Partner 10"></div>
         </div>
-
-        <!-- GROUP 3: ADD MORE LOGOS HERE IF NEEDED -->
 
       </div>
     </div>
@@ -1341,6 +1689,7 @@ footer a:hover{color:#ff8a8f;transform:translateX(4px)}
 
   </div>
 </section>
+
 
 <section class="alt" id="why">
 	<div class="wrap">
@@ -1660,7 +2009,7 @@ COST.forEach(item=>{
 
 const FOOT=[
 ["BUSINESS SETUP",["Company Formation","Mainland","Free Zone","Offshore"],"#solutions"],
-["PRO & VISA",["PRO Services","Investor Visa","Partner Visa","Golden Visa","Emirates ID","Medical","Document Clearing"],"#services"],
+["VISA SERVICES",["Golden Visa","Emirates ID","Other Pro Services"],"#services"],
 ["SERVICES",["Banking","Accounting","VAT","Corporate Tax","Insurance","Renewal","License Amendment","Business Closure"],"#services"],
 ["COMPANY",["About","Why abc","Contact"],"#why"]
 ];
@@ -1669,7 +2018,7 @@ const FOOT=[
  const brand=h("div","br");
  
 const logo = h("img", null, "", {
-  src: "white model2.png",
+  src: "C:/newLearning/work/in progress/AlphytixBusiness Soultion Logos/AlphytixBusiness Soultion Logos/white model2.png",
   alt: "abc BUSINESS SOLUTION",
   style: "width:120px;max-width:100%;height:auto;object-fit:contain;display:block;margin-bottom:12px;"
 });
