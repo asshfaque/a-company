@@ -10,11 +10,22 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23030B5B'/%3E%3Ccircle cx='24' cy='8' r='3' fill='%23C1272D'/%3E%3C/svg%3E">
 <!-- Security: no third-party scripts/fonts, no inline handlers, DOM built with textContent. Add CSP/HSTS/nosniff/Referrer-Policy/Permissions-Policy/frame-ancestors on the server (see index.html checklist); inline <style>/<script> need nonces or hashes in the CSP. -->
 <style>
-:root{--n:#030B5B;--r:#C1272D;--g:#F5F7FB;--b:#E1E5F0;--t:#2b3157;--ff:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+:root
+{
+    --n:#030B5B;
+    --r:#C1272D;
+    --g:#F5F7FB;
+    --b:#E1E5F0;
+    --t:#2b3157;
+    --ff:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif
+}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{margin:0;font:16px/1.65 var(--ff);color:var(--t);background:#fff;overflow-x:hidden}
 h1,h2,h3{color:var(--n);line-height:1.2;margin:0 0 .5em}h1{font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.02em}h2{font-size:clamp(1.6rem,3.2vw,2.2rem)}h3{font-size:1.08rem}
-p{margin:0 0 1em}a{color:inherit}.wrap{max-width:1180px;margin:0 auto;padding:0 20px}section{padding:68px 0}.alt{background:var(--g)}[hidden]{display:none!important}
+p{margin:0 0 1em}a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+section{padding:68px 0}
+.alt{background:var(--g)}[hidden]{display:none!important}
 :focus-visible{outline:3px solid var(--r);outline-offset:2px}
 .lab{color:var(--r);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:10px}
 .hd{max-width:720px;margin-bottom:32px}.hd p{color:#555c80}.hd .sh{color:var(--n);font-weight:700;font-size:1.1rem;margin-bottom:.4em}
@@ -39,56 +50,101 @@ nav ul{list-style:none;margin:0;padding:0}.top{display:flex;gap:4px;align-items:
 @media(min-width:901px){.top>li:hover>.sub,.open>.sub{display:block}}
 .burger{display:none;background:none;border:1px solid var(--b);border-radius:8px;width:44px;height:44px;cursor:pointer}.burger span{display:block;width:20px;height:2px;background:var(--n);margin:5px auto;transition:.3s}
 .menu-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}.menu-open .burger span:nth-child(2){opacity:0}.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-@media(max-width:900px){.burger{display:block}.hcta{display:none}nav{position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--b);max-height:0;overflow:hidden;transition:max-height .35s}
+@media(max-width:900px){.burger{display:block}
+.hcta{display:none}
+nav{position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--b);max-height:0;overflow:hidden;transition:max-height .35s}
 .menu-open nav{max-height:calc(100vh - 72px);overflow-y:auto}.top{flex-direction:column;align-items:stretch;padding:8px 20px 20px}.top>li>a,.top>li>button{width:100%;text-align:left;padding:14px 4px}.sub{position:static;box-shadow:none;border:0;padding:0 0 0 12px}.open>.sub{display:block}}
 /* hero */
-.hero{
-    position:relative;
-    isolation:isolate;
-    overflow:hidden;
-    background:var(--n);
-    color:#fff;
-    padding:96px 0 110px;
-    min-height:min(78vh,640px);
-    display:flex;
-    align-items:center
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #030B5B;
+    color: #fff;
+    padding: 96px 0 110px;
+    min-height: min(78vh, 640px);
+    display: flex;
+    align-items: center;
 }
 
-.hero .wrap{
-    position:relative;
-    width:100%;
+.hero .wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
 }
 
 .hc{max-width:700px}
 
-.hero-vid{
-    position:absolute;
-    inset:0;width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-2;
-    opacity:0;
-    transition:opacity 1s
+
+
+
+.hero-vid {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+
+    filter: brightness(0.75) saturate(0.85);;
+
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
 }
 
-.hero-vid.ready{opacity:1}
 
-.hero:after{
-    content:"";
-    position:absolute;
-    inset:0;z-index:-1;
-    background:linear-gradient(90deg,rgba(3,11,91,.92),rgba(3,11,91,.72) 60%,rgba(3,11,91,.5))
+
+
+
+.hero:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(3, 11, 91, 0.65);
+    opacity: 1;
+    animation: none !important;
+    transition: none !important;
 }
-.hero h1{color:#fff}.hero .lab{color:#ff8a8f}.hero .lead{color:#eef0fb}
-.hero .btn.o{background:transparent;color:#fff;border-color:#fff}.hero .btn.o:hover{background:#fff;color:var(--n)}
-.lead{font-size:1.1rem;max-width:560px}.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+
+
+
+.hero h1 {
+    color: #fff;
+}
+.hero .lab {
+    color: #ff8a8f;
+}
+.hero .lead {
+    color: #eef0fb;
+}
+
+.hero-vid.ready {
+    opacity: 1;
+}
+
+.hero .btn.o{
+    background:transparent;
+    color:#fff;
+    border-color:#fff}
+
+.hero .btn.o:hover{
+    background:#fff;
+    color:var(--n)
+}
+.lead{font-size:1.1rem;max-width:560px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 .in{opacity:0;transform:translateY(18px);animation:up .7s forwards}@keyframes up{to{opacity:1;transform:none}}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}.rv.rv-l{transform:translateX(-40px)}.rv.rv-r{transform:translateX(40px)}.rv.rv-z{transform:scale(.9)}.rv.on{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.in,.rv,.rv.rv-l,.rv.rv-r,.rv.rv-z,.w>span{opacity:1;transform:none}}
 /* motion */
 #prog{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--r);transform:scaleX(0);transform-origin:left;z-index:60}
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em}.w>span{display:inline-block;transform:translateY(110%);animation:wd .8s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*80ms + 150ms)}@keyframes wd{to{transform:none}}
-.hero-vid{animation:kb 24s ease-in-out infinite alternate}@keyframes kb{to{transform:scale(1.09)}}
+
 .hero .lab:before{content:"";display:inline-block;width:36px;height:2px;background:#ff8a8f;vertical-align:middle;margin-right:10px;animation:grow 1s .2s both}@keyframes grow{from{width:0}}
 .hd h2:after{content:"";display:block;height:3px;width:0;background:var(--r);margin-top:12px;transition:width .9s .3s}.hd.on h2:after{width:56px}
 .card{position:relative;overflow:hidden}.card:before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .4s}.card:hover:before{transform:scaleX(1)}
@@ -111,6 +167,36 @@ nav ul{list-style:none;margin:0;padding:0}.top{display:flex;gap:4px;align-items:
 footer{background:var(--n);color:#e6e8f5;padding:52px 0 24px}footer h4{color:#fff;margin:0 0 12px;font-size:.8rem;letter-spacing:.1em;border-bottom:2px solid var(--r);display:inline-block;padding-bottom:4px}
 footer ul{list-style:none;padding:0;margin:0}footer li{margin:6px 0}footer a{text-decoration:none;font-size:.9rem}footer a:hover{color:#ff8a8f}.fg{display:grid;gap:28px;grid-template-columns:repeat(2,1fr)}.fg .br{grid-column:1/-1}@media(min-width:900px){.fg{grid-template-columns:1.6fr 1fr 1fr 1fr}.fg .br{grid-column:auto}}
 .fb{border-top:1px solid rgba(255,255,255,.18);margin-top:32px;padding-top:16px;font-size:.85rem}
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    background: #030B5B;
+}
+
+.hero-vid {
+    z-index: 0;
+}
+
+.hero:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(3, 11, 91, 0.45);
+    opacity: 1;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+.hero .wrap {
+    position: relative;
+    z-index: 2;
+}
+
+
 </style>
 </head>
 <body>
@@ -129,9 +215,9 @@ footer ul{list-style:none;padding:0;margin:0}footer li{margin:6px 0}footer a{tex
 </defs></svg>
 
 <header id="top"><div class="wrap bar">
-<a class="logo" href="index.html" aria-label="abc BUSINESS SOLUTION home"><b>abc<i>.</i></b><small>BUSINESS<br>SOLUTION</small></a>
+<a class="logo" href="index2.html" aria-label="abc BUSINESS SOLUTION home"><b>abc<i>.</i></b><small>BUSINESS<br>SOLUTION</small></a>
 <nav id="nav" aria-label="Main"><ul class="top" id="topnav"></ul></nav>
-<a class="btn hcta" href="index.html#/contact">Talk to an Expert</a>
+<a class="btn hcta" href="contact.html">Talk to an Expert</a>
 <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
 </div></header>
 
@@ -139,14 +225,14 @@ footer ul{list-style:none;padding:0;margin:0}footer li{margin:6px 0}footer a{tex
 <section class="hero" aria-labelledby="hero-h">
 <!-- Background video: save your files as videos/services-hero.mp4 (H.264) and optionally videos/services-hero.webm. Keep it short, muted, loopable and compressed (ideally under 5 MB). Use footage you own or have licensed. -->
 <video class="hero-vid" id="hv" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
-    <source src="videos/services-hero.webm" type="video/webm">
     <source src="8631874-uhd_3840_2160_25fps.mp4" type="video/mp4">
 </video>
+
 <div class="wrap"><div class="hc">
 <span class="lab in">Our Services</span>
 <h1 id="hero-h">Golden Visa, Emirates ID &amp; PRO Services in the UAE</h1>
 <p class="lead in" style="animation-delay:.5s">Specialist support with residency, identity and government-related procedures. abc BUSINESS SOLUTION helps you understand the requirements, prepare your documents and take the next step with confidence.</p>
-<div class="btns in" style="animation-delay:.7s"><a class="btn" href="#overview">Explore Our Services</a><a class="btn o" href="index.html#/contact">Talk to an Expert</a></div>
+<div class="btns in" style="animation-delay:.7s"><a class="btn" href="#overview">Explore Our Services</a><a class="btn o" href="contact.html">Talk to an Expert</a></div>
 </div></div>
 </section>
 <div id="sections"></div>
@@ -156,14 +242,14 @@ footer ul{list-style:none;padding:0;margin:0}footer li{margin:6px 0}footer a{tex
 
 <script>
 "use strict";
-const CONTACT="index.html#/contact"; // existing homepage contact view
+const CONTACT="contact.html"; // existing homepage contact view
 const $=s=>document.querySelector(s);
 const h=(t,c,x,a)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;if(a)for(const k in a)e.setAttribute(k,a[k]);return e};
 const NS="http://www.w3.org/2000/svg";
 const ic=n=>{const s=document.createElementNS(NS,"svg");s.setAttribute("class","ic");s.setAttribute("aria-hidden","true");const u=document.createElementNS(NS,"use");u.setAttribute("href","#i-"+n);s.append(u);return s};
 
 /* ===== Header ===== */
-const NAV=[["Home","index.html"],["Business Setup",[["Company Formation","index.html#solutions"],["Mainland","index.html#jurisdiction"],["Free Zone","index.html#freezones"],["Offshore","index.html#jurisdiction"]]],
+const NAV=[["Home","index2.html"],["Business Setup",[["Company Formation","index.html#solutions"],["Mainland","index.html#jurisdiction"],["Free Zone","index.html#freezones"],["Offshore","index.html#jurisdiction"]]],
 ["Services",[["Golden Visa","#golden-visa"],["Emirates ID","#emirates-id"],["PRO Services","#pro-services"]]],["About","index.html#why"]];
 NAV.forEach(([l,s])=>{const li=h("li");
  if(typeof s==="string")li.append(h("a",null,l,{href:s}));
@@ -220,7 +306,7 @@ sec({id:"faq",alt:1,lab:"FAQ",h2:"Frequently Asked Questions",desc:"Short answer
 
 /* ===== Footer ===== */
 {const br=h("div","br");br.append(h("div",null,"abc BUSINESS SOLUTION",{style:"font-weight:800;font-size:1.2rem;color:#fff"}),h("p","note","Business setup and corporate support for entrepreneurs and companies exploring opportunities in the UAE.",{style:"color:#cfd3ec"}));$("#fg").append(br);
- [["Services",[["Golden Visa","#golden-visa"],["Emirates ID","#emirates-id"],["PRO Services","#pro-services"]]],["More",[["Business Setup","index.html#solutions"],["Free Zones","index.html#freezones"],["Mainland & Offshore","index.html#jurisdiction"]]],["Company",[["Home","index.html"],["About","index.html#why"],["Contact",CONTACT]]]]
+ [["Services",[["Golden Visa","#golden-visa"],["Emirates ID","#emirates-id"],["PRO Services","#pro-services"]]],["More",[["Business Setup","index.html#solutions"],["Free Zones","index.html#freezones"],["Mainland & Offshore","index.html#jurisdiction"]]],["Company",[["Home","index2.html"],["About","index.html#why"],["Contact",CONTACT]]]]
  .forEach(([t,ls])=>{const c=h("div");c.append(h("h4",null,t));const u=h("ul");ls.forEach(([x,y])=>{const li=h("li");li.append(h("a",null,x,{href:y}));u.append(li)});c.append(u);$("#fg").append(c)})}
 $("#yr").textContent=new Date().getFullYear();
 
@@ -233,8 +319,20 @@ const io="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEac
 document.querySelectorAll(".rv").forEach(e=>{e.style.transitionDelay=Math.min([...e.parentElement.children].indexOf(e),6)*60+"ms";io?io.observe(e):e.classList.add("on")});
 
 /* ===== Hero background video ===== */
-{const v=$("#hv");if(v){if(matchMedia("(prefers-reduced-motion: reduce)").matches){v.pause();v.removeAttribute("autoplay");v.hidden=true}
- else{v.addEventListener("playing",()=>v.classList.add("ready"));const p=v.play();if(p&&p.catch)p.catch(()=>{})}}}
+
+{
+    const v = $("#hv");
+    if (v) {
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            v.pause();
+            v.removeAttribute("autoplay");
+            v.hidden = true;
+        } else {
+            v.play().catch(() => {});
+        }
+    }
+}
+
 </script>
 </body>
 </html>
